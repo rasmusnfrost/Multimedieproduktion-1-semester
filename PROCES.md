@@ -2354,6 +2354,11 @@ Brugeren valgte at slideshow var for meget — kun det 3. billede skulle stå al
 ### Iteration 74 — Tagline fjernet (og lagt tilbage)
 `<p class="hero-tagline">Skabt til øjeblikke, der fortjener et soundtrack.</p>` fjernet kortvarigt — rullet tilbage. Tagline står nu igen mellem h1 og CTA-knapperne.
 
+### Iteration 77 — "Læg i kurv"-knapperne under gallery fjernet
+De tre `<a class="btn btn-ghost insta-cart-btn">Læg i kurv</a>` under hver gallery-card er fjernet helt. JS-handler for `.insta-cart-btn` også ryddet væk (querySelectorAll fandt ingen elementer). CSS-regler for `.insta-cell` og `.insta-cart-btn` ligger stadig i style.css men er ikke længere visuelt aktive (kun selve insta-item er tilbage i hver `<article class="insta-cell">` wrapper — wrapperen kunne også fjernes, men den skader ikke).
+
+---
+
 ### Iteration 76 — Klik på gallery-cards scroller op til "Fås i fire farver"
 Ændret click-behavior på gallery-cards: i stedet for visuel "add to cart"-feedback (som ikke gjorde noget reelt) scroller klik nu smoothly op til `.showcase`-sektionen ("Fås i fire farver") hvor brugeren kan vælge farve og konfigurere produktet.
 
