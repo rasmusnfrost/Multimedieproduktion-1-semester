@@ -2147,6 +2147,11 @@ Tekst-redigering for at passe det nye visuelle hierarki:
 - Hero h1 farve: `var(--fv1-bright)` (#5c9a55 sage) → `#8B5CF6` (electric lavender, matchede CTA-knappen) → `#000` (ren sort)
 - `.hero-tagline` farve: sort → tilbage til hvid → tilbage til sort `#000`. Text-shadow fjernet (ikke nødvendig på sort tekst). Slutresultat: sort h1 + sort tagline
 
+### "Udforsk kollektionen" CTA stilet som "Lær mere"
+- `index.html` linje 120: `class="btn btn-dark"` → `class="btn btn-ghost"`
+- `.btn-ghost` er oprindeligt designet til mørk video-baggrund (hvid tekst/border) — for at virke på off-white side-bg under AI-billederne tilføjet scopet variant: `.køb-knap .btn-ghost` med mørk tekst (`var(--text-dark)`), mørk border (`rgba(0,0,0,0.45)`), ingen backdrop-blur. Hover: subtil sort overlay `rgba(0,0,0,0.06)` + fuld mørk border.
+- Resultat: "Udforsk kollektionen" har nu samme outline/ghost-aesthetic som "Lær mere" — bare farve-inverteret for at virke på lys baggrund
+
 ---
 
 ## Status pr. dags dato (2026-05-12)

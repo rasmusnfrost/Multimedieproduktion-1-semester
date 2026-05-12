@@ -689,6 +689,18 @@ img {
   border-color: var(--white);
 }
 
+/* Ghost button på lys baggrund (off-white side-bg) */
+.køb-knap .btn-ghost {
+  color: var(--text-dark);
+  border-color: rgba(0, 0, 0, 0.45);
+  backdrop-filter: none;
+}
+
+.køb-knap .btn-ghost:hover {
+  background: rgba(0, 0, 0, 0.06);
+  border-color: var(--text-dark);
+}
+
 /* Hero CTA wrapper */
 
 .hero-cta {
