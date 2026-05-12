@@ -2094,6 +2094,34 @@ Tekst-redigering for at passe det nye visuelle hierarki:
 
 ---
 
+## Iteration 57 — App-badges flyttet ud af visual-kolonnen og ned under funktionslisten
+
+**Mål:** I Connect-appen-sektionen sad Apple/Google badges under iPhone-billedet i højre kolonne. De sad klemt og brød den visuelle ro omkring telefonen. Flyttet ned under teksten i venstre kolonne så de fungerer som tydelig CTA efter funktionslisten.
+
+### Ændringer i `index.html` (Social Connect-sektionen)
+- `.app-cta` div flyttet fra `.social-visual` (højre kolonne, under `.social-phone`) til bunden af `.social-content` (venstre kolonne, efter `<ol class="social-functions">`)
+- Tilføjet modifier-klasse `app-cta--social` for kontekst-specifik styling
+- `.social-visual` indeholder nu kun iPhone-billedet
+
+### Ændringer i `css/style.css`
+- `.social-visual`: fjernet `gap: 2rem` (ingen børn at adskille længere), tilføjet `justify-content: center`
+- `.social-phone`: `max-width: 320px` → `max-width: 360px` (lidt mere plads til billedet nu hvor det står alene)
+- Ny regel `.app-cta--social`:
+  - `justify-content: flex-start` (venstrejusteret i stedet for centreret — matcher teksten ovenfor)
+  - `margin-top: 2.5rem` (luft mellem funktionsliste og badges)
+  - `gap: 0.85rem` (lidt mere mellemrum mellem de to badges end default)
+- Footer-versionen af `.app-cta` (uden modifier) er uændret — stadig centreret
+
+### Visuelt resultat
+- Venstre kolonne: eyebrow → titel → lede → 5-punkts funktionsliste → app-badges (klart CTA-flow nedad)
+- Højre kolonne: iPhone-billedet centreret vertikalt, lidt større
+
+### Hvad blev bevaret
+- Footer-badges position uændret (centreret i `.footer-cta`)
+- Selve badge-SVG'erne uændret (iteration 56's HENT I-fix er stadig aktiv)
+
+---
+
 ## Status pr. dags dato (2026-05-12)
 
 ### Aktive ændringer
