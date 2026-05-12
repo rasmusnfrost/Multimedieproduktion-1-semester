@@ -2154,6 +2154,88 @@ Tekst-redigering for at passe det nye visuelle hierarki:
 
 ---
 
+## Iteration 59 — Gallery-sektion (AI billeder) stilet som Detaljer
+
+**Mål:** Lifestyle-billede-griddet havde ingen sektion-header — det floatede bare. Tilføj samme `section-header` mønster som Detaljer + Showcase (eyebrow + h2) så griddet føles som en navngivet sektion på siden, ikke en orphan visual block.
+
+### Ændringer i `index.html`
+- `<div class="section-lifestyle">` → `<section class="section-lifestyle">` (semantisk korrekt sektion)
+- Tilføjet `<header class="section-header">` over `.insta-grid`:
+  - `<p class="eyebrow">I hverdagen</p>` (dansk brand-stemme, ikke "Lifestyle"-engelsk)
+  - `<h2><span class="title-accent">Lyden</span> følger med</h2>` (split-color: "Lyden" i sage-bright `var(--fv1-bright)` — samme farve som "3 kg" i Detaljer)
+- HTML-kommentar opdateret: "AI billeder" → "AI billeder / lifestyle gallery"
+
+### Ændringer i `css/style.css` (split-color heading)
+- Ny generisk regel `.section-header h2 .title-accent { color: var(--fv1-bright); }` — sage-bright accent på markerede ord i section-headings, så mønstret kan genbruges i andre sektioner
+
+### Ændringer i `css/style.css` (`.section-lifestyle`, `.insta-grid`)
+- `.section-lifestyle`:
+  - `background: transparent` → `background: var(--bg)` (eksplicit — matcher Detaljer-sektionen og giver konsistent off-white blok)
+  - `padding: 3rem 0; padding-bottom: 2rem` → `padding: 6rem 0 2rem` (top-padding matcher Detaljer/Showcase's 6rem, bund-padding holdt på 2rem fordi "Udforsk kollektionen"-knappen i `.køb-knap`-wrapperen leverer sin egen margin)
+  - `text-align: center` fjernet — `.section-header` har sin egen centrering
+- `.insta-grid`:
+  - `margin-top: 3rem` fjernet (section-header har `margin-bottom: 4rem`, det er nok)
+  - `padding-bottom: 2.5rem` fjernet (samlet i section-padding)
+  - `gap: 2rem` → `gap: 1.5rem` (matcher Detaljer's `.features-grid` gap)
+
+### Resultat
+- Galleryet er nu en navngivet "I hverdagen / Lyden følger med" sektion med samme editorial hierarki som Detaljer
+- Spacing og gap matcher resten af sidens grid-sektioner
+- Semantisk markup forbedret (`<section>` + `<header>`)
+
+### Hvad blev bevaret
+- Selve `.insta-item` cards (hover-opacity, border-radius, billede-styling)
+- "Udforsk kollektionen" CTA placering udenfor sektionen (orphan-knap som original)
+- 3-billede-grid på desktop
+
+### Iteration 59b (fortrudt) — Brand-farvede caption-bars på insta-cards
+Forsøgt: hvert billede fik en brand-farvet caption-bar nederst med nummerering (01/02/03) + label (Strandtur/Forfest/Park-picnic, callback til connect-appen-teksten). Fortrudt — caption-bar med tekst inde i hvert card føltes for travlt og overpowering for billederne.
+
+### Iteration 59c — Offset farve-box bag hvert billede (hard shadow uden gennemsigtighed)
+
+**Mål:** Give billederne brand-farve uden at sætte tekst inde på dem. Lige bag hvert billede en solid farvet box som peeker ud nederst-til-højre — som en hård editorial drop-shadow, men solid (ikke gennemsigtig).
+
+### Ændringer i `index.html`
+- Caption-divs fjernet — tilbage til ren `<div class="insta-item">` med kun billedet indeni
+- `--accent`-inline-style beholdt på hver insta-item (sage / lavendel / blå-lilla)
+
+### Ændringer i `css/style.css` (`.insta-item`)
+- Fjernet caption-relateret CSS (`.insta-caption`, `.insta-num`, `.insta-label`) helt
+- Fjernet `overflow: hidden` på selve `.insta-item` (skygge skal kunne nå ud over kanten)
+- Flyttet `border-radius` og `overflow: hidden` ind på `.insta-item picture` så billedet stadig er rundet, men ydre box-shadow ikke bliver klippet
+- `box-shadow: 12px 12px 0 var(--accent)` — 0 blur giver hård solid skygge i brand-farve
+- Hover-effekter med `transform` blev kortvarigt overvejet men droppet pga. [[project-lumina]]'s konvention om kun farve-/baggrundsskift på hover
+
+### Resultat
+- Hver foto-card har en farvet "twin" der peeker ud nederst-til-højre 12px
+- Skygge-farverne: card 1 sage, card 2 lavendel, card 3 blå-lilla (samme palette som detaljer)
+- Grid-gap (1.5rem = 24px) giver 12px clearance så skygger ikke overlapper næste card
+
+### Fix (59c.1) — Ensartet card-højde
+Det første AI-billede (ai-billede1.png) har anden native aspect-ratio end de to andre → cardet blev kortere/mismatched. Tilføjet `aspect-ratio: 4 / 5` på `.insta-item picture` + eksisterende `object-fit: cover` på img → alle tre cards har nu samme højde, billederne croppes pænt.
+
+### Iteration 60 — Showcase-billedet fylder hele cardet
+
+Showcase-sektionen ("Fås i fire farver") havde billedet sat til `width: 80%`, `max-height: 90%`, `object-fit: contain` → der var luft omkring billedet inde i den hvide 4:5 box. Ændret til `width: 100%`, `height: 100%`, `object-fit: cover` så billedet nu fylder cardet edge-to-edge. `billede-valg.png` er ~1:1 (739×732) så lidt af top/bund kan blive klippet i 4:5 boksen, men højtaleren er centreret i kilden og forbliver synlig.
+
+---
+
+### Fix (59c.2) — Højtaler-størrelse matcher de to andre
+Selv med ens card-højde så det første billede stadig anderledes ud fordi kildebillederne har forskellige dimensioner:
+- `ai-billede1.png`: 4096×4096 (kvadratisk 1:1) — højtaleren optager lille del af frame
+- `ai-billede2.png`, `ai-billede3.png`: 3584×4800 (~3:4 portræt) — højtaleren er tæt på i kilden
+
+Med `object-fit: cover` på 4:5 container ville det kvadratiske billede 1 bare blive scaled til container-højden uden at zoome ind på højtaleren. Tilføjet target-regel:
+```css
+.insta-grid .insta-item:nth-child(1) img {
+    transform: scale(1.4);
+    transform-origin: center 55%;
+}
+```
+Zoom 1.4× med origin 55% (lidt under center) hvor højtaleren er placeret. `overflow: hidden` på picture klipper det overskydende. Nu fremstår højtaleren i ens størrelse på tværs af alle tre cards.
+
+---
+
 ## Status pr. dags dato (2026-05-12)
 
 ### Aktive ændringer

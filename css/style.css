@@ -147,10 +147,9 @@ img {
 }
 
 .showcase-visual .slide img {
-    width: 80%;
-    height: auto;
-    max-height: 90%;
-    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .showcase-content h2 {
