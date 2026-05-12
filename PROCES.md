@@ -2258,6 +2258,24 @@ Den lille pill-search fra 62 føltes for begrænset (max-width 320px). Justeret:
   - `.nav-icon-close` vises (`display: inline-flex`) — visuelt erstatter den søge-knappen i samme position
 - X-knappen er styled 30×30 rund (matcher `.nav-icons a`-styling) så swap er seamless
 
+### Iteration 65 — Card-wrapper om "Fås i fire farver"-sektionen
+
+**Mål:** Showcase-sektionen var den eneste indholdssektion uden hvidt card-wrapper. Connect-appen og footer brugte begge `.social-card` / `.footer-card` pattern (hvid bg + 24px radius + indre padding). Bringe showcase ind i samme system.
+
+### Ændringer i `css/style.css`
+- `.showcase-layout`: tilføjet `background: var(--white)`, `border-radius: 24px`, `padding: 4rem 3rem` (matcher `.social-card`-padding)
+- `gap`: 5rem → 4rem (matcher social-card så de visuelt rimer)
+- `.showcase-visual`: fjernet redundant `background: var(--white)` (cardet ovenover er hvid nu) — beholdt `border-radius`, `overflow: hidden` og `aspect-ratio: 4/5` så slider-billedet stadig får runde hjørner
+- Mobile: samme padding `2.5rem 1.75rem` på `.showcase-layout` som på `.social-card` (slået sammen i fælles regel da begge bruger samme grid-stack på mobile)
+
+### Visuel sammenhæng
+Tre sektioner følger nu samme card-pattern:
+1. **Showcase** ("Fås i fire farver") — hvidt card med slider venstre + tekst højre
+2. **Connect-appen** ("Del musikken. Del stemningen.") — hvidt card med tekst venstre + iPhone højre
+3. **Footer** — hvidt card med kæmpe Anton-wordmark
+
+---
+
 ### Iteration 64 — Nav-ikoner konverteret til SVG (Lucide-stil)
 
 **Mål:** De tre nav-ikoner (Search.png, Login.png, Shoppingcart.png) var raster PNG'er. Erstattet med ægte vektor-SVG'er i Lucide-stil (gratis MIT-licens, https://lucide.dev — mest brugte moderne outline-ikonsæt sammen med Heroicons).
