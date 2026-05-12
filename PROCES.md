@@ -2354,6 +2354,9 @@ Brugeren valgte at slideshow var for meget — kun det 3. billede skulle stå al
 ### Iteration 74 — Tagline fjernet (og lagt tilbage)
 `<p class="hero-tagline">Skabt til øjeblikke, der fortjener et soundtrack.</p>` fjernet kortvarigt — rullet tilbage. Tagline står nu igen mellem h1 og CTA-knapperne.
 
+### Iteration 81 — Hero-tekst til sort (matcher resten af siden)
+Hero h1 og tagline ændret fra hvid med text-shadow → `var(--text-dark)` uden shadow. Matcher tekst-farven brugt overalt ellers på siden. Læsbarhed afhænger nu af hvilken hero-slide der vises (de lyse billeder som hero-3 par-på-bil og hero-5 camping er læselige, mørke områder på hero-1 kvinder-ved-klipper og hero-9 pickup vil have lavere kontrast).
+
 ### Iteration 80b — Blå-lilla speaker erstattet med korrekt variant
 `speaker-blalilla.png` overskrevet med `ChatGPT Image May 12, 2026, 10_20_47 PM (3) (1).png` — den ægte blå-lilla variant (mere dyb violet/blålig tone) i stedet for den duplikerede lavendel der lå før. Nu er alle 4 farver visuelt distinkte: sage / lavendel / blå-lilla / cream.
 
