@@ -2122,6 +2122,33 @@ Tekst-redigering for at passe det nye visuelle hierarki:
 
 ---
 
+## Iteration 58 — Hero h1 "LUMINA ONE" styles matchet til detaljer-cards "3 kg"
+
+**Mål:** Hero-titlen "LUMINA ONE" skulle stadig stå centreret over videoen, men typografi og farve skulle matche feature-stat-stilen fra detaljer-sektionen (specifikt "3 kg"-cardet med sage-bright accent). Kun typografisk styling — ingen layout-ændringer.
+
+### Ændringer i `css/style.css` (`.hero-content h1`)
+- Tilføjet eksplicit `font-family: 'Geist', system-ui, sans-serif` (matcher `.feature-stat`)
+- `font-weight`: 600 → 700 (matcher feature-stat)
+- `letter-spacing`: -0.02em → -0.04em (strammere som feature-stat)
+- `color`: `var(--white)` → `var(--fv1-bright)` (#5c9a55 — samme sage-bright som "3 kg")
+
+### Hvad blev bevaret
+- Font-size `clamp(2.5rem, 9vw, 7rem)` (hero forbliver større end feature-stats — den skal stadig være hero-impact)
+- Centreret layout (`align-items: center`, `text-align: center`)
+- Tagline, CTAs, video, overlay — alt urørt
+- Hero-content struktur uændret (samme HTML)
+- Ingen text-shadow — eksakt match til `.feature-stat`-stilen
+
+### Casing-justering (frem og tilbage)
+- HTML-tekst først ændret fra `LUMINA ONE` → `Lumina One` (sentence case)
+- Derefter rullet tilbage til `LUMINA ONE` (caps lock) — sentence case virkede ikke i hero-konteksten
+
+### Farve-justering (flere iterationer)
+- Hero h1 farve: `var(--fv1-bright)` (#5c9a55 sage) → `#8B5CF6` (electric lavender, matchede CTA-knappen) → `#000` (ren sort)
+- `.hero-tagline` farve: sort → tilbage til hvid → tilbage til sort `#000`. Text-shadow fjernet (ikke nødvendig på sort tekst). Slutresultat: sort h1 + sort tagline
+
+---
+
 ## Status pr. dags dato (2026-05-12)
 
 ### Aktive ændringer

@@ -562,20 +562,20 @@ img {
 }
 
 .hero-content h1 {
+    font-family: 'Geist', system-ui, sans-serif;
     font-size: clamp(2.5rem, 9vw, 7rem);
-    font-weight: 600;
-    color: var(--white);
-    letter-spacing: -0.02em;
+    font-weight: 700;
+    color: #000;
+    letter-spacing: -0.04em;
     line-height: 1;
 }
 
 .hero-tagline {
     font-size: 1.05rem;
     font-weight: 400;
-    color: rgba(255, 255, 255, 0.85);
+    color: #000;
     max-width: 380px;
     line-height: 1.6;
-    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.35);
 }
 
     /* Produkt pris */
