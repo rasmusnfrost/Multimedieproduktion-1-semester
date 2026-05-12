@@ -2354,6 +2354,52 @@ Brugeren valgte at slideshow var for meget — kun det 3. billede skulle stå al
 ### Iteration 74 — Tagline fjernet (og lagt tilbage)
 `<p class="hero-tagline">Skabt til øjeblikke, der fortjener et soundtrack.</p>` fjernet kortvarigt — rullet tilbage. Tagline står nu igen mellem h1 og CTA-knapperne.
 
+### Iteration 80b — Blå-lilla speaker erstattet med korrekt variant
+`speaker-blalilla.png` overskrevet med `ChatGPT Image May 12, 2026, 10_20_47 PM (3) (1).png` — den ægte blå-lilla variant (mere dyb violet/blålig tone) i stedet for den duplikerede lavendel der lå før. Nu er alle 4 farver visuelt distinkte: sage / lavendel / blå-lilla / cream.
+
+### Iteration 80 — Speaker-billeder passer ind i showcase-boksen
+De nye speaker-billeder blev croppet kraftigt af `object-fit: cover` (kun midten af højtaleren var synlig). Ændret til `object-fit: contain` + `width: 90%` + `height: 90%` så hele højtaleren passer ind i den hvide showcase-card med lidt padding omkring.
+
+### Iteration 79c — Produktbilleder erstattet igen (med transparent bg fra start)
+De 4 speaker-billeder erstattet med en ny version der allerede har transparent baggrund i kilden — ingen post-processing nødvendig. Filnavne uændrede.
+
+OBS: De to "(2)" filer i kilden så identiske ud (begge lavendel-toner) — den ene er brugt til `speaker-lavendel.png`, den anden til `speaker-blalilla.png`. Hvis de var ment som forskellige farver, ser de meget tæt på samme ud — kan let byttes ud separat senere.
+
+### Iteration 79b — Produktbillederne erstattet + sort baggrund gjort transparent
+De 4 farvespecifikke speaker-billeder erstattet med en ny version. Kildefilerne havde solid sort baggrund — ikke transparent — så højtaleren stod i en sort firkant inde i den hvide showcase-card.
+
+**Fix:** Skrevet Node-script (`/tmp/remove-black-bg.js`) der bruger `jimp` til at gøre mørke pixels transparente:
+- Loop over alle pixels i hver af de 4 PNG'er
+- Pixels med R+G+B < 60 → fully transparent (alpha 0)
+- Pixels med R+G+B mellem 60-120 → graduel alpha-fade så kanter forbliver bløde uden hård halo
+- Saved tilbage på samme filnavn
+
+Nu vises højtaleren clean på den hvide showcase-card-baggrund uden sort ramme.
+
+### Iteration 79 — Farvespecifikke produktbilleder i "Fås i fire farver"-slider
+
+Den eksisterende `billede-valg.png` blev brugt til alle fire farver i showcase-sliderne — samme cream-farvede højtaler uanset hvilken dot man valgte. Nu med 4 farvespecifikke AI-genererede produktbilleder:
+
+### Nye filer i `/images/`
+- `speaker-sage.png` (fra `ChatGPT Image ... 09_34_28 PM (4).png` — grøn sage variant)
+- `speaker-lavendel.png` (fra `... (2).png` — pink/lavendel variant)
+- `speaker-blalilla.png` (fra `... (3).png` — lys grå-lilla variant)
+- `speaker-cream.png` (fra `... (1).png` — varm off-white variant)
+
+### Ændringer i `index.html`
+Hver `.slide` peger nu på sin egen farve-variant i stedet for samme `billede-valg.png`:
+- Slide 1 (Sage): `speaker-sage.png`
+- Slide 2 (Lavendel): `speaker-lavendel.png`
+- Slide 3 (Blå-lilla): `speaker-blalilla.png`
+- Slide 4 (Cream): `speaker-cream.png`
+
+### Resultat
+Når brugeren klikker på en farve-dot i showcase-sektionen skifter billedet nu mellem fire forskellige farvede LUMINA-højtalere. Color-name-label (Sage/Lavendel/Blå-lilla/Cream) under sliden var allerede koblet i JS — den var bare ikke synkroniseret med et faktisk farveskift før.
+
+`billede-valg.png` ligger stadig i `/images/` men er ikke længere refereret.
+
+---
+
 ### Iteration 78 — Side-baggrund skiftet til varm cream/lys off-white der matcher hero-solnedgangen
 
 `--bg`-variablen ændret fra `#F4F4F4` (neutral off-white) → `#F5EFE5` (cream) → `#FAF7F0` → `#FDFBF6` (næsten ren hvid med kun et whisper af warm undertone). Påvirker automatisk alle sektioner der bruger `var(--bg)`:
