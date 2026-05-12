@@ -216,11 +216,46 @@ img {
     gap: 1.5rem;
 }
 
+.insta-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.insta-cart-btn {
+    align-self: center;
+}
+
 .insta-item {
+    position: relative;
     border-radius: 16px;
     box-shadow: 12px 12px 0 var(--accent);
     width: 100%;
+    cursor: pointer;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.insta-item:focus-visible {
+    outline: 3px solid #8B5CF6;
+    outline-offset: 4px;
+}
+
+.insta-add {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    pointer-events: none;
+    color: var(--white);
+    filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.45));
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.insta-item:hover .insta-add {
+    opacity: 1;
 }
 
 .insta-item picture {
@@ -530,32 +565,25 @@ img {
     justify-content: center;
 }
 
-.hero-video {
+.hero-bg {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     z-index: 0;
 }
 
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background:
-        linear-gradient(
-            180deg,
-            rgba(0, 0, 0, 0.08) 0%,
-            rgba(0, 0, 0, 0) 30%,
-            rgba(0, 0, 0, 0) 75%,
-            rgba(0, 0, 0, 0.15) 100%
-        ),
-        linear-gradient(
-            135deg,
-            rgba(168, 191, 163, 0.12) 0%,
-            rgba(186, 163, 191, 0.08) 55%,
-            rgba(172, 163, 191, 0.15) 100%
-        );
+    background: linear-gradient(
+        135deg,
+        rgba(168, 191, 163, 0.10) 0%,
+        rgba(186, 163, 191, 0.06) 55%,
+        rgba(172, 163, 191, 0.12) 100%
+    );
     z-index: 1;
 }
 
@@ -589,14 +617,14 @@ img {
 }
 
 .hero-tagline {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     font-weight: 400;
     font-style: italic;
     color: #000;
-    max-width: 420px;
-    line-height: 1.5;
-    letter-spacing: 0.005em;
-    margin: 1rem 0 0;
+    max-width: 460px;
+    line-height: 1.55;
+    letter-spacing: 0.01em;
+    margin: 1.25rem 0 0;
 }
 
     /* Produkt pris */
@@ -711,13 +739,15 @@ img {
 }
 
 /* Ghost button på lys baggrund (off-white side-bg) */
-.køb-knap .btn-ghost {
+.køb-knap .btn-ghost,
+.insta-cart-btn.btn-ghost {
   color: var(--text-dark);
   border-color: rgba(0, 0, 0, 0.45);
   backdrop-filter: none;
 }
 
-.køb-knap .btn-ghost:hover {
+.køb-knap .btn-ghost:hover,
+.insta-cart-btn.btn-ghost:hover {
   background: rgba(0, 0, 0, 0.06);
   border-color: var(--text-dark);
 }

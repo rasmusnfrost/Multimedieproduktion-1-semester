@@ -2258,6 +2258,112 @@ Den lille pill-search fra 62 føltes for begrænset (max-width 320px). Justeret:
   - `.nav-icon-close` vises (`display: inline-flex`) — visuelt erstatter den søge-knappen i samme position
 - X-knappen er styled 30×30 rund (matcher `.nav-icons a`-styling) så swap er seamless
 
+### Iteration 66 — Cart-ikon centreret på gallery-cards ved hover
+
+**Mål:** Tilføje interaktiv e-commerce-følelse på gallery-billederne — et cart-ikon centreret midt på billedet ved hover. Bare visuelt, ingen reel cart-funktionalitet (eksamensprojekt, ét produkt).
+
+### Designforløb
+1. Først forsøgt: pill-knap "Læg i kurv" der sliderede op fra bunden — fortrudt, for travlt
+2. Endelig: rund hvid cirkel-knap (56×56) centreret midt på billedet med kun cart-ikonet (22×22)
+
+### Ændringer i `index.html`
+- Hver `.insta-item` har nu en `<button class="insta-add">` efter `<picture>` med:
+  - Inline cart-SVG (22×22, samme path som `/images/icon-cart.svg`)
+  - `aria-label="Læg LUMINA One i kurv"` (ingen synlig tekst, behold for screen readers)
+
+### Ændringer i `css/style.css`
+- `.insta-item`: tilføjet `position: relative` (positioning-context for knappen)
+- Ny `.insta-add`:
+  - Position absolute, top + left 50% med `translate(-50%, -50%)` → centreret midt på billedet
+  - 56×56px cirkel (`border-radius: 50%`), hvid baggrund, mørk ikon
+  - Box-shadow `0 6px 20px rgba(0,0,0,0.22)` så den løfter sig fra billedet
+  - Default: `opacity: 0` + `scale(0.85)` + `pointer-events: none` (skjult og lidt mindre)
+  - Hover på card: `opacity: 1` + `scale(1)` + pointer-events auto (fader ind og zoomer let op)
+  - Hover på selve knappen: bg → electric lavender `#8B5CF6`, ikon → hvid
+- Cart SVG i knappen bruger `currentColor` stroke så den følger knappens text-color
+
+### Interaktion
+- Default: gallery-cards vises uden knap
+- Hover på card: cardet løfter sig (eksisterende -6px/-6px fra iteration 60b) + cart-cirklen fader ind midt på billedet med en blid scale-up
+- Hover på selve cirklen: mørk grå (`#555`) + hvid ikon (var lavendel, ændret til grå for neutral look)
+
+### Iteration 66b — Hele cardet klikkbart med checkmark-feedback (forenklet)
+- `.insta-item` får `cursor: pointer`, `role="button"`, `tabindex="0"`, `aria-label="Læg LUMINA One i kurv"`
+- JS click/keyboard handler tilføjer `.is-added` klasse — funktional, men uden visuel feedback i den endelige version
+
+### Iteration 67 — "Læg i kurv"-knap under hvert gallery-billede, "Udforsk kollektionen" fjernet
+
+**Mål:** Erstatte den enkelte "Udforsk kollektionen"-CTA under galleryet med tre individuelle "Læg i kurv"-CTA'er (én under hvert billede). Lavendel pill-stil (`.btn-white` — #8B5CF6 baggrund + hvid tekst), som matcher "Køb nu"-CTA'en fra hero.
+
+### Ændringer i `index.html`
+- Hvert `.insta-item` er nu wrappet i en `<article class="insta-cell">` sammen med en ny `<a class="btn btn-white insta-cart-btn">Læg i kurv</a>`
+- `<div class="køb-knap"><a class="btn btn-ghost">Udforsk kollektionen</a></div>` fjernet helt
+- JS opdateret: `.insta-cart-btn` får `preventDefault` på klik så de ikke jumper til toppen pga. `href="#"`
+
+### Ændringer i `css/style.css`
+- Ny `.insta-cell`: `display: flex; flex-direction: column; gap: 1.5rem` — placerer billede over knap med passende mellemrum (offset-skyggen på 12px får 12px clearance til knappen)
+- Ny `.insta-cart-btn`: `align-self: center` — knapperne har samme content-bredde som andre `.btn` på siden (ikke stretched), centreret under hvert billede
+
+### Iteration 69 — Hero skiftet fra video til AI-billede (cirkel af højtalere)
+
+**Mål:** Erstatte `spin.mp4`-videoen i hero med et AI-genereret billede der viser højtalerne arrangeret i en cirkel — alle fire brand-farver synlige på én gang. Tomt center i billedet giver perfekt plads til titel + tagline + knapper.
+
+### Ændringer
+- Kilde: `~/Downloads/ChatGPT Image May 12, 2026, 04_12_01 PM.png` (1254×1254, RGB) kopieret til `/images/hero-bg.png`
+- `index.html`: `<video autoplay muted loop class="hero-video">...</video>` erstattet med `<img class="hero-bg" src="/images/hero-bg.png" alt="">`
+- `css/style.css`:
+  - `.hero-video` → `.hero-bg` (samme positioning: absolute inset 0, object-fit cover, z-index 0)
+  - Tilføjet `object-position: center` så cirklen forbliver centreret når image cropes (1:1 billede i bredere viewport → top/bund cropes lidt)
+  - `.hero-overlay`: fjernet de mørke top/bund gradients (ikke nødvendige på hvidt billede — sort tekst har allerede god kontrast). Beholdt kun den diagonale brand-farve-tint (sage → lavendel → blå-lilla) på 6-12% opacitet for blød stemning
+
+### Note
+- `spin.mp4` ligger stadig i `/videos/` men bruges ikke længere — kan slettes hvis ønsket
+
+---
+
+### Iteration 68 — Hero-tekst typografisk polish
+
+**Mål:** Tilføje editorial detail til hero-teksten uden at restrukturere (overholder [[feedback-hero-untouchable]]: ingen eyebrow, split-color, stats — bare typografi).
+
+### Ændringer i `css/style.css`
+**h1 (`.hero-content h1`):**
+- ~~`::after`-divider linje tilføjet (72px × 2px sort linje under h1)~~ — fjernet igen, virkede ikke i konteksten
+
+**Tagline (`.hero-tagline`):**
+- Font-size: 1.15rem → 1.05rem (lidt mere refined, ikke konkurrerer med h1)
+- Max-width: 420px → 460px (giver mere balanceret line-break)
+- Line-height: 1.5 → 1.55 (luftigere)
+- Letter-spacing: 0.005em → 0.01em (mere editorial åbning)
+- Margin-top: 1rem → 1.25rem (passer med divider-spacing)
+
+### Resultat
+- Tre lag visuel hierarki: kæmpe black h1 → tynd sort divider (72px) → kursiv refined tagline
+- Stadig samme centrerede video-overlay struktur, bare med mere editorial typography
+
+---
+
+### Iteration 67b — "Læg i kurv"-knapper skiftet til ghost-stil (matcher "Lær mere")
+- `btn-white` → `btn-ghost` på alle tre knapper (transparent bg + outline-stil)
+- `.insta-cart-btn.btn-ghost` lagt til samme scope som `.køb-knap .btn-ghost` (mørk variant for lys baggrund) — fælles regel da begge sidder på off-white side-bg
+- Resultat: outline-knapper med mørk tekst/border, subtil sort overlay på hover
+- Selve knap-stylingen kommer fra eksisterende `.btn` + `.btn-white` (electric lavender)
+
+### Resultat
+- Tre brand-farvede gallery-billeder med offset-skygger, hver med deres egen "Læg i kurv"-CTA direkte under
+- Cardet er stadig klikkbart (eksisterende role="button"-mønster), så man kan klikke billedet, knappen, eller cart-ikonet i midten — alle gør samme ting
+
+---
+
+### Iteration 66c — Forenklet til kun cart-ikon (ingen cirkel, ingen checkmark)
+- Hvid cirkel-baggrund fjernet — kun cart-ikonet vises nu centreret ved hover
+- Checkmark-SVG fjernet helt fra både HTML og CSS
+- `.is-added` CSS-state fjernet (klassen tilføjes stadig af JS men ændrer intet visuelt — kunne fjernes helt hvis ønsket)
+- Cart-ikon farve testet sort → tilbage til hvid med mørk drop-shadow `filter: drop-shadow(0 2px 12px rgba(0,0,0,0.45))` for læselighed på de varierede AI-billeder
+- Ikon-størrelse 22px → 32px (mere synligt uden cirkel omkring)
+- Hover: ikonet dukker bare op uden animation (transition fjernet, ingen scale-effekt — bare instant opacity toggle)
+
+---
+
 ### Iteration 65 — Card-wrapper om "Fås i fire farver"-sektionen
 
 **Mål:** Showcase-sektionen var den eneste indholdssektion uden hvidt card-wrapper. Connect-appen og footer brugte begge `.social-card` / `.footer-card` pattern (hvid bg + 24px radius + indre padding). Bringe showcase ind i samme system.

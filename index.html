@@ -55,9 +55,7 @@
     <!-- Hero sektion med video-->
 
     <div class="hero">
-    <video autoplay muted loop class="hero-video">
-        <source src="/videos/spin.mp4" type="video/mp4">
-    </video>
+    <img class="hero-bg" src="/images/hero-bg.png" alt="">
     <div class="hero-overlay"></div>
     <article class="hero-content">
         <h1>LUMINA ONE</h1>
@@ -117,26 +115,52 @@
         </header>
 
         <div class="insta-grid">
-            <div class="insta-item" style="--accent: var(--fv1-bright);">
-                <picture><source srcset="/images/ai-billede1.png" type="image/png">
-                    <img src="/images/ai-billede1.png" alt="Billede"></picture>
-            </div>
-            <div class="insta-item" style="--accent: var(--fv2-bright);">
-                <picture><source srcset="/images/ai-billede2.png" type="image/png">
-                    <img src="/images/ai-billede2.png" alt="Billede"></picture>
-            </div>
-            <div class="insta-item" style="--accent: var(--fv3-bright);">
-                <picture><source srcset="/images/ai-billede3.png" type="image/png">
-                    <img src="/images/ai-billede3.png" alt="Billede"></picture>
-            </div>
+            <article class="insta-cell">
+                <div class="insta-item" style="--accent: var(--fv1-bright);" role="button" tabindex="0" aria-label="Læg LUMINA One i kurv">
+                    <picture><source srcset="/images/ai-billede1.png" type="image/png">
+                        <img src="/images/ai-billede1.png" alt="Billede"></picture>
+                    <span class="insta-add" aria-hidden="true">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="8" cy="21" r="1"/>
+                            <circle cx="19" cy="21" r="1"/>
+                            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
+                        </svg>
+                    </span>
+                </div>
+                <a href="#" class="btn btn-ghost insta-cart-btn">Læg i kurv</a>
+            </article>
+            <article class="insta-cell">
+                <div class="insta-item" style="--accent: var(--fv2-bright);" role="button" tabindex="0" aria-label="Læg LUMINA One i kurv">
+                    <picture><source srcset="/images/ai-billede2.png" type="image/png">
+                        <img src="/images/ai-billede2.png" alt="Billede"></picture>
+                    <span class="insta-add" aria-hidden="true">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="8" cy="21" r="1"/>
+                            <circle cx="19" cy="21" r="1"/>
+                            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
+                        </svg>
+                    </span>
+                </div>
+                <a href="#" class="btn btn-ghost insta-cart-btn">Læg i kurv</a>
+            </article>
+            <article class="insta-cell">
+                <div class="insta-item" style="--accent: var(--fv3-bright);" role="button" tabindex="0" aria-label="Læg LUMINA One i kurv">
+                    <picture><source srcset="/images/ai-billede3.png" type="image/png">
+                        <img src="/images/ai-billede3.png" alt="Billede"></picture>
+                    <span class="insta-add" aria-hidden="true">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="8" cy="21" r="1"/>
+                            <circle cx="19" cy="21" r="1"/>
+                            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
+                        </svg>
+                    </span>
+                </div>
+                <a href="#" class="btn btn-ghost insta-cart-btn">Læg i kurv</a>
+            </article>
         </div>
     </div>
 </section>
 
-
- <div class="køb-knap">
-    <a href="#" class="btn btn-ghost">Udforsk kollektionen</a>
- </div>
 
 <!-- Funktioner / features -->
 <section class="features">
@@ -319,6 +343,26 @@ navSearchClose.addEventListener('click', closeNavSearch);
 
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && navEl.classList.contains('is-searching')) closeNavSearch();
+});
+
+/* === Gallery cards + cart buttons: klik for at lægge i kurv === */
+document.querySelectorAll('.insta-item').forEach(item => {
+    const addToCart = () => {
+        if (item.classList.contains('is-added')) return;
+        item.classList.add('is-added');
+        setTimeout(() => item.classList.remove('is-added'), 1400);
+    };
+    item.addEventListener('click', addToCart);
+    item.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            addToCart();
+        }
+    });
+});
+
+document.querySelectorAll('.insta-cart-btn').forEach(btn => {
+    btn.addEventListener('click', e => e.preventDefault());
 });
 </script>
 
