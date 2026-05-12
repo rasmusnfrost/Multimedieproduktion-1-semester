@@ -2351,6 +2351,18 @@ Rækkefølge ændret: hero-3 (par på biltag + bjerge) → hero-1 → hero-5 →
 ### Iteration 73h — Slideshow fjernet, kun hero-5 tilbage (camping + solnedgang)
 Brugeren valgte at slideshow var for meget — kun det 3. billede skulle stå alene. HTML reduceret til ét enkelt `<img class="hero-bg is-active" src="/images/hero-5.png">` + `.hero-overlay`. Dots-divet helt fjernet fra markup. `hero-1.png`, `hero-3.png`, `hero-9.png` slettet fra `/images/`. JS for slideshow er ikke fjernet (querySelector finder ingen `.hero-dot`, så det er harmlessly inaktiv).
 
+### Iteration 74 — Tagline fjernet (og lagt tilbage)
+`<p class="hero-tagline">Skabt til øjeblikke, der fortjener et soundtrack.</p>` fjernet kortvarigt — rullet tilbage. Tagline står nu igen mellem h1 og CTA-knapperne.
+
+---
+
+### Iteration 73i — Collage genoprettet
+Slideshow tilbage. De 3 slettede billeder genoprettet:
+- `hero-1.png` fra `~/Downloads/ChatGPT Image May 12, 2026, 05_37_16 PM.png` (kvinder ved klipper)
+- `hero-3.png` fra `~/Downloads/ChatGPT Image May 12, 2026, 05_37_38 PM.png` (par på biltag)
+- `hero-9.png` fra `~/.claude/image-cache/.../10.png` (rødhåret variant fra iteration 73g)
+HTML udvidet igen til 4 stacked `<img>` + 4 dots, samme rækkefølge som iteration 73f (hero-3 → 1 → 5 → 9). JS for slideshow virker igen automatisk fordi dot-knapper er tilbage i DOM.
+
 ### Iteration 73 — Hero slideshow (8 billeder, manuel navigation via dots)
 
 **Mål:** Vise et collage af 8 AI-genererede LUMINA lifestyle billeder i hero som man kan switche imellem via klikbare dots. **Ingen auto-rotation** — brugeren styrer selv hvilket billede der vises.
