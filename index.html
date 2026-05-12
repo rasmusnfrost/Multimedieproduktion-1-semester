@@ -34,15 +34,15 @@
             <path d="M20 20L17 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </svg>
         <input type="search" id="navSearchInput" placeholder="Søg..." aria-label="Søg" autocomplete="off">
-        <button type="button" class="nav-search-close" id="navSearchClose" aria-label="Luk søgning">
-            <svg width="10" height="10" viewBox="0 0 14 14" aria-hidden="true">
-                <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-        </button>
     </form>
 
     <div class="nav-icons">
-        <a href="#" id="searchTrigger" aria-label="Åbn søgning"><img src="/images/Search.png" alt="Søg"></a>
+        <a href="#" id="searchTrigger" class="nav-icon-search" aria-label="Åbn søgning"><img src="/images/Search.png" alt="Søg"></a>
+        <button type="button" id="navSearchClose" class="nav-icon-close" aria-label="Luk søgning">
+            <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+                <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+        </button>
         <a href="#"><img src="/images/Login.png" alt="Login"></a>
         <a href="#"><img src="/images/Shoppingcart.png" alt="Indkøbskurv"></a>
     </div>

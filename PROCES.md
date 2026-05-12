@@ -2247,6 +2247,17 @@ Erstattet hele `.search-overlay`-CSS med ny `.nav-search`-blok:
 - Man kan taste hvad som helst — det gør ingenting (men ser ud som det virker)
 - ESC eller X → vender tilbage til normal navbar med Shop/Om os/Kontakt
 
+### Iteration 62b — Søgebar fylder hele bredden, X erstatter lup-ikon
+Den lille pill-search fra 62 føltes for begrænset (max-width 320px). Justeret:
+- `.nav-search`: `max-width: 320px` fjernet — fylder nu hele pladsen fra logoet til søge-ikon-positionen via `flex: 1`. Indre padding `0.35rem 1rem` (luftigere)
+- Inline X-knap fjernet fra inde i `<form class="nav-search">`
+- Ny `<button id="navSearchClose" class="nav-icon-close">` placeret i `.nav-icons` **lige efter** søge-trigger-linket (samme slot)
+- Default: `.nav-icon-close { display: none }`, `.nav-icon-search` synlig
+- Når `.nav.is-searching` aktiv:
+  - `.nav-icon-search` skjules (`display: none`)
+  - `.nav-icon-close` vises (`display: inline-flex`) — visuelt erstatter den søge-knappen i samme position
+- X-knappen er styled 30×30 rund (matcher `.nav-icons a`-styling) så swap er seamless
+
 ---
 
 ### Iteration 61 — Hero-tekst (h1 + tagline) styling
