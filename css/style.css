@@ -283,81 +283,94 @@ img {
 
 /* === Sektion: Social Connects (original) === */
 
-.section-gradient-bottom {
-    background: transparent;
+.social-connect {
+    background: var(--bg);
+    padding: 0 0 6rem;
 }
 
-.social-layout {
+.social-card {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 4rem 3rem;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.15fr 1fr;
     gap: 4rem;
     align-items: center;
 }
 
-.social-content h2 {
-    font-size: 1.5rem;
-    margin-bottom: 0rem;
-    margin-top: 1rem;
-}
-
-.social-content h3 {
-    font-size: 1.1rem;
-    margin-top: 1.5rem;
+.social-content .eyebrow {
+    color: var(--fv3-bright);
     margin-bottom: 1rem;
 }
 
-.social-content p {
-    margin-bottom: 1rem;
+.social-title {
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 1.5rem;
 }
 
-.social-content ul {
+.social-title-accent {
+    color: var(--fv2-bright);
+}
+
+.social-lede {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #444;
+    margin: 0 0 2.5rem;
+    max-width: 50ch;
+}
+
+.social-functions {
     list-style: none;
-    padding-left: 0;
-}
-
-.social-content li {
-    font-size: 0.95rem;
-    color: black;
-    margin-bottom: 0.8rem;
-    padding-left: 1.5rem;
-    position: relative;
-}
-
-.social-content li:before {
-    content: "•";
-    position: absolute;
-    left: 0;
-    color: var(--fv1);
-    font-weight: bold;
-}
-
-.funktioner-divider {
-    border: none;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    margin-top: 1rem;
-}
-
-.app-right {
+    padding: 0;
+    margin: 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 1.5rem;
 }
 
-.app-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 400px;
-    border-radius: 12px;
-    overflow: hidden;
-    background-color: transparent;
+.social-functions li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.25rem;
+    align-items: baseline;
 }
 
-.app-image img {
-    width: 50%;
-    height: 30%;
-    object-fit: cover;
+.social-num {
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+    min-width: 2.5rem;
+}
+
+.social-functions div {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #333;
+}
+
+.social-functions strong {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.social-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.social-phone {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
 }
 
 .app-cta {
@@ -989,9 +1002,13 @@ img {
   }
 
   .showcase-layout,
-  .social-layout {
+  .social-card {
     grid-template-columns: 1fr;
     gap: 3rem;
+  }
+
+  .social-card {
+    padding: 2.5rem 1.75rem;
   }
 
   .insta-grid {

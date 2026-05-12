@@ -1936,6 +1936,138 @@ Brand-farverne er let dæmpede (sage #a8bfa3 osv.) sammenlignet med UGLYCASH-ref
 
 ---
 
+## Iteration 54 — Brand-saturerede farvevarianter til feature-stats
+
+**Mål:** Iteration 53's brug af `--fv1/--fv2/--fv3` direkte (de muted brand-farver) blev for blødt/washed-out på de store stat-tal. Brugeren vil have brighter farver "like before" (iteration 52) men i samme hue-familie som brand-paletten — altså saturated versioner af sage/lavendel/blå-lilla, ikke helt nye farver.
+
+### Ny strategi: definer brighter varianter af brand-farver i `:root`
+
+I stedet for at hardkode farver inline per card (som iteration 52) eller bruge de dæmpede brand-farver direkte (iteration 53), introducerer jeg saturerede søsterfarver:
+
+```css
+--fv1-bright: #5c9a55;   /* sage saturated */
+--fv2-bright: #9d6bc6;   /* lavender saturated */
+--fv3-bright: #6a5fb5;   /* blue-purple saturated */
+```
+
+Disse er samme hue som de oprindelige `--fv1/2/3` men med højere mætning og lavere lethed, så de virker som brand-farverne på steroider. Til brug på flader hvor accent-farve skal pop'pe.
+
+### Ændringer i `css/style.css`
+
+`:root`-blokken udvidet med 3 nye custom properties:
+- `--fv1-bright: #5c9a55` (sage `#a8bfa3` → mere mættet, mørkere)
+- `--fv2-bright: #9d6bc6` (lavendel `#baa3bf` → mere mættet, mørkere)
+- `--fv3-bright: #6a5fb5` (blå-lilla `#aca3bf` → mere mættet, mørkere)
+
+### Ændringer i `index.html`
+
+Alle 6 feature-card `style="--accent: var(--fvN);"` opdateret til `--fvN-bright`:
+- Card 1 (3 kg): `--fv1` → `--fv1-bright` (saturated sage)
+- Card 2 (18t): `--fv2` → `--fv2-bright` (saturated lavendel)
+- Card 3 (100 dB): `--fv3` → `--fv3-bright` (saturated blå-lilla)
+- Card 4 (LED): `--fv3` → `--fv3-bright`
+- Card 5 (5.3): `--fv1` → `--fv1-bright`
+- Card 6 (Social): `--fv2` → `--fv2-bright`
+
+### Hvorfor variant-systemet er bedre end hardkodede farver
+1. **Brand-coherens:** Alle farver lever stadig i `:root` som dokumenteret brand-system — ikke spredt magiske hex-koder i HTML
+2. **Genbrugelige:** Hvis vi senere har en CTA eller anden zone der også skal bruge "saturated sage", er den klar (`var(--fv1-bright)`)
+3. **Forklarbart til eksamen:** "Jeg har defineret to versioner af hver brand-farve — den dæmpede til store flader/baggrunde og den saturerede til accents/typografi"
+4. **Single point of change:** Hvis vi senere vil have endnu mere/mindre mætning, ændres det ét sted i `:root`
+
+---
+
+## Iteration 55 — Social Connect-sektion redesignet i samme design-sprog som features
+
+**Mål:** Anvend samme visuelle design-sprog som features-sektionen (iteration 52–54) på Social Connect-sektionen: hvidt card på off-white sektion, brand-bright accent-farver med `--fv1/2/3-bright`, store farvede tal til funktionerne, og en cleaner editorial layout.
+
+### Struktur-ændring
+
+Den gamle struktur havde:
+- Sektion uden baggrund (transparent)
+- 2-kolonne grid med tekst venstre, phone+badges højre
+- `h3 "Social Connects:" + <hr>` divider på toppen + paragraf
+- `h3 "Funktioner:" + <hr>` divider + `<ul>` med 5 bullets (sage `•` prefix)
+- iPhone i en høj `.app-image` container med min-height 400px og weird `width: 50%; height: 30%` på img
+
+Den nye struktur:
+- Sektion med off-white baggrund (`--bg`)
+- Indhold wrapped i et hvidt `.social-card` (border-radius 24px, padding 4rem 3rem)
+- Cardet er 2-kolonne grid (1.15fr / 1fr) med tekst venstre, phone+badges højre
+- Eyebrow "Connect-appen" i `--fv3-bright` (blå-lilla saturated)
+- Hovedoverskrift med inline accent: `<h2>Del musikken. <span>Del stemningen.</span></h2>` — sidste del i `--fv2-bright` (lavendel saturated)
+- Lede paragraf i mørk grå
+- `<ol>` med 5 `<li>` der hver har: stort farvet nummer (01-05) + bold farvet funktionsnavn + grå beskrivelse
+- iPhone hosted i ren `.social-visual` flex-container, max-width 320px, normal aspect ratio
+- App Store + Google Play badges nedenunder phone
+
+### Farve-rotation på funktioner (5 items, 3 farver)
+- Funktion 01 (Blend playlister): `--fv1-bright` saturated sage
+- Funktion 02 (Nem tilkobling): `--fv2-bright` saturated lavendel
+- Funktion 03 (Styr stemningen): `--fv3-bright` saturated blå-lilla
+- Funktion 04 (Host-kontrol): `--fv3-bright` (gentaget for at undgå at adjacent items har samme farve som over)
+- Funktion 05 (Multi-speaker): `--fv1-bright` (sage igen)
+
+Numrene og bold funktionsnavnet farves med `var(--accent)` — beskrivelses-teksten forbliver mørk grå for læselighed.
+
+### Ændringer i `index.html`
+
+`<section class="section-gradient-bottom">` → `<section class="social-connect">` med komplet omskrevet indhold:
+- Wrapper: `.container > .social-card > [.social-content + .social-visual]`
+- `.social-content`: eyebrow + `.social-title` med inline `.social-title-accent` + `.social-lede` + `<ol class="social-functions">`
+- `.social-functions li` med inline `style="--accent: var(--fvN-bright);"` på hver
+- `.social-visual`: `.social-phone img` + `.app-cta` med begge badges
+
+Tekst-redigering for at passe det nye visuelle hierarki:
+- Tag-line forkortet og fokuseret
+- Funktioner: hver bullet omskrevet til at have et stærkt åbningssætning (bold) + kontekst — så det matcher mønstret stat + desc fra features-cards
+- Multi-speaker pairing nu blot "Multi-speaker pairing. Forbind op til 3 LUMINA One enheder samtidigt."
+
+### Ændringer i `css/style.css`
+
+**Fjernet (alle gamle social-regler):**
+- `.section-gradient-bottom` (transparent bg)
+- `.social-layout` (2-col grid)
+- `.social-content h2/h3/p/ul/li/li:before` (typografi for det gamle hierarki)
+- `.funktioner-divider` (hr-styling)
+- `.app-right`, `.app-image`, `.app-image img` (gammel phone-container)
+- Total: ~70 linjer CSS fjernet
+
+**Tilføjet (nye design-sprog regler):**
+- `.social-connect` med off-white bg + bottom padding
+- `.social-card` med hvid bg, 24px radius, 4rem 3rem padding, 1.15/1fr grid
+- `.social-content .eyebrow` farvet med `--fv3-bright`
+- `.social-title` 600 weight, clamp font-size, tight letter-spacing
+- `.social-title-accent` farvet med `--fv2-bright`
+- `.social-lede` 1.05rem, mørk grå
+- `.social-functions` flex-column med 1.5rem gap
+- `.social-functions li` 2-col grid (auto number + flex-text)
+- `.social-num` 1.75rem 700 weight farvet via `var(--accent)`
+- `.social-functions strong` farvet med `var(--accent)`, 600 weight
+- `.social-visual` flex-column centreret
+- `.social-phone` max-width 320px (renere end den gamle `.app-image` med min-height 400px)
+
+**Media query opdateret:**
+- `.social-layout` → `.social-card` i tablet breakpoint (1-col stack ved 768px)
+- Tilføjet specifik mobile padding på card: 2.5rem 1.75rem
+
+### Design-sprog parallelism mellem features og Social Connect
+
+| Element | Features-sektion | Social Connect-sektion |
+|---------|------------------|------------------------|
+| Section bg | off-white `--bg` | off-white `--bg` |
+| Indhold på | hvide cards (en per stat) | ét stort hvidt card |
+| Hero element | clamp 3.5-5.5rem stat-tal | 1.75rem farvede nummer-prefix på funktioner |
+| Color system | `--fvN-bright` via `--accent` custom prop | samme `--fvN-bright` via `--accent` custom prop |
+| Hover | ingen | ingen |
+| Border-radius | 16px på cards | 24px på card (større fordi det er én container) |
+
+### Hvad blev bevaret
+- `.app-cta` CSS-regler er uændrede (badges bruger samme styling som footer)
+- Badges (Apple + Google Play SVG'er) er samme officielle filer
+
+---
+
 ## Status pr. dags dato (2026-05-12)
 
 ### Aktive ændringer
@@ -1946,7 +2078,7 @@ Brand-farverne er let dæmpede (sage #a8bfa3 osv.) sammenlignet med UGLYCASH-ref
 - **Showcase-sektion (iteration 32):** asymmetrisk layout med slider-card + eyebrow/h2/lede/color-picker/pris/CTA
 - **Features-sektion (iteration 32):** 3×2 grid med nummererede feature-cards (01–06)
 - **Lifestyle-sektion (original):** 3 AI-billeder i grid + orphan "Udforsk kollektionen"-knap
-- **Social Connect-sektion (transparent bg):** "Del musikken. Del stemningen" med hr-dividers, plain bullet-list, iPhone + App Store badge
+- **Social Connect-sektion (iteration 55):** off-white bg med stort hvidt card, eyebrow "Connect-appen", split-color heading ("Del musikken. Del stemningen." i lavendel-bright), nummereret funktionsliste med brand-bright farver per item, iPhone + begge officielle badges
 - **Footer (iteration 40–43):** UGLYCASH-stil med kæmpe Anton-wordmark "LUMINA" på hvidt rundet card (scaleY 1.3 for tall look), tagline med inline LUMINA-logo + app-badge i midten, disclaimer-paragraffer + store højrejusterede links (1.5rem) nederst, lille meta-linje udenfor cardet
 - Eyebrow-microcopy, section-headers, lede-paragraffer som editorial primitives
 - **Typografi: Geist alene (h1, h2 weight 600 + body weight 400) — unified font-familie** (skal finjusteres senere)
