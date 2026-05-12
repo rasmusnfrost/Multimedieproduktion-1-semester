@@ -1,0 +1,696 @@
+/* Gør det nemt for mig selv */
+
+:root {
+    --white: #ffffff;
+    --text-dark: #111;
+
+    --fv1: #DCA1A1;
+    --fv2: #F1EDE2;
+    --fv3: #AE90A7;
+    --fv4: #9CAF88;
+    --gradient: #FFF3E0;
+
+    --layout: 16px;
+}
+
+/* @font-face {
+  font-family: 'x';
+  src: url('/fonts/x.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+} */ 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    background: var(--white);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.visually-hidden {
+    position: absolute;
+    left: -9999px;
+}
+
+
+/* Container */
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Sektioner */
+
+.padding {
+    padding: 3rem 0;
+}
+
+.section-padding {
+    padding: 2rem 0;
+    padding-left: 0rem;
+    padding-right: 0rem;
+    background: transparent;
+}
+
+.secion-white {
+    background: var(--white);
+}
+
+.section-white h2 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+    font-size: 2.5rem;
+}
+
+.section-white p {
+    font-weight: lighter;
+    font-style: italic;
+}
+
+.section-gradient-bottom {
+    background: linear-gradient(to bottom, var(--white) 11%, var(--gradient) 100%);
+}
+
+.section-lifestyle {
+    background: transparent;
+    padding: 3rem 0;
+    padding-bottom: 2rem;
+    text-align: center;
+}
+
+.section-spec {
+    background: transparent;
+    padding: 8rem;
+    padding-left: 0rem;
+    padding-right: 0rem;
+}
+
+/* Header og navigationsbar */
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--white);
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+
+.nav {
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1.2rem;
+    justify-content: center;
+}
+
+.logo img {
+    width: 100px;
+    margin-right: 0.5rem;
+    align-items: end;
+}
+/* Center navigation */
+
+.nav-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-center ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-center a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-center a:hover {
+    color:var(--fv1);
+}
+
+/* Ikoner */
+
+.nav-icons {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-icons img {
+    width: 20px;
+}
+
+.nav-icons a {
+display: flex;
+align-items: center;
+transition: 0.2s ease;
+}
+
+.nav-icons a:hover {
+    transform: scale(1.15);
+    opacity: 0.7;
+}
+
+/* Hero sektion */
+
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.15) 0%,
+        rgba(0, 0, 0, 0.5) 100%
+    );
+
+opacity: 50%;
+
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 1.5rem;
+    gap: 1rem;
+}
+
+.hero-eyebrow {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.hero-content h1 {
+    font-size: clamp(2.5rem, 9vw, 7rem);
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -0.02em;
+    line-height: 1;
+}
+
+.hero-tagline {
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.75);
+    max-width: 380px;
+    line-height: 1.6;
+}
+
+    /* Produkt pris */
+
+    .product-price {
+        text-align: center;
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        color: var(--text-dark);
+    }
+
+/* Slider og billeder */
+
+.slider {
+    position: relative;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    gap: 0;
+    transition: transform 0.5s ease;
+}
+
+.slide {
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+}
+
+.slide img {
+    width: 100%;
+    height: 600px;
+    object-fit: contain;
+}
+
+/* Dots navigation */
+
+.dots {
+    margin-top: 2rem;
+    padding-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.dot {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dot:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.dot.active {
+    border-color: red;
+    transform: scale(1.1);
+}
+
+/* Knapper — unified system */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 2.25rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease,
+              border-color 0.25s ease, transform 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+/* Solid dark — primary CTA */
+.btn-dark {
+  background: var(--text-dark);
+  color: var(--white);
+  border-color: var(--text-dark);
+}
+
+.btn-dark:hover {
+  background: #2a2a2a;
+  border-color: #2a2a2a;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  transform: translateY(-2px);
+}
+
+/* Solid white — for use over dark/video backgrounds */
+.btn-white {
+  background: var(--white);
+  color: var(--text-dark);
+  border-color: var(--white);
+}
+
+.btn-white:hover {
+  background: var(--fv2);
+  border-color: var(--fv2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  transform: translateY(-2px);
+}
+
+/* Ghost — transparent with white border, for use over images/video */
+.btn-ghost {
+  background: transparent;
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(4px);
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--white);
+  transform: translateY(-2px);
+}
+
+/* Hero CTA wrapper */
+
+.hero-cta {
+  display: flex;
+  gap: 0.875rem;
+  justify-content: center;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+/* køb-knap wrapper — shared layout for CTA rows */
+
+.køb-knap {
+  display: flex;
+  justify-content: center;
+  margin: 2.5rem 0;
+}
+
+/* App section CTA */
+
+.app-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.app-cta {
+  display: flex;
+  justify-content: center;
+}
+
+/* Grid layout for produkt showcases */
+
+.insta-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+    padding-bottom: 2.5rem;
+}
+
+.insta-item {
+    overflow: hidden;
+    border-radius: 16px;
+    aspect-ratio: auto;
+}
+
+.insta-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.insta-item:hover img {
+    transform: scale(1.05);
+}
+
+/* Produkt specifikationer */
+
+.spec-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.spec-intro h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.spec-intro p {
+   max-width: 400px;
+   line-height: 1.7;
+   margin-bottom: 1.5rem;
+}
+
+
+.spec-intro img {
+    width: 100%;
+    border-radius: 16px;
+}
+
+.spec-wrapper {
+    background: transparent;
+    border-radius: 20px;
+    padding: 3rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.spec-row {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.spec-row:last-of-type {
+    border-bottom: none;
+}
+
+.spec-title {
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.spec-text {
+    color: black;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* Social connects sektion */
+
+.social-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.social-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0rem;
+    margin-top: 1rem;
+}
+
+.social-content h3 {
+    font-size: 1.1rem; 
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.social-content p {
+    margin-bottom: 1rem;
+}
+
+.social-content ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.social-content li {
+    font-size: 0.95rem;
+    color: black;
+    margin-bottom: 0.8rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.social-content li:before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--fv1);
+  font-weight: bold;
+}
+
+.app-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: transparent;
+}
+
+.app-image img {
+    width: 50%;
+    height: 30%;
+    object-fit: cover;
+}
+
+.appstorelogo img {
+    width: 160px;
+    height: auto;
+
+}
+
+/* Footer */
+
+footer {
+    background: linear-gradient(to top, var(--white) 51%, var(--gradient) 100%);
+}
+
+.footer-flex {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    padding: 3rem 0 2rem;
+}
+
+.footer-bottom {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 2rem;
+}
+
+.footer-divider {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+}
+
+.funktioner-divider {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin-top: 1rem;
+}
+
+.copyright {
+    text-align: center;
+    font-size: 0.85rem;
+    font-style: italic;
+    color: #999;
+}
+
+footer h3,
+footer h4 { 
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: black;
+}
+
+footer p {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: black;
+}
+
+footer a {
+    color: black;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--fv1);
+}
+
+
+/* ========================================
+   14. RESPONSIVE DESIGN
+   ======================================== */
+
+/* Tablet - 768px og under */
+@media (max-width: 768px) {
+
+  .nav-center ul {
+    gap: 1rem;
+  }
+  
+
+  .subheadline p {
+    text-align: center;
+  }
+  .hero {
+    height: 100svh;
+  }
+
+  .hero-cta {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .slide {
+    min-height: 300px;
+    margin-bottom: 3rem;
+  }
+  
+  .slide img {
+    height: 300px;
+    width: auto;
+    object-fit: contain;
+  }
+  
+  .spec-layout,
+  .social-layout {
+    grid-template-columns: 1fr;
+}
+  
+  .insta-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .footer-flex {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobil - 480px og under */
+@media (max-width: 480px) {
+
+  .nav-center ul {
+    gap: 0.5rem;
+    font-size: 0.9rem;
+  } 
+
+  .dots {
+    gap: 1rem;
+  }
+  
+  .dot {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .insta-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-flex {
+    grid-template-columns: 1fr;
+  }
+}
