@@ -216,20 +216,30 @@ img {
 }
 
 .insta-item {
-    overflow: hidden;
     border-radius: 16px;
-    aspect-ratio: auto;
+    box-shadow: 12px 12px 0 var(--accent);
+    width: 100%;
+}
+
+.insta-item picture {
+    display: block;
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
 }
 
 .insta-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: opacity 0.2s ease;
+    display: block;
 }
 
-.insta-item:hover img {
-    opacity: 0.9;
+/* ai-billede1.png er 1:1 (4096×4096) mens 2 og 3 er 3:4 — zoom ind på det første så højtaleren har samme størrelse i frame */
+.insta-grid .insta-item:nth-child(1) img {
+    transform: scale(1.4);
+    transform-origin: center 55%;
 }
 
 /* køb-knap wrapper — shared layout for CTA rows */
