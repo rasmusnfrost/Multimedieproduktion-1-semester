@@ -278,11 +278,6 @@ img {
     box-shadow: 18px 18px 0 var(--accent);
 }
 
-/* ai-billede1.png er 1:1 (4096×4096) mens 2 og 3 er 3:4 — zoom ind på det første så højtaleren har samme størrelse i frame */
-.insta-grid .insta-item:nth-child(1) img {
-    transform: scale(1.4);
-    transform-origin: center 55%;
-}
 
 /* køb-knap wrapper — shared layout for CTA rows */
 

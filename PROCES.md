@@ -2354,6 +2354,38 @@ Brugeren valgte at slideshow var for meget — kun det 3. billede skulle stå al
 ### Iteration 74 — Tagline fjernet (og lagt tilbage)
 `<p class="hero-tagline">Skabt til øjeblikke, der fortjener et soundtrack.</p>` fjernet kortvarigt — rullet tilbage. Tagline står nu igen mellem h1 og CTA-knapperne.
 
+### Iteration 76 — Klik på gallery-cards scroller op til "Fås i fire farver"
+Ændret click-behavior på gallery-cards: i stedet for visuel "add to cart"-feedback (som ikke gjorde noget reelt) scroller klik nu smoothly op til `.showcase`-sektionen ("Fås i fire farver") hvor brugeren kan vælge farve og konfigurere produktet.
+
+### Ændringer i `index.html` (JS)
+- Ny funktion `scrollToShowcase(e)` der finder `.showcase` og kører `scrollIntoView({behavior: 'smooth'})`
+- `.insta-item` click + Enter/Space keyboard handler → `scrollToShowcase`
+- `.insta-cart-btn` (3 stk "Læg i kurv" knapper under hver card) → samme `scrollToShowcase` i stedet for bare `preventDefault`
+- Fjernet `is-added`-class logic (ikke længere relevant)
+- Cart-ikon i midten ved hover er beholdt (cosmetisk, ingen funktionel ændring i CSS)
+
+---
+
+### Iteration 75 — "I hverdagen" gallery skiftet til hero-billeder (med højtaler synlig)
+
+**Mål:** Gallery-sektionen brugte AI-genererede `ai-billede1/2/3.png` som var loose lifestyle shots uden konsistent produkt-fokus. Skiftet til de tre hero-billeder der **ikke** er første hero-slide — så gallery viser produktet i de samme cinematic situationer som hero, men med højtaleren tydeligt synlig i alle tre.
+
+### Ændringer i `index.html` (3 insta-items)
+- `ai-billede1.png` → `hero-1.png` (kvinder ved klipper i skumring, glødende højtaler) — `object-position: 55% 70%` for at fokusere på højtaleren
+- `ai-billede2.png` → `hero-5.png` (camping ved solnedgang, højtaler på klippen) — `object-position: 50% 65%` for at få højtaleren ind i den 4:5 portræt-frame
+- `ai-billede3.png` → `hero-9.png` (rødhåret kvinde i pickup, højtaler i forgrunden) — `object-position: 30% 60%` for at vise højtaleren der er placeret i venstre del af 16:9 kildebilledet
+- Alt-tekst gjort beskrivende i stedet for bare "Billede"
+
+### Ændringer i `css/style.css`
+- Fjernet den gamle `.insta-grid .insta-item:nth-child(1) img { transform: scale(1.4) }` regel (var sat for at zoome ind på 1:1 ai-billede1 — ikke relevant for 16:9 hero-billeder)
+- 4:5 aspect-ratio på `.insta-item picture` beholdt — `object-fit: cover` + per-billede `object-position` (via inline-style) sørger for at højtaleren er centreret efter crop
+
+### Resultat
+- Gallery viser nu tre cinematic LUMINA lifestyle shots med produktet tydeligt synligt
+- Brand-farvet `--accent` per card beholdt (sage / lavendel / blå-lilla)
+- Offset-shadow + hover-effekter uændret
+- ai-billede1/2/3.png ligger stadig i `/images/` men er ikke længere refereret
+
 ---
 
 ### Iteration 73i — Collage genoprettet

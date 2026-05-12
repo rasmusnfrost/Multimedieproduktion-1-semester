@@ -126,8 +126,8 @@
         <div class="insta-grid">
             <article class="insta-cell">
                 <div class="insta-item" style="--accent: var(--fv1-bright);" role="button" tabindex="0" aria-label="Læg LUMINA One i kurv">
-                    <picture><source srcset="/images/ai-billede1.png" type="image/png">
-                        <img src="/images/ai-billede1.png" alt="Billede"></picture>
+                    <picture><source srcset="/images/hero-1.png" type="image/png">
+                        <img src="/images/hero-1.png" alt="LUMINA One ved klipper i skumring" style="object-position: 55% 70%;"></picture>
                     <span class="insta-add" aria-hidden="true">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="8" cy="21" r="1"/>
@@ -140,8 +140,8 @@
             </article>
             <article class="insta-cell">
                 <div class="insta-item" style="--accent: var(--fv2-bright);" role="button" tabindex="0" aria-label="Læg LUMINA One i kurv">
-                    <picture><source srcset="/images/ai-billede2.png" type="image/png">
-                        <img src="/images/ai-billede2.png" alt="Billede"></picture>
+                    <picture><source srcset="/images/hero-5.png" type="image/png">
+                        <img src="/images/hero-5.png" alt="LUMINA One ved camping i solnedgang" style="object-position: 50% 65%;"></picture>
                     <span class="insta-add" aria-hidden="true">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="8" cy="21" r="1"/>
@@ -154,8 +154,8 @@
             </article>
             <article class="insta-cell">
                 <div class="insta-item" style="--accent: var(--fv3-bright);" role="button" tabindex="0" aria-label="Læg LUMINA One i kurv">
-                    <picture><source srcset="/images/ai-billede3.png" type="image/png">
-                        <img src="/images/ai-billede3.png" alt="Billede"></picture>
+                    <picture><source srcset="/images/hero-9.png" type="image/png">
+                        <img src="/images/hero-9.png" alt="LUMINA One i pickup-lad på skovvej" style="object-position: 30% 60%;"></picture>
                     <span class="insta-add" aria-hidden="true">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="8" cy="21" r="1"/>
@@ -354,24 +354,25 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && navEl.classList.contains('is-searching')) closeNavSearch();
 });
 
-/* === Gallery cards + cart buttons: klik for at lægge i kurv === */
+/* === Gallery cards + cart buttons: klik scroller op til "Fås i fire farver" === */
+function scrollToShowcase(e) {
+    if (e) e.preventDefault();
+    const showcase = document.querySelector('.showcase');
+    if (showcase) showcase.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
 document.querySelectorAll('.insta-item').forEach(item => {
-    const addToCart = () => {
-        if (item.classList.contains('is-added')) return;
-        item.classList.add('is-added');
-        setTimeout(() => item.classList.remove('is-added'), 1400);
-    };
-    item.addEventListener('click', addToCart);
+    item.addEventListener('click', scrollToShowcase);
     item.addEventListener('keydown', e => {
         if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
-            addToCart();
+            scrollToShowcase();
         }
     });
 });
 
 document.querySelectorAll('.insta-cart-btn').forEach(btn => {
-    btn.addEventListener('click', e => e.preventDefault());
+    btn.addEventListener('click', scrollToShowcase);
 });
 
 /* === Hero slideshow (manuel — klik på dots) === */
