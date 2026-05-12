@@ -66,8 +66,8 @@
         <h1>LUMINA ONE</h1>
         <p class="hero-tagline">Skabt til øjeblikke, der fortjener et soundtrack.</p>
         <div class="hero-cta">
-            <a href="#" class="btn btn-white">Køb nu</a>
-            <a href="#" class="btn btn-ghost">Lær mere</a>
+            <a href="#" class="btn btn-white" id="heroBuyBtn">Køb nu</a>
+            <a href="#" class="btn btn-ghost" id="heroLearnBtn">Lær mere</a>
         </div>
     </article>
 </div>
@@ -105,8 +105,50 @@
                     <span class="price-currency">kr.</span>
                 </div>
 
-                <a href="#" class="btn btn-white">Læg i kurv</a>
+                <a href="#" class="btn btn-white" id="showcaseCartBtn">Læg i kurv</a>
             </div>
+        </div>
+    </div>
+</section>
+
+<!-- Funktioner / features -->
+<section class="features">
+    <div class="container">
+        <header class="section-header">
+            <p class="eyebrow">Detaljer</p>
+            <h2>Designet til at flytte sig</h2>
+        </header>
+
+        <div class="features-grid">
+            <article class="feature-card" style="--accent: var(--fv1-bright);">
+                <h3 class="feature-stat">3 kg</h3>
+                <p class="feature-desc">IPX5 vandafvisende. Let nok til tote-bag'en, til alle slags vejr.</p>
+            </article>
+
+            <article class="feature-card" style="--accent: var(--fv2-bright);">
+                <h3 class="feature-stat">18t</h3>
+                <p class="feature-desc">Batteri der holder hele dagen og natten på samme opladning. USB-C.</p>
+            </article>
+
+            <article class="feature-card" style="--accent: var(--fv3-bright);">
+                <h3 class="feature-stat">100 dB</h3>
+                <p class="feature-desc">Lyd der fylder et udendørs rum uden at blive voldsom.</p>
+            </article>
+
+            <article class="feature-card" style="--accent: var(--fv3-bright);">
+                <h3 class="feature-stat">LED</h3>
+                <p class="feature-desc">Ambient-lys der følger musikken — chill, party eller sunset.</p>
+            </article>
+
+            <article class="feature-card" style="--accent: var(--fv1-bright);">
+                <h3 class="feature-stat">5.3</h3>
+                <p class="feature-desc">Bluetooth 5.3 — par op til 3 LUMINA One enheder for større lyd.</p>
+            </article>
+
+            <article class="feature-card" style="--accent: var(--fv2-bright);">
+                <h3 class="feature-stat">Social</h3>
+                <p class="feature-desc">Alle bidrager til playlisten direkte fra deres telefon. Connect-app.</p>
+            </article>
         </div>
     </div>
 </section>
@@ -158,49 +200,6 @@
                         </svg>
                     </span>
                 </div>
-            </article>
-        </div>
-    </div>
-</section>
-
-
-<!-- Funktioner / features -->
-<section class="features">
-    <div class="container">
-        <header class="section-header">
-            <p class="eyebrow">Detaljer</p>
-            <h2>Designet til at flytte sig</h2>
-        </header>
-
-        <div class="features-grid">
-            <article class="feature-card" style="--accent: var(--fv1-bright);">
-                <h3 class="feature-stat">3 kg</h3>
-                <p class="feature-desc">IPX5 vandafvisende. Let nok til tote-bag'en, til alle slags vejr.</p>
-            </article>
-
-            <article class="feature-card" style="--accent: var(--fv2-bright);">
-                <h3 class="feature-stat">18t</h3>
-                <p class="feature-desc">Batteri der holder hele dagen og natten på samme opladning. USB-C.</p>
-            </article>
-
-            <article class="feature-card" style="--accent: var(--fv3-bright);">
-                <h3 class="feature-stat">100 dB</h3>
-                <p class="feature-desc">Lyd der fylder et udendørs rum uden at blive voldsom.</p>
-            </article>
-
-            <article class="feature-card" style="--accent: var(--fv3-bright);">
-                <h3 class="feature-stat">LED</h3>
-                <p class="feature-desc">Ambient-lys der følger musikken — chill, party eller sunset.</p>
-            </article>
-
-            <article class="feature-card" style="--accent: var(--fv1-bright);">
-                <h3 class="feature-stat">5.3</h3>
-                <p class="feature-desc">Bluetooth 5.3 — par op til 3 LUMINA One enheder for større lyd.</p>
-            </article>
-
-            <article class="feature-card" style="--accent: var(--fv2-bright);">
-                <h3 class="feature-stat">Social</h3>
-                <p class="feature-desc">Alle bidrager til playlisten direkte fra deres telefon. Connect-app.</p>
             </article>
         </div>
     </div>
@@ -363,6 +362,21 @@ document.querySelectorAll('.insta-item').forEach(item => {
         }
     });
 });
+
+/* === Hero CTAs + showcase Læg i kurv === */
+const heroBuyBtn = document.getElementById('heroBuyBtn');
+const heroLearnBtn = document.getElementById('heroLearnBtn');
+const showcaseCartBtn = document.getElementById('showcaseCartBtn');
+
+if (heroBuyBtn) heroBuyBtn.addEventListener('click', scrollToShowcase);
+
+if (heroLearnBtn) heroLearnBtn.addEventListener('click', e => {
+    e.preventDefault();
+    const features = document.querySelector('.features');
+    if (features) features.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+
+if (showcaseCartBtn) showcaseCartBtn.addEventListener('click', e => e.preventDefault());
 
 /* === Hero slideshow (manuel — klik på dots) === */
 const heroSlides = document.querySelectorAll('.hero-bg');
