@@ -2304,6 +2304,104 @@ Den lille pill-search fra 62 føltes for begrænset (max-width 320px). Justeret:
 - Ny `.insta-cell`: `display: flex; flex-direction: column; gap: 1.5rem` — placerer billede over knap med passende mellemrum (offset-skyggen på 12px får 12px clearance til knappen)
 - Ny `.insta-cart-btn`: `align-self: center` — knapperne har samme content-bredde som andre `.btn` på siden (ikke stretched), centreret under hvert billede
 
+### Iteration 71 — Nyt hero-billede + rotation stoppet
+
+**Mål:** Erstatte cirkel-af-højtalere billedet med en cinematic lifestyle-shot (kvinde med LUMINA-højtaler ved vindue, ocean i baggrund) og stoppe den roterende animation.
+
+### Ændringer
+- Nyt billede `~/Downloads/May 12, 2026, 05_03_42 PM.png` (1672×941, ~16:9 aspect) kopieret til `/images/hero-bg.png` (overskriver det gamle cirkel-billede)
+- `.hero-bg` CSS resettet:
+  - Tilbage til `inset: 0` + `width/height: 100%` + `object-fit: cover` (passer perfekt i 16:9 hero-viewport)
+  - Animation, keyframes, og `prefers-reduced-motion`-regel fjernet
+  - `will-change: transform` fjernet (ikke længere nødvendigt)
+- `.hero`: `background: var(--bg)` fjernet (billedet dækker hele hero nu, ingen sider at fylde)
+
+### Iteration 72 — Hero-billede (flere swaps)
+- Først: reference-billede `b5db5fe5f998adc264dda7992dee97ef.jpg` (kvinde med kamera + bjerge + sø)
+- Derefter: AI-genereret par-på-bil billede
+- Begge fortrudt — erstattet med slideshow i iteration 73
+
+### Iteration 73b — Slideshow reduceret til 5 billeder
+Brugeren slettede 3 af de 8 billeder (`hero-4`, `hero-6`, `hero-8`). HTML opdateret: kun de 5 tilbageværende billeder (`hero-1`, `2`, `3`, `5`, `7`) refereres nu i `<img>`-tags, og dots-array reduceret fra 8 til 5.
+
+### Iteration 73c (fortrudt) — To nye billeder tilføjet og fjernet igen
+Tilføjet `hero-9.png` og `hero-10.png` til slideshow — rullet tilbage straks. Filer slettet, HTML reverted til de 5 billeder fra iteration 73b.
+
+### Iteration 73d — Tre nye billeder tilføjet (hero-9, 10, 11)
+- `ChatGPT Image May 12, 2026, 06_27_48 PM.png` → `/images/hero-9.png`
+- `ChatGPT Image May 12, 2026, 06_28_20 PM.png` → `/images/hero-10.png`
+- `ChatGPT Image May 12, 2026, 06_28_31 PM.png` → `/images/hero-11.png`
+- Slideshow er nu 8 billeder (hero-1, 2, 3, 5, 7, 9, 10, 11) med 8 dots
+
+### Iteration 73e — Slideshow reduceret til 4 valgte billeder
+Brugeren markerede via screenshots præcis hvilke 4 billeder der skulle beholdes:
+- **hero-1**: kvinder ved klipper i skumring (med glødende højtaler)
+- **hero-3**: par på biltag der ser på bjerge ved solnedgang
+- **hero-5**: campinggruppe ved bål med solopgang
+- **hero-9**: rødhåret kvinde i pickup-lad på skovvej
+
+Slettet: `hero-2.png`, `hero-7.png`, `hero-10.png`, `hero-11.png`. HTML opdateret til 4 stacked `<img>` + 4 dots.
+
+### Iteration 73f — hero-3 sat som første slide
+Rækkefølge ændret: hero-3 (par på biltag + bjerge) → hero-1 → hero-5 → hero-9. `is-active`-klassen flyttet til hero-3 så den vises ved page load.
+
+### Iteration 73g — hero-9 erstattet med ny variant
+`hero-9.png` (4. billede i slideshow — rødhåret pige i pickup) overskrevet med ny variant (samme tema: rødhåret kvinde i pickup-lad på skovvej, men anden komposition — kvinden vendt mod højre, brun cardigan, klar visning af LUMINA-højtaleren). 1672×941 PNG. Ingen HTML-ændring nødvendig — samme filnavn.
+
+### Iteration 73h — Slideshow fjernet, kun hero-5 tilbage (camping + solnedgang)
+Brugeren valgte at slideshow var for meget — kun det 3. billede skulle stå alene. HTML reduceret til ét enkelt `<img class="hero-bg is-active" src="/images/hero-5.png">` + `.hero-overlay`. Dots-divet helt fjernet fra markup. `hero-1.png`, `hero-3.png`, `hero-9.png` slettet fra `/images/`. JS for slideshow er ikke fjernet (querySelector finder ingen `.hero-dot`, så det er harmlessly inaktiv).
+
+### Iteration 73 — Hero slideshow (8 billeder, manuel navigation via dots)
+
+**Mål:** Vise et collage af 8 AI-genererede LUMINA lifestyle billeder i hero som man kan switche imellem via klikbare dots. **Ingen auto-rotation** — brugeren styrer selv hvilket billede der vises.
+
+### Ændringer
+- 8 PNG-billeder fra `~/Downloads/` kopieret til `/images/hero-1.png` ... `hero-8.png` (alle ChatGPT Image fra 05_37 til 05_52 PM, 12. maj)
+- Gamle `hero-bg.png` og `hero-bg.jpg` slettet
+
+### `index.html`
+- Enkelt `<img>` erstattet med 8 stackede `<img class="hero-bg">` (første har `is-active`)
+- Ny `<div class="hero-dots">` med 8 dot-knapper med `aria-label="Vis billede X"`
+- JS tilføjet: `showHeroSlide(i)` toggler `.is-active` på både `<img>` og `<button>` ved klik på dot. Ingen `setInterval` — slideshow er rent manuelt.
+
+### `css/style.css`
+- `.hero-bg`: tilføjet `opacity: 0` default + `transition: opacity 0.8s ease` (smooth fade mellem billeder)
+- `.hero-bg.is-active { opacity: 1 }`
+- `.hero-dots`: absolute centreret 2.5rem fra bunden, z-index 3 (over overlay og content's bg-elementer)
+- `.hero-dot`: 9px runde knapper med semi-transparent hvid, hover bliver mere opaque, `.is-active` får fuld hvid + scale 1.3
+
+### Visuelt resultat
+- Hero starter på billede 1, ingen automatisk skift
+- 8 små hvide prikker nederst-centreret — klik for at switche
+- Smooth opacity-fade (0.8s) når man klikker mellem billeder
+- Hvid hero-tekst med text-shadow (fra iteration 71) virker stadig fint på alle 8 billeder
+
+---
+
+### Tekst skiftet til hvid (læsbarhed på mørkt billede)
+- `.hero-content h1`: `color: #000` → `var(--white)` + `text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35)` for læselighed
+- `.hero-tagline`: `color: #000` → `rgba(255, 255, 255, 0.9)` + `text-shadow: 0 1px 12px rgba(0, 0, 0, 0.4)`
+
+---
+
+### Iteration 70 — Hero-billede roterer langsomt rundt
+
+**Mål:** Tilføje en langsom 360°-rotation til hero-billedet (cirklen af højtalere) — giver dynamisk feeling tilsvarende den oprindelige spin-video.
+
+### Ændringer i `css/style.css`
+- `.hero`: tilføjet `overflow: hidden` (skjuler det forstørrede billede når det roterer udenfor hero-grænserne)
+- `.hero-bg`: 
+  - Position absolute centreret via `top/left: 50% + transform: translate(-50%, -50%)` (i stedet for `inset: 0`)
+  - Size `240vmin × 240vmin` (dobbelt så stor som tidligere) — cirklen er nu så stor at kun en del af den ses, højtalerne fylder hele hero og bliver dominante visuelle elementer
+  - `object-fit: contain` så hele cirklen vises
+  - Hero får `background: var(--bg)` (off-white) til at fylde pladsen omkring den centrerede cirkel
+  - Ny `animation: hero-spin 60s linear infinite` → én fuld omdrejning pr. 60 sekunder (langsomt, ikke svimlende)
+  - `will-change: transform` → browser-hint for at GPU-accelerere rotation
+- Ny `@keyframes hero-spin` med translate-bevaret rotation (translate -50% -50% holdes så centreringen ikke flyttes under rotation)
+- `@media (prefers-reduced-motion: reduce)`: rotation slås fra for brugere der har sat motion-reduktion i OS — tilgængelighedsbeste praksis
+
+---
+
 ### Iteration 69 — Hero skiftet fra video til AI-billede (cirkel af højtalere)
 
 **Mål:** Erstatte `spin.mp4`-videoen i hero med et AI-genereret billede der viser højtalerne arrangeret i en cirkel — alle fire brand-farver synlige på én gang. Tomt center i billedet giver perfekt plads til titel + tagline + knapper.
@@ -2313,7 +2411,8 @@ Den lille pill-search fra 62 føltes for begrænset (max-width 320px). Justeret:
 - `index.html`: `<video autoplay muted loop class="hero-video">...</video>` erstattet med `<img class="hero-bg" src="/images/hero-bg.png" alt="">`
 - `css/style.css`:
   - `.hero-video` → `.hero-bg` (samme positioning: absolute inset 0, object-fit cover, z-index 0)
-  - Tilføjet `object-position: center` så cirklen forbliver centreret når image cropes (1:1 billede i bredere viewport → top/bund cropes lidt)
+  - Testet `object-fit: contain` (alt synligt) → rullet tilbage til `object-fit: cover` så billedet fylder hele hero (top/bund cropes lidt på brede viewports)
+  - `object-position: center` så cirklen forbliver centreret
   - `.hero-overlay`: fjernet de mørke top/bund gradients (ikke nødvendige på hvidt billede — sort tekst har allerede god kontrast). Beholdt kun den diagonale brand-farve-tint (sage → lavendel → blå-lilla) på 6-12% opacitet for blød stemning
 
 ### Note

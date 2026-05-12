@@ -55,7 +55,7 @@
     <!-- Hero sektion med video-->
 
     <div class="hero">
-    <img class="hero-bg" src="/images/hero-bg.png" alt="">
+    <img class="hero-bg is-active" src="/images/hero-5.png" alt="">
     <div class="hero-overlay"></div>
     <article class="hero-content">
         <h1>LUMINA ONE</h1>
@@ -363,6 +363,19 @@ document.querySelectorAll('.insta-item').forEach(item => {
 
 document.querySelectorAll('.insta-cart-btn').forEach(btn => {
     btn.addEventListener('click', e => e.preventDefault());
+});
+
+/* === Hero slideshow (manuel — klik på dots) === */
+const heroSlides = document.querySelectorAll('.hero-bg');
+const heroDotBtns = document.querySelectorAll('.hero-dot');
+
+function showHeroSlide(i) {
+    heroSlides.forEach((img, n) => img.classList.toggle('is-active', n === i));
+    heroDotBtns.forEach((dot, n) => dot.classList.toggle('is-active', n === i));
+}
+
+heroDotBtns.forEach((dot, i) => {
+    dot.addEventListener('click', () => showHeroSlide(i));
 });
 </script>
 
