@@ -1255,6 +1255,243 @@ Klikbarheden, `aria-label` og scroll-til-toppen JS er bevaret. Logoet ser nu hel
 
 ---
 
+## Iteration 40 — Ny footer i UGLYCASH-stil (kæmpe wordmark på hvidt card)
+
+**Mål:** Erstatte den eksisterende 4-kolonne footer med en editorial-tung footer inspireret af ugly.cash — kæmpe condensed wordmark "LUMINA" der fylder hele bredden af et hvidt rundet card, med en tagline-række (brand-label + app-badges) under, og en info/links-række nederst. Lille meta-linje placeret udenfor cardet på sidens off-white baggrund.
+
+### Ændringer i `index.html`
+
+**Google Fonts:**
+- Tilføjet `Anton` (ultra-condensed bold) til Google Fonts-linket, så vi har en font der kan matche UGLYCASH's tætpakkede display-typografi: `family=Anton&family=Geist:wght@300..700`
+
+**`<footer>` — komplet omskrivning:**
+- Gammel struktur (4 kolonner: LUMINA AUDIO adresse / Genveje / Følg os / Hjælp + `.footer-bottom` med divider og copyright) er fjernet
+- Ny struktur:
+  - `<footer class="site-footer">` → wrapper med off-white side-bg + 1.25rem padding rundt om card
+  - `<div class="footer-card">` → hvidt rundet card (border-radius 28px) med 3rem indvendig padding
+    - `<h2 class="footer-wordmark">LUMINA</h2>` → kæmpe wordmark, Anton font, `clamp(5rem, 30vw, 28rem)`, scaleY(1.25) for at strække i højden (Anton er condensed men ikke ekstrem nok alene)
+    - `<div class="footer-mid">` → flex-row: venstre tagline ("Et **LUMINA AUDIO** brand"), højre app-badge
+    - `<div class="footer-bot">` → 2-kolonne grid: venstre disclaimer-paragraffer (dansk audio-brand, lifestyle ikke pro, region-disclaimer), højre højre-justeret links-liste (support@lumina.dk, LUMINA Business, Hjælpecenter, Handelsbetingelser)
+  - `<p class="footer-meta">` → lille centreret meta-linje udenfor cardet ("LUMINA Audio ApS · Lavet med kærlighed i Aarhus · ©2026")
+
+### Ændringer i `css/style.css`
+
+**Hele det gamle footer-block fjernet** (`footer`, `.footer-flex`, `.footer-bottom`, `.footer-divider`, `.copyright`, `footer h3/h4/p/a` selectors).
+
+**Nye regler:**
+- `.site-footer` → off-white bg, padding 1.25rem rundt
+- `.footer-card` → hvid bg, border-radius 28px, padding 3rem 3rem 2.5rem, `overflow: hidden` så kæmpe wordmark ikke crasher
+- `.footer-wordmark` → Anton 400, `font-size: clamp(5rem, 30vw, 28rem)`, line-height 0.82, letter-spacing -0.03em, `transform: scaleY(1.25)` (giver tall/skinny UGLYCASH-feel), centreret
+- `.footer-mid` → flex justify-between med 2.5rem margin-top
+- `.footer-tagline` → 0.95rem, color #888, med `<strong>` der bliver #111 og 600 weight
+- `.footer-apps img` → height 44px, gap 0.75rem
+- `.footer-bot` → grid `minmax(0, 1.4fr) auto` med 4rem gap og `align-items: start`
+- `.footer-info p` → 0.9rem, color #222, line-height 1.55, max-width 56ch
+- `.footer-links` → list-style none, text-align right
+- `.footer-links a` → 1.15rem, color #111, hover #888
+- `.footer-meta` → 0.78rem, color #888, padding 1.25rem 1.25rem 1.5rem, centreret
+
+**Media queries opdateret:**
+- Tablet (max-width 768px): card padding reduceret til 2rem/1.5rem, border-radius 20px, wordmark `clamp(4rem, 32vw, 14rem)` med scaleY(1.2), `.footer-bot` stacker til 1 kolonne, links bliver venstrejusterede
+- Mobil (max-width 480px): `.footer-mid` skifter til column-layout, wordmark krymper til `clamp(3.5rem, 34vw, 10rem)`
+- Gamle `.footer-flex` regler i media queries er erstattet med de nye selectors
+
+### Designvalg
+- **Anton + scaleY(1.25):** Anton er den tætteste gratis Google Font til UGLYCASH's display-stil, men den er ikke helt så tall/skinny. scaleY(1.25) strækker den vertikalt uden at forvrænge for meget.
+- **Hvidt card på off-white baggrund:** matcher referencen hvor cardet "svæver" på den lysere page-bg
+- **Højrejusterede links:** matcher referencens layout præcis
+- **Disclaimer-tekst på dansk:** tilpasset LUMINA's brand (dansk audio-brand i Aarhus, gratis fragt, lifestyle ikke pro)
+- **Meta-linje udenfor card:** følger UGLYCASH-mønsteret hvor "Best Friend Finance" osv. sidder under cardet på siden bg
+
+### Note
+Google Play badge endnu ikke tilføjet — kun App Store-badge fra eksisterende `appstorelogo.png` er brugt. Hvis vi vil have begge (som i UGLYCASH-referencen) skal et Google Play badge tilføjes til `/images/`.
+
+---
+
+## Iteration 41 — Footer justeret tættere på UGLYCASH-referencen
+
+**Mål:** Brugeren kunne lide det store LUMINA-wordmark fra iteration 40, men resten af footer-indholdet matchede ikke referencen visuelt. Justér tagline, app-badges, links og disclaimer så det ligger tættere på ugly.cash-layoutet.
+
+### Ændringer i `index.html`
+
+**Tagline:** "Et **LUMINA AUDIO** brand" → "Et [LUMINA SVG] Brand"
+- Tagline-strong er erstattet af et inline `<img src="/images/Group.svg" class="footer-tagline-logo">` — matcher referencens "A [Reserve logo] Project"-stil med et lille inline brand-mærke
+
+**Disclaimer-tekst omskrevet:**
+- Tidligere generel tekst om dansk audio-brand → mere reference-tro struktur med specifikke detaljer:
+  - P1: priser/moms + lyd-spec-disclaimer med dato + akustik-lab i Aarhus
+  - P2: kort statement "LUMINA er et lifestyle audio-brand, ikke professionelt studie-udstyr"
+  - P3: region-disclaimer med ** (samme stil som UGLYCASH's "**Services and features...")
+
+**Links opdateret:**
+- "Handelsbetingelser" → "Juridisk" (matcher referencens "Legal" tættere)
+
+**Meta-linje:** `·`-separatorer fjernet, erstattet af bare ekstra mellemrum (matcher referencens "Best Friend Finance, Inc.    Made with love in California    ©2026" stil uden bullets)
+
+### Ændringer i `css/style.css`
+
+**`.footer-wordmark`:**
+- `font-size: clamp(5rem, 30vw, 28rem)` → `clamp(5rem, 34vw, 32rem)` (større fill)
+- `letter-spacing: -0.03em` → `-0.045em` (tættere pakning)
+- `transform: scaleY(1.25)` → `scaleY(1.3)` (mere vertikal stræk)
+
+**`.footer-tagline` (omskrevet):**
+- Skiftet fra plain text til `display: inline-flex` med `gap: 0.55rem` for at få SVG-logoet justeret midt i teksten
+- `font-size: 0.95rem` → `1.1rem` (større, mere prominent som i referencen)
+- Tilføjet `.footer-tagline-logo`-regel: height 18px, inline-block
+
+**`.footer-apps img`:** height 44px → 46px (lidt større badge)
+
+**`.footer-bot`:**
+- `grid-template-columns: minmax(0, 1.4fr) auto` → `minmax(0, 1.6fr) auto` (giver disclaimer mere plads, links mere åndedræt mod højre kant)
+- `gap: 4rem` bevaret
+- `margin-top: 3rem` → `3.5rem`
+
+**`.footer-info p`:**
+- `font-size: 0.9rem` → `0.95rem`
+- `color: #222` → `#111` (mørkere, kraftigere som i referencen)
+- `max-width: 56ch` → `52ch`
+
+**`.footer-links a`:**
+- `font-size: 1.15rem` → `1.5rem` (markant større links — matcher referencens prominente højre-kolonne)
+
+**`.footer-meta`:** color #888 → #aaa (lysere/mere diskret)
+
+### Resultat
+Footer'en har nu samme proportioner og typografisk hierarki som UGLYCASH-referencen: kæmpe wordmark → diskret inline brand-tagline + app-badges → diskret disclaimer + store højre-justerede links → ultra-diskret meta-linje under cardet.
+
+---
+
+## Iteration 42 — Footer-wordmark skiftet til Archivo Black (tungere/blockier)
+
+**Mål:** Anton var ikke tung nok til at matche UGLYCASH-referencen. UGLYCASH's wordmark har meget kraftigere/blockier strøg — sandsynligvis Druk Wide Heavy (betalt font). Find tætteste gratis alternativ.
+
+### Beslutning
+Skiftede fra **Anton** (condensed bold, weight 400) til **Archivo Black** (black weight, weight 400, ikke-condensed).
+
+Archivo Black har de tunge/sorte strøg der matcher UGLYCASH, men er ikke condensed af natur. Det kompenseres med kraftigere `transform: scaleY(1.55)` og mere negativ letter-spacing for at få den samme tall/tight-packed feel.
+
+### Ændringer i `index.html`
+- Google Fonts-link: `family=Anton&family=Geist...` → `family=Archivo+Black&family=Geist...`
+
+### Ændringer i `css/style.css`
+
+**`.footer-wordmark`:**
+- `font-family: 'Anton', ...` → `'Archivo Black', ...`
+- `font-size: clamp(5rem, 34vw, 32rem)` → `clamp(5rem, 27vw, 28rem)` (Archivo Black er bredere per char, så lavere vw-værdi for at undgå overflow)
+- `letter-spacing: -0.045em` → `-0.055em` (tættere pakning — Archivo Black har naturligt mere space mellem glyffer)
+- `transform: scaleY(1.3)` → `scaleY(1.55)` (kraftigere vertikalstræk for at få den condensed-tall feel uden faktisk condensed font)
+
+**Media queries opdateret:**
+- Tablet (768px): `font-size: clamp(4rem, 32vw, 14rem)` → `clamp(4rem, 26vw, 14rem)`, scaleY 1.2 → 1.45
+- Mobil (480px): `font-size: clamp(3.5rem, 34vw, 10rem)` → `clamp(3.5rem, 28vw, 10rem)`, scaleY tilføjet 1.4
+
+### Resultat
+Wordmark'et har nu meget kraftigere strøg og en mere blockede/tung visuel vægt — tættere på UGLYCASH's display-typografi. scaleY(1.55) kompenserer for at Archivo Black ikke er condensed.
+
+### Note om font-valg
+Den ægte UGLYCASH-font er sandsynligvis Druk Wide Bold/Heavy (Commercial Type, betalt). Andre gratis Google Fonts der blev overvejet:
+- **Bowlby One** — heavy men for rundet
+- **Bagel Fat One** — heavy men for quirky
+- **Black Ops One** — stencil-look, passer ikke
+- **Bebas Neue** — condensed men for thin
+
+Archivo Black + scaleY giver den tætteste matchende look uden at betale for fonten.
+
+---
+
+## Iteration 43 — Wordmark rullet tilbage til Anton (iteration 42 fortrudt)
+
+**Mål:** Bruger kunne lide det oprindelige Anton-wordmark fra iteration 41 bedre end Archivo Black-versionen. Behold alt det andet fra iteration 41/42 (tagline med inline logo, store højre-links, omskrevet disclaimer), men rul wordmark-fonten tilbage.
+
+### Ændringer i `index.html`
+- Google Fonts-link: `family=Archivo+Black&family=Geist...` → `family=Anton&family=Geist...`
+
+### Ændringer i `css/style.css`
+
+**`.footer-wordmark` rullet tilbage til iteration 41-værdier:**
+- `font-family: 'Archivo Black'` → `'Anton'`
+- `font-size: clamp(5rem, 27vw, 28rem)` → `clamp(5rem, 34vw, 32rem)`
+- `letter-spacing: -0.055em` → `-0.045em`
+- `transform: scaleY(1.55)` → `scaleY(1.3)`
+
+**Media queries rullet tilbage:**
+- Tablet (768px): wordmark `clamp(4rem, 32vw, 14rem)` + scaleY 1.2
+- Mobil (480px): wordmark `clamp(3.5rem, 34vw, 10rem)` (ingen scaleY-override, arver fra default)
+
+### Hvad blev bevaret fra iteration 41/42
+- Tagline med inline LUMINA SVG-logo ("Et [logo] Brand")
+- Disclaimer-paragraffer (priser/moms + lyd-spec-dato, lifestyle-statement, region-disclaimer med **)
+- Store højre-links (1.5rem, "Juridisk" i stedet for "Handelsbetingelser")
+- Footer-meta uden bullet-separatorer
+- Større app-badge (46px height)
+- Grid-proportioner (1.6fr / auto)
+
+### Resultat
+Footer'en bruger nu igen den slankere/condensed Anton-look til wordmark'et men beholder det bedre indhold/layout fra iteration 41.
+
+---
+
+## Iteration 44 — Footer krympet, wordmark gjort un-clickable, overlap fixet
+
+**Mål:** Tre ting på én gang:
+1. Hele footer-komponenten skulle være mindre — wordmark, padding, links, badges, alt
+2. Det store LUMINA-wordmark må ikke kunne markeres eller klikkes (det er rent dekorativt)
+3. Tagline ("Et [logo] Brand") og App Store-badge sad oveni bunden af LUMINA-wordmark'et — skulle skubbes ned så de ikke overlapper
+
+### Årsag til overlap-problemet
+`transform: scaleY(1.3)` strækker wordmark'et visuelt 30% i højden, men dets layout-box bliver ved med at have den originale højde. Det betyder næste element (`.footer-mid`) starter umiddelbart efter layout-boxen, men sidder visuelt inde i den udstrukne wordmark. Fix: skift `transform-origin` til `center top` (så strækning kun går nedad fra toppen i stedet for fra centeret begge veje) + tilføj `padding-bottom: 0.4em` på wordmark'et + større margin-top på `.footer-mid`.
+
+### Ændringer i `css/style.css`
+
+**`.footer-wordmark`:**
+- `font-size: clamp(5rem, 34vw, 32rem)` → `clamp(4rem, 24vw, 22rem)` (markant mindre)
+- `transform: scaleY(1.3)` → `scaleY(1.2)` (mindre aggressiv stræk)
+- `transform-origin: center` → `center top` (strækker kun nedad, ikke begge veje)
+- Tilføjet `padding-bottom: 0.4em` (giver layout-boxen den ekstra plads scaleY behøver)
+- Tilføjet **`user-select: none` + `-webkit-user-select: none` + `-moz-user-select: none`** (kan ikke markeres med musen)
+- Tilføjet **`pointer-events: none`** (kan ikke klikkes eller modtage musinteraktion — wordmark'et er rent dekorativt)
+
+**`.footer-card`:**
+- `padding: 3rem 3rem 2.5rem` → `2.25rem 2.5rem 1.75rem` (mindre indvendigt rum)
+- `border-radius: 28px` → `24px`
+
+**`.footer-mid`:**
+- `margin-top: 3rem` (uændret men nu effektivt højere pga scaleY-fix)
+- `gap: 1.5rem` → `1.25rem`
+
+**`.footer-tagline`:**
+- `font-size: 1.1rem` → `0.95rem`
+- `gap: 0.55rem` → `0.5rem`
+
+**`.footer-tagline-logo`:** height 18px → 15px
+
+**`.footer-apps img`:** height 46px → 38px (mindre app-badge)
+
+**`.footer-bot`:**
+- `gap: 4rem` → `3rem`
+- `margin-top: 3.5rem` → `2.25rem`
+
+**`.footer-info p`:**
+- `font-size: 0.95rem` → `0.82rem`
+- `margin-bottom: 1.1rem` → `0.85rem`
+- `max-width: 52ch` → `50ch`
+
+**`.footer-links a`:** `font-size: 1.5rem` → `1.2rem` (stadig prominente men ikke kæmpe)
+
+**`.footer-meta`:**
+- `font-size: 0.8rem` → `0.72rem`
+- `padding: 1.25rem 1.25rem 1.5rem` → `1rem 1.25rem 1.25rem`
+
+**Media queries:**
+- Tablet (768px): card padding reduceret yderligere, wordmark `clamp(3.5rem, 22vw, 11rem)` med scaleY(1.15)
+- Mobil (480px): wordmark `clamp(3rem, 24vw, 8rem)` (var 34vw — for stort på små skærme)
+
+### Resultat
+Footer'en er nu en mere kompakt komponent — stadig editorial med kæmpe wordmark, men taglinen og app-badget har klart åndedræt under wordmark'et i stedet for at sidde oveni. Brugeren kan ikke længere ved et uheld markere eller klikke på det dekorative LUMINA-wordmark.
+
+---
+
 ## Status pr. dags dato (2026-05-12)
 
 ### Aktive ændringer
@@ -1266,7 +1503,7 @@ Klikbarheden, `aria-label` og scroll-til-toppen JS er bevaret. Logoet ser nu hel
 - **Features-sektion (iteration 32):** 3×2 grid med nummererede feature-cards (01–06)
 - **Lifestyle-sektion (original):** 3 AI-billeder i grid + orphan "Udforsk kollektionen"-knap
 - **Social Connect-sektion (transparent bg):** "Del musikken. Del stemningen" med hr-dividers, plain bullet-list, iPhone + App Store badge
-- Footer: solid off-white (ingen gradient)
+- **Footer (iteration 40–43):** UGLYCASH-stil med kæmpe Anton-wordmark "LUMINA" på hvidt rundet card (scaleY 1.3 for tall look), tagline med inline LUMINA-logo + app-badge i midten, disclaimer-paragraffer + store højrejusterede links (1.5rem) nederst, lille meta-linje udenfor cardet
 - Eyebrow-microcopy, section-headers, lede-paragraffer som editorial primitives
 - **Typografi: Geist alene (h1, h2 weight 600 + body weight 400) — unified font-familie** (skal finjusteres senere)
 - Kompakt logo + uppercase nav + 3 ikoner (Search, Login, Cart) — ikoner får pill-bg ved hover
@@ -1281,6 +1518,7 @@ Klikbarheden, `aria-label` og scroll-til-toppen JS er bevaret. Logoet ser nu hel
 - Hover-stil: Kalstore-inspireret (kun farve-/baggrundsskift, ingen transforms/shadows)
 
 ### Fortrudte forsøg (bevaret i dokumentation til processen)
+- Archivo Black som footer-wordmark (iteration 42) — for tungt/blockede, ikke samme elegance som Anton
 - Liquid glass på header-ikoner
 - Liquid glass på alle CTA-knapper
 - Shop-dropdown med kategorier + produktbillede
