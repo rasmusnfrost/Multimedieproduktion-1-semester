@@ -1759,6 +1759,183 @@ SVG-ikonet bruger Google Plays officielle 4-farvede triangle-design (cyan/gul/gr
 
 ---
 
+## Iteration 51 — Officielle badges også tilføjet i Social Connect-sektionen
+
+**Mål:** I Social Connect-sektionen (under "Del musikken. Del stemningen") sad der kun et enkelt gammelt mørkt App Store PNG-badge under iPhone-mockup'en. Nu hvor vi har de officielle danske SVG-badges fra iteration 50, skal samme behandling gøres her — begge badges (App Store + Google Play) skal vises konsistent.
+
+### Ændringer i `index.html`
+
+**`.app-cta` under iPhone-mockup'en — komplet erstatning:**
+
+Tidligere (1 PNG-badge med `<picture>`-element):
+```html
+<div class="app-cta">
+    <picture class="appstorelogo">
+        <source srcset="/images/appstorelogo.png" type="image/png">
+        <img src="images/appstorelogo.png" alt="Download on the App Store">
+    </picture>
+</div>
+```
+
+Nu (2 officielle SVG-badges, samme struktur som footer):
+```html
+<div class="app-cta">
+    <a href="#" aria-label="Download i App Store">
+        <img src="/images/appstore-badge.svg" alt="Hent i App Store">
+    </a>
+    <a href="#" aria-label="Hent på Google Play">
+        <img src="/images/googleplay-badge.svg" alt="Hent på Google Play">
+    </a>
+</div>
+```
+
+### Ændringer i `css/style.css`
+
+**`.app-cta`:**
+- Tilføjet `align-items: center` og `gap: 0.65rem` og `flex-wrap: wrap` (to badges nu side om side, med wrap-fallback på smalle skærme)
+
+**`.appstorelogo img` fjernet, erstattet med:**
+- `.app-cta a`: display inline-block + opacity-transition for hover
+- `.app-cta a:hover`: opacity 0.75 (mild fade — samme hover-stil som footer)
+- `.app-cta img`: height 50px (lidt højere end footers 46px fordi det er en større dekorativ sektion), width auto, display block
+
+### Designvalg
+- **Samme struktur som footer:** Begge sektioner bruger nu identisk HTML-mønster og samme officielle SVG-filer — én kilde til sandhed for badges
+- **50px height i social section vs 46px i footer:** Social Connect er en hero-agtig CTA-zone hvor badges må være mere prominente; footer er mere diskret
+- **flex-wrap: wrap:** Hvis viewport er meget smal, kan de to badges stacke til 2 rækker i stedet for at overflowe
+
+### Filerne `appstorelogo.png` og `.appstorelogo`-klassen er nu ubrugte
+- `appstorelogo.png` i `/images/` bruges ikke længere af nogen kode
+- `.appstorelogo`-klassen findes ikke længere i HTML
+- (Filen er bevaret i `/images/` for nu, men kan slettes ved oprydning)
+
+### Til eksamen
+Samme forklaring som iteration 50: officielle badges downloadet direkte fra Apple og Googles udvikler-sider på dansk. Bruges konsistent samme sted og i footer.
+
+---
+
+## Iteration 52 — Features-sektion redesignet med store farvede stat-cards (reference-inspireret)
+
+**Mål:** Bruger sendte en reference med tre store hvide cards der hver havde et KÆMPE farvet tal/stat (15K+, 32, 9.5) som dominerende element + en kort beskrivelse i samme farve nedenunder. Anvend samme stil på features-sektionen ("Designet til at flytte sig") som tidligere bare havde 01-06 numerering + lille heading + lang beskrivelse i samme grå farve.
+
+### Struktur-ændring per feature-card
+
+Tidligere:
+```
+01           ← lille tabular-num, grå #999
+3 kg, IPX5   ← h3 600 weight
+Let nok til tote-bag'en, vandafvisende til alle slags vejr.   ← grå #555
+```
+
+Nu:
+```
+3 kg        ← KÆMPE clamp(3.5rem, 6vw, 5.5rem), weight 700, farvet
+IPX5 vandafvisende. Let nok til tote-bag'en, til alle slags vejr.   ← 1rem regular, samme farve
+```
+
+### Hver card har sin egen accent-farve via CSS custom property
+
+Hver `<article>` har `style="--accent: #..."` inline. CSS bruger `color: var(--accent)` på både stat og desc — så hele cardets typografi er farvet, ikke kun overskriften.
+
+**Farve-rotation (3 brand-saturerede farver fordelt over 6 cards):**
+- Card 1 (3 kg): `#4a8a4d` — dyb sage-grøn
+- Card 2 (18t): `#8B5CF6` — electric lavendel (samme som CTA-knap)
+- Card 3 (100 dB): `#3858a8` — dyb blå
+- Card 4 (LED): `#3858a8` — dyb blå
+- Card 5 (5.3): `#4a8a4d` — dyb sage-grøn
+- Card 6 (Social): `#8B5CF6` — electric lavendel
+
+Pattern: række 1 har [grøn, lavendel, blå], række 2 har [blå, grøn, lavendel] — kolonnerne er forskudte så det ikke virker som striber.
+
+### Tekst-redigering for at passe den nye stat-struktur
+
+Hver feature er nu omskrevet så hovedstatten er kort/punchy og beskrivelsen indeholder konteksten:
+- "3 kg, IPX5" → stat "3 kg" + desc "IPX5 vandafvisende..."
+- "18 timers batteri" → stat "18t" + desc "Batteri der holder hele dagen..."
+- "100 dB lyd" → stat "100 dB" + desc "Lyd der fylder..."
+- "Ambient-lys" → stat "LED" + desc "Ambient-lys der følger musikken..."
+- "Bluetooth 5.3" → stat "5.3" + desc "Bluetooth 5.3 — par op til 3..."
+- "Social Connect" → stat "Social" + desc "Alle bidrager... Connect-app"
+
+### Ændringer i `css/style.css`
+
+**`.features`:**
+- `background: var(--white)` → `var(--bg)` (off-white #F4F4F4) — så de hvide cards "svæver" over sektionen som i referencen
+
+**`.features-grid`:**
+- `gap: 2.5rem 3rem` → `1.5rem` (tættere cards som i referencen)
+
+**`.feature-card`:**
+- Tilføjet `background: var(--white)`, `border-radius: 16px`, `padding: 2.5rem 2rem 2rem`
+- `display: flex; flex-direction: column; justify-content: space-between` så stat går øverst og desc bunder pænt
+- `min-height: 240px` så alle cards har samme højde uanset desc-længde
+- Hover: `transform: translateY(-3px)` + subtil shadow — let mikro-interaktion
+
+**`.feature-num` fjernet, `.feature-stat` tilføjet (erstatter h3):**
+- `font-size: clamp(3.5rem, 6vw, 5.5rem)` — kæmpe, responsiv
+- `font-weight: 700`, `line-height: 1`, `letter-spacing: -0.04em`
+- `color: var(--accent, #111)` — bruger card-specifik accent-farve via custom property
+
+**`.feature-card p` fjernet, `.feature-desc` tilføjet:**
+- `font-size: 1rem`, `line-height: 1.4`
+- `color: var(--accent, #555)` — SAMME farve som stat (i stedet for grå)
+- `max-width: 30ch` for tight tekst-blok
+
+### Designvalg
+- **3 farver i stedet for 6:** En 6-farve rainbow ville blive kakofonisk. 3 farver der rotér giver visuel rytme uden at overvælde.
+- **Saturerede brand-farver:** I stedet for at bringe helt nye farver, brugte jeg saturerede versioner af sage og blå-lilla + den eksisterende electric-lavendel. Holder paletten coherent.
+- **CSS Custom Properties (--accent):** Tillader at sætte farve per card direkte i HTML uden at duplikere CSS regler. Elegant og let at justere.
+- **Hover micro-interaction:** Cards løfter sig 3px med subtil shadow — føles interaktivt uden at blive distraherende.
+- **Off-white sektion-bg + hvide cards:** Skaber den "card-floating-on-page"-feel referencen har. Hvis sektionen var hvid og cards hvide, ville der ikke være kontrast.
+
+### Hvad blev bevaret
+- 3×2 grid-layout (3 kolonner × 2 rækker)
+- Section-header med eyebrow + h2 ("DETALJER" / "Designet til at flytte sig")
+- Section-padding 6rem 0
+- Container-bredde 90%/1200px
+
+---
+
+## Iteration 53 — Feature-cards skiftet til brand-palette + hover-effekt fjernet
+
+**Mål:** I iteration 52 brugte jeg saturerede versioner af brand-farverne (`#4a8a4d`, `#8B5CF6`, `#3858a8`) på feature-cards. Brugeren ville have at vi bruger de eksisterende brand-farvevariabler vi har defineret i `:root` (sage `--fv1`, lavendel `--fv2`, blå-lilla `--fv3`). Plus fjerne hover-effekten på cards.
+
+### Ændringer i `index.html`
+
+**Inline accent-farver:**
+- `style="--accent: #4a8a4d;"` → `style="--accent: var(--fv1);"` (sage)
+- `style="--accent: #8B5CF6;"` → `style="--accent: var(--fv2);"` (lavendel)
+- `style="--accent: #3858a8;"` → `style="--accent: var(--fv3);"` (blå-lilla)
+
+Samme rotation-mønster bevaret (3 farver på 6 cards):
+- Card 1 (3 kg): `--fv1` sage
+- Card 2 (18t): `--fv2` lavendel
+- Card 3 (100 dB): `--fv3` blå-lilla
+- Card 4 (LED): `--fv3` blå-lilla
+- Card 5 (5.3): `--fv1` sage
+- Card 6 (Social): `--fv2` lavendel
+
+### Ændringer i `css/style.css`
+
+**`.feature-card`:**
+- Fjernet `transition: transform 0.25s ease, box-shadow 0.25s ease;`
+
+**`.feature-card:hover` (helt fjernet):**
+- Fjernet `transform: translateY(-3px)`
+- Fjernet `box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06)`
+
+### Designvalg
+- **Brand-farvevariabler i stedet for hardkodede:** Hvis vi senere ændrer brand-paletten ét sted (`:root`), opdateres feature-cards automatisk. Ren single-source-of-truth.
+- **Cards er nu statiske:** Matcher sidens øvrige hover-stil (Kalstore-inspireret minimalisme — kun farve-skift, ingen transforms). Cards skal være rolige flader, ikke interaktive elementer der "kalder" til klik.
+
+### Note om farve-mætning
+Brand-farverne er let dæmpede (sage #a8bfa3 osv.) sammenlignet med UGLYCASH-referencens vibrant grøn/orange/blå. Det er et bevidst brand-valg fra tidligere iterationer — LUMINA's æstetik er rolig/editorial, ikke energisk/saturer. Hvis det viser sig at være for dæmpet i praksis, kan vi:
+- Bumpe `font-weight` op på `.feature-stat` til 800 så farven får mere visuel vægt
+- Tilføje `text-shadow: 0 0 1px var(--accent)` for at gøre farven tykkere optisk
+- Definere `--fv1-deep`, `--fv2-deep`, `--fv3-deep` varianter i `:root` til specifikke high-contrast use cases
+
+---
+
 ## Status pr. dags dato (2026-05-12)
 
 ### Aktive ændringer
