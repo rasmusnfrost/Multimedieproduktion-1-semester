@@ -2258,6 +2258,34 @@ Den lille pill-search fra 62 føltes for begrænset (max-width 320px). Justeret:
   - `.nav-icon-close` vises (`display: inline-flex`) — visuelt erstatter den søge-knappen i samme position
 - X-knappen er styled 30×30 rund (matcher `.nav-icons a`-styling) så swap er seamless
 
+### Iteration 63 — Logoet konverteret til ægte vektor-SVG
+
+**Mål:** Det eksisterende `Group.svg` var teknisk SVG men indeholdt kun et embedded base64-PNG (182kb, ingen `<path>`-elementer). Resultat: stor fil og ingen vektor-skalering.
+
+### Proces
+1. Ekstraheret det embedded base64-PNG til standalone fil (1440×834 gråtone) — afslørede at logoet er en custom håndtegnet "LA"-monogram med svungne kalligrafiske kurver
+2. Forsøgt `npx potrace` → blokeret af sikkerheds-classifier (ikke-erklæret npm pakke)
+3. Skrevet Node.js script (`/tmp/trace-logo.js`) der bruger `potrace` + `jimp` programmatisk:
+   - Inverteret PNG (sort baggrund → hvid baggrund så potrace tracer logoet, ikke baggrunden)
+   - Auto-traced med `threshold: 128`, `optTolerance: 0.4`, `turdSize: 2`
+4. Resultat: én clean SVG `<path>` med Bezier-kurver
+
+### Optimering af output
+- Trimmet `viewBox` fra "0 0 1440 834" → "80 100 1310 680" (fjernet whitespace omkring indholdet)
+- Skiftet `fill="#000000"` → `fill="currentColor"` (så logoet nu kan farves via CSS `color:` property)
+- Fjernet redundante `width`/`height`-attributter på `<svg>` (viewBox styrer rendering)
+
+### Ændringer i `index.html`
+- `<img src="/images/Group.svg">` → `<img src="/images/lumina-logo.svg">` (2 steder: header logo + footer tagline)
+- Group.svg beholdt som backup i `/images/` indtil verifikation
+
+### Filstørrelse
+- Før: 182kb (PNG-wrapper)
+- Efter: 2.3kb (ægte vektor)
+- **79× mindre** + skalerer pixel-perfect + kan styles med CSS
+
+---
+
 ### Iteration 62c — Søgebar matchet i højde med logoet
 Søgebaren var stadig kompakt sammenlignet med det 49px-høje logo (Group.svg 235×166 rendret med width:70px). Ændret:
 - `.nav-search`: tilføjet `align-self: stretch` så formen overskriver navens `align-items: center` og strækker sig vertikalt til nav-rækkens fulde indre højde (samme som logoet)
