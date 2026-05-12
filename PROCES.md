@@ -2258,6 +2258,33 @@ Den lille pill-search fra 62 føltes for begrænset (max-width 320px). Justeret:
   - `.nav-icon-close` vises (`display: inline-flex`) — visuelt erstatter den søge-knappen i samme position
 - X-knappen er styled 30×30 rund (matcher `.nav-icons a`-styling) så swap er seamless
 
+### Iteration 64 — Nav-ikoner konverteret til SVG (Lucide-stil)
+
+**Mål:** De tre nav-ikoner (Search.png, Login.png, Shoppingcart.png) var raster PNG'er. Erstattet med ægte vektor-SVG'er i Lucide-stil (gratis MIT-licens, https://lucide.dev — mest brugte moderne outline-ikonsæt sammen med Heroicons).
+
+### Nye filer
+- `/images/icon-search.svg` — lup (cirkel + diagonalt håndtag)
+- `/images/icon-user.svg` — person silhuet (cirkel + skuldre)
+- `/images/icon-cart.svg` — indkøbskurv (kurv + to hjul)
+
+Alle bruger:
+- viewBox 24×24 (standard Lucide-format)
+- `fill="none"` + `stroke="currentColor"` + `stroke-width="2"` → outline-stil der matcher de gamle PNG'er
+- `stroke-linecap="round"` + `stroke-linejoin="round"` → bløde afrundede stregender
+- `currentColor` → kan farves via CSS `color:` property
+
+### Ændringer i `index.html`
+- `Search.png` → `icon-search.svg`
+- `Login.png` → `icon-user.svg`
+- `Shoppingcart.png` → `icon-cart.svg`
+
+Eksisterende `.nav-icons img { width: 16px }` virker uændret — SVG'erne skalerer perfekt til 16px.
+
+### Note om "Bell"-prikken
+Den lille notifikations-prik over user-ikonet i det originale design er **ikke** med i SVG-versionen (Lucide har ikke det specifikke variant). Hvis du vil have den tilbage, kan jeg tilføje en CSS pseudo-element `::after` på user-ikon-linket, eller bruge en anden ikon-variant.
+
+---
+
 ### Iteration 63 — Logoet konverteret til ægte vektor-SVG
 
 **Mål:** Det eksisterende `Group.svg` var teknisk SVG men indeholdt kun et embedded base64-PNG (182kb, ingen `<path>`-elementer). Resultat: stor fil og ingen vektor-skalering.
