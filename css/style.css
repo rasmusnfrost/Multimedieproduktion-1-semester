@@ -356,11 +356,24 @@ img {
 .app-cta {
     display: flex;
     justify-content: center;
+    align-items: center;
+    gap: 0.65rem;
+    flex-wrap: wrap;
 }
 
-.appstorelogo img {
-    width: 160px;
-    height: auto;
+.app-cta a {
+    display: inline-block;
+    transition: opacity 0.2s ease;
+}
+
+.app-cta a:hover {
+    opacity: 0.75;
+}
+
+.app-cta img {
+    height: 50px;
+    width: auto;
+    display: block;
 }
 
 /* Header og navigationsbar — floating glass pill */
