@@ -218,6 +218,7 @@ img {
     border-radius: 16px;
     box-shadow: 12px 12px 0 var(--accent);
     width: 100%;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .insta-item picture {
@@ -233,6 +234,11 @@ img {
     height: 100%;
     object-fit: cover;
     display: block;
+}
+
+.insta-item:hover {
+    transform: translate(-6px, -6px);
+    box-shadow: 18px 18px 0 var(--accent);
 }
 
 /* ai-billede1.png er 1:1 (4096×4096) mens 2 og 3 er 3:4 — zoom ind på det første så højtaleren har samme størrelse i frame */

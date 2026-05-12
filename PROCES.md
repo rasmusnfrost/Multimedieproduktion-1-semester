@@ -2214,6 +2214,21 @@ Forsøgt: hvert billede fik en brand-farvet caption-bar nederst med nummerering 
 ### Fix (59c.1) — Ensartet card-højde
 Det første AI-billede (ai-billede1.png) har anden native aspect-ratio end de to andre → cardet blev kortere/mismatched. Tilføjet `aspect-ratio: 4 / 5` på `.insta-item picture` + eksisterende `object-fit: cover` på img → alle tre cards har nu samme højde, billederne croppes pænt.
 
+### Iteration 60b — Hover-effekt på gallery-billeder (lift, ikke opacity)
+Først tilføjet `opacity: 0.9` hover tilbage — fortrudt. Brugeren ville have en "hover a little" lift-effekt.
+
+Endelig version:
+```css
+.insta-item { transition: transform 0.25s ease, box-shadow 0.25s ease; }
+.insta-item:hover {
+    transform: translate(-6px, -6px);
+    box-shadow: 18px 18px 0 var(--accent);
+}
+```
+Cardet løftes 6px op og 6px til venstre (væk fra dets offset-skygge), og skyggen vokser fra 12px → 18px → giver illusion af at cardet løfter sig op fra sin farvede twin. Bryder med tidligere "ingen transforms på hover"-konvention — bevidst valg i dette tilfælde fordi offset-skygge-designet inviterer til lift-interaktion.
+
+---
+
 ### Iteration 60 — Showcase-billedet fylder hele cardet
 
 Showcase-sektionen ("Fås i fire farver") havde billedet sat til `width: 80%`, `max-height: 90%`, `object-fit: contain` → der var luft omkring billedet inde i den hvide 4:5 box. Ændret til `width: 100%`, `height: 100%`, `object-fit: cover` så billedet nu fylder cardet edge-to-edge. `billede-valg.png` er ~1:1 (739×732) så lidt af top/bund kan blive klippet i 4:5 boksen, men højtaleren er centreret i kilden og forbliver synlig.
