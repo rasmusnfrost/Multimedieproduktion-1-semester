@@ -1548,6 +1548,217 @@ LUMINA-wordmark'et fylder nu cardet edge-to-edge på alle skærmstørrelser — 
 
 ---
 
+## Iteration 47 — Edge-to-edge fill + lige meget space over/under LUMINA
+
+**Mål:** To problemer:
+1. Wordmark'et nåede aldrig helt ud til cardets kant fordi cardet havde horisontal padding (2.5rem på hver side). Brugeren vil have at LUMINA rør cardets indvendige kanter — edge-to-edge.
+2. Der var alt for meget plads UNDER wordmark'et sammenlignet med over. Plads over var bare card padding-top (2.25rem), men under var `padding-bottom: 0.4em` (~160px ved 400px font) + `margin-top: 3rem` på footer-mid = ~205px under vs 36px over.
+
+### Strukturændring — flyttet horisontal padding fra cardet til indholdselementerne
+
+Tidligere:
+```
+.footer-card { padding: 2.25rem 2.5rem 1.75rem; }
+.footer-wordmark { /* begrænset af card padding */ }
+.footer-mid, .footer-bot { /* arver indirekte */ }
+```
+
+Nu:
+```
+.footer-card { padding: 2.25rem 0 1.75rem; }  /* ingen horisontal padding */
+.footer-wordmark { /* kan strække fra kant til kant */ }
+.footer-mid, .footer-bot { padding: 0 2.5rem; }  /* eget horisontal padding */
+```
+
+Dette tillader wordmark'et at fylde 100% af cardets bredde mens tagline/links/disclaimer stadig har deres indvendige 2.5rem margin.
+
+### Ændringer i `css/style.css`
+
+**`.footer-card`:**
+- `padding: 2.25rem 2.5rem 1.75rem` → `2.25rem 0 1.75rem` (fjernet horisontal padding)
+
+**`.footer-wordmark`:**
+- `font-size: clamp(4rem, 27vw, 22rem)` → `clamp(4rem, 32vw, 27rem)` (kan nu fylde fuld card-bredde — 32vw fordi 6 LUMINA-chars med letter-spacing -0.055em behøver ~32vw for at fylde 90vw container)
+- `padding-bottom: 0.4em` → `0.22em` (kun lige nok til at klare scaleY's visuelle overflow på 0.205em — fjerner den unødvendige tomme plads)
+
+**`.footer-mid`:**
+- `margin-top: 3rem` → `2.25rem` (matcher præcis card padding-top, så plads OVER og UNDER wordmark er identisk)
+- Tilføjet `padding: 0 2.5rem`
+
+**`.footer-bot`:**
+- Tilføjet `padding: 0 2.5rem`
+
+**Media queries:**
+- Tablet (768px): card padding 1.75rem 0 1.25rem, mid/bot får padding 0 1.5rem, wordmark `clamp(3rem, 30vw, 14rem)`
+- Mobil (480px): wordmark `clamp(2.5rem, 28vw, 9rem)`
+
+### Beregning af padding-bottom på wordmark
+- `line-height: 0.82` → tekst-højde = 0.82em
+- `transform: scaleY(1.25)` med origin: center top → visuel højde = 1.025em
+- Visuel overflow under layout = 1.025 - 0.82 = 0.205em
+- `padding-bottom: 0.22em` → giver ~0.015em buffer (essentielt nul)
+- Resultat: footer-mid starter umiddelbart efter wordmark'ets visuelle bund, og dens egen `margin-top: 2.25rem` skaber den synlige plads — som matcher card padding-top præcis
+
+### Resultat
+- LUMINA fylder nu hele cardet edge-to-edge
+- Plads over og under wordmark er identisk (2.25rem på desktop, 1.75rem på tablet)
+- Layout føles strammere og mere balanceret — som UGLYCASH-referencen
+
+---
+
+## Iteration 48 — Tagline-brand som tekst + custom CSS app-badges med Google Play
+
+**Mål:** Brugeren markerede to elementer under wordmark'et som ikke matchede referencen:
+1. Den lille script LUMINA-SVG i taglinen ("Et [la] Brand") var ikke læselig — den lignede bare et abstrakt mærke, mens UGLYCASH-referencens "A Reserve Project" har "Reserve" som tydelig læselig wordmark
+2. App Store-badget var et lille mørkt PNG der ikke matchede referencens lyse pil-stil badges. Plus referencen har TO badges (App Store + Google Play) som vi før manglede
+
+### Ændringer i `index.html`
+
+**Tagline:**
+- `<img src="/images/Group.svg" class="footer-tagline-logo">` → `<span class="footer-tagline-brand">LUMINA</span>`
+- Erstattet script-SVG med læselig "LUMINA"-tekst styled i Anton (matcher det store wordmark over)
+
+**App-badges:**
+- Det gamle `<a><img src="/images/appstorelogo.png"></a>` PNG-badge fjernet
+- Erstattet med to inline-SVG-baserede `.store-badge`-komponenter:
+  - **App Store** badge: SVG apple-ikon + "Download on the App Store"-tekst i to linjer
+  - **Google Play** badge: SVG play-trekant (med korrekte farver: #00D7FE/#FFCE00/#00F076/#FF3A44) + "Get it on Google Play"-tekst
+- Begge badges har samme styling så de matcher visuelt — som i referencen
+
+### Ændringer i `css/style.css`
+
+**`.footer-tagline`:**
+- `align-items: center` → `baseline` (tekst justerer pænere når der er forskellige font-sizes inline)
+- `font-size: 0.95rem` → `1rem`
+- `gap: 0.5rem` → `0.45rem`
+
+**`.footer-tagline-logo` fjernet, erstattet med `.footer-tagline-brand`:**
+- `font-family: 'Anton'` (matcher det store wordmark over)
+- `font-size: 1.55rem`, `color: #000`, `text-transform: uppercase`
+- Læselig som "LUMINA" i samme typografiske familie som hovedwordmark'et
+
+**`.footer-apps img` fjernet, erstattet med `.store-badge`-system:**
+- `display: inline-flex`, height 46px, padding 0 0.9rem
+- Lys baggrund `#f5f5f5`, border-radius 9px
+- Hover: lidt mørkere baggrund `#ececec`
+- Indeholder `.store-badge-icon` (22px SVG) + `.store-badge-text` med to linjer:
+  - `.store-badge-small`: 0.58rem uppercase grå tekst ("Download on the" / "Get it on")
+  - `.store-badge-name`: 1rem semibold sort tekst ("App Store" / "Google Play")
+
+### Designvalg
+- **Inline SVG i stedet for PNG:** Garanterer crisp rendering på alle skærme (retina/non-retina), giver fuld kontrol over farver, og fjerner afhængigheden af et Google Play PNG-asset vi ikke har
+- **Identisk styling på begge badges:** Brugeren får visuel konsistens, præcis som referencens to balancerede badges
+- **LUMINA-tekst i Anton i taglinen:** Skaber visuel forbindelse til det store wordmark — taglinen føles nu som "billig version af det store mærke" ligesom UGLYCASH/Reserve-relationen
+- **App Store badge med authentic 2-linje "Download on the / App Store"-layout:** Match Apple's officielle badge-design
+
+### Note om Google Play SVG
+SVG-ikonet bruger Google Plays officielle 4-farvede triangle-design (cyan/gul/grøn/rød). Apple's krav om at vise officielle badges PNG eksakt-versioner gælder kun ved faktisk app store-listing — til en skole-eksamens-prototype er custom SVG fint.
+
+### Hvad blev bevaret
+- Wordmark fylder stadig edge-to-edge fra iteration 47
+- Card-padding-strukturen (vertical på card, horizontal på inner elements)
+- Disclaimer-tekst, højre-links, footer-meta — alt uændret
+
+---
+
+## Iteration 49 — Tagline-logo rullet tilbage til Group.svg (LUMINA-tekst fortrudt)
+
+**Mål:** I iteration 48 erstattede jeg den lille script Group.svg-logo i taglinen med en LUMINA-tekst i Anton — for at matche referencens læselige "Reserve"-wordmark. Brugeren foretrak dog det originale script-logo og bad om at få det tilbage. Behold de nye app-badges (App Store + Google Play).
+
+### Ændringer i `index.html`
+- `<span class="footer-tagline-brand">LUMINA</span>` → `<img src="/images/Group.svg" alt="LUMINA" class="footer-tagline-logo">`
+
+### Ændringer i `css/style.css`
+
+**`.footer-tagline`:**
+- `align-items: baseline` → `center` (centerer SVG-logoet pænere med tekst-baselinjen)
+- `gap: 0.45rem` → `0.5rem`
+- `font-size: 1rem` → `0.95rem`
+
+**`.footer-tagline-brand` fjernet, `.footer-tagline-logo` genindført:**
+- `height: 15px`, `width: auto`, `display: inline-block`
+- Samme værdier som før iteration 48
+
+### Hvad blev bevaret
+- De to nye custom SVG-baserede `.store-badge`-komponenter (App Store + Google Play) — uændret fra iteration 48
+
+### Fortrudt
+- LUMINA-tekst i Anton som inline brand-mærke i taglinen (iteration 48) — script-logoet er mere på-brand selv om det er mindre læseligt
+
+---
+
+## Iteration 50 — Erstattet custom SVG-badges med officielle Apple/Google danske badges
+
+**Mål:** Til eksamen er det nemmere at forklare "jeg downloadede de officielle badges fra Apple og Googles udvikler-sider" end at forklare hvordan custom SVG'er blev bygget. Plus de officielle badges er garanteret korrekt brand-compliant.
+
+### Filer hentet fra officielle kilder
+
+**App Store badge:**
+- Kilde: Apples officielle marketing guidelines (developer.apple.com/app-store/marketing/guidelines/)
+- Pakke downloadet og udpakket til `~/Downloads/Download-on-the-App-Store/`
+- Valgt dansk version: `DK/Download_on_App_Store/Black_lockup/SVG/Download_on_the_App_Store_Badge_DK_RGB_blk_100217.svg`
+- Indeholder dansk tekst "Hent i App Store" (i stedet for engelsk "Download on the App Store")
+- Kopieret til projekt som `/images/appstore-badge.svg`
+
+**Google Play badge:**
+- Kilde: Googles officielle badge guidelines (play.google.com/intl/en_us/badges/)
+- Pakke udpakket til `~/Downloads/Google Play Badge guidelines/`
+- Valgt dansk farvet version: `Get it on Google Play Badges/Digital/svg/GetItOnGooglePlay_Badge_Web_color_Danish.svg`
+- Indeholder dansk tekst "HENT DEN PÅ Google Play"
+- Kopieret til projekt som `/images/googleplay-badge.svg`
+
+### Ændringer i `index.html`
+
+**Footer app-badges — komplet erstatning:**
+- Tidligere: to `<a class="store-badge">` med 11 linjer inline SVG-paths og 4 niveauer af nested `<span>` for tekst-layout
+- Nu: to simple `<a><img src="/images/X-badge.svg" alt="..."></a>` (3 linjer total)
+
+```html
+<div class="footer-apps">
+    <a href="#" aria-label="Download i App Store">
+        <img src="/images/appstore-badge.svg" alt="Hent i App Store">
+    </a>
+    <a href="#" aria-label="Hent på Google Play">
+        <img src="/images/googleplay-badge.svg" alt="Hent på Google Play">
+    </a>
+</div>
+```
+
+### Ændringer i `css/style.css`
+
+**Fjernet (custom badge-CSS):**
+- `.store-badge` (display, padding, background, border-radius, hover)
+- `.store-badge-icon`
+- `.store-badge-text`
+- `.store-badge-small`
+- `.store-badge-name`
+- Total: ~30 linjer CSS fjernet
+
+**Tilføjet (simpel img-styling):**
+- `.footer-apps a`: display inline-block, opacity-hover transition
+- `.footer-apps a:hover`: opacity 0.75 (mild fade)
+- `.footer-apps img`: height 46px, width auto, display block
+- Total: ~10 linjer CSS
+
+### Til eksamen kan du sige
+> "Jeg downloadede de officielle App Store og Google Play badges direkte fra Apple's marketing guidelines (developer.apple.com/app-store/marketing/guidelines/) og Google's badge generator (play.google.com/intl/en_us/badges/). Begge platforme stiller deres officielle badges gratis til rådighed på dansk, så jeg valgte de danske versioner som passer til resten af sidens sprog. Jeg embeddede dem som SVG'er for crisp rendering på alle skærmstørrelser."
+
+### Fordele ved at bruge officielle assets
+1. **Brand-compliant:** Apple og Google har specifikke retningslinjer for hvordan deres badges må bruges — officielle filer er garanteret korrekte
+2. **Dansk-sprogede:** Begge har versioner i dansk der matcher resten af sidens dansk-sproget UI
+3. **Vector (SVG):** Skarpe på alle skærmstørrelser uden behov for flere størrelser
+4. **Nem at forklare:** "Downloadet fra Apple/Google" er en simpel, ærlig forklaring til eksamen
+
+### Hvad blev bevaret
+- Højde 46px på badges (samme som det custom-byggede)
+- Mild opacity-hover (samme princip som resten af sidens hover-stil)
+- Layout-strukturen i `.footer-apps` (flex med 0.5rem gap)
+
+### Fortrudt
+- Custom-byggede CSS/SVG badges (iteration 48) — funktionelle men sværere at forklare til eksamen + ikke garanteret brand-compliant
+
+---
+
 ## Status pr. dags dato (2026-05-12)
 
 ### Aktive ændringer
@@ -1575,6 +1786,8 @@ LUMINA-wordmark'et fylder nu cardet edge-to-edge på alle skærmstørrelser — 
 
 ### Fortrudte forsøg (bevaret i dokumentation til processen)
 - Archivo Black som footer-wordmark (iteration 42) — for tungt/blockede, ikke samme elegance som Anton
+- LUMINA-tekst i Anton inline i footer-tagline (iteration 48) — script-logoet føles mere på-brand
+- Custom-byggede SVG/CSS app-badges (iteration 48) — erstattet med officielle Apple/Google badges der er nemmere at forklare til eksamen
 - Liquid glass på header-ikoner
 - Liquid glass på alle CTA-knapper
 - Shop-dropdown med kategorier + produktbillede

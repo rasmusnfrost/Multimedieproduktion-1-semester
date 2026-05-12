@@ -732,13 +732,23 @@ img {
 
 .footer-apps {
     display: flex;
-    gap: 0.65rem;
+    gap: 0.5rem;
     align-items: center;
 }
 
+.footer-apps a {
+    display: inline-block;
+    transition: opacity 0.2s ease;
+}
+
+.footer-apps a:hover {
+    opacity: 0.75;
+}
+
 .footer-apps img {
-    height: 38px;
+    height: 46px;
     width: auto;
+    display: block;
 }
 
 .footer-bot {
