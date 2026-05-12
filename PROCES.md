@@ -2214,6 +2214,37 @@ Forsøgt: hvert billede fik en brand-farvet caption-bar nederst med nummerering 
 ### Fix (59c.1) — Ensartet card-højde
 Det første AI-billede (ai-billede1.png) har anden native aspect-ratio end de to andre → cardet blev kortere/mismatched. Tilføjet `aspect-ratio: 4 / 5` på `.insta-item picture` + eksisterende `object-fit: cover` på img → alle tre cards har nu samme højde, billederne croppes pænt.
 
+### Iteration 61 — Hero-tekst (h1 + tagline) styling
+
+**Mål:** Style den eksisterende hero-tekst ("LUMINA ONE" + "Skabt til øjeblikke...") uden at restrukturere layoutet (centreret video-overlay holdes).
+
+### Ændringer i `css/style.css`
+**h1 (`.hero-content h1`):**
+- Font-size: `clamp(2.5rem, 9vw, 7rem)` → `clamp(2.75rem, 10vw, 7.5rem)` (større, mere hero-impact)
+- Letter-spacing: `-0.04em` → `-0.045em` (lidt strammere — store store bogstaver kan bære det)
+- Line-height: `1` → `0.95` (kompakte to linjer)
+- Tilføjet `margin: 0` (reset)
+
+**Tagline (`.hero-tagline`):**
+- Font-style: `italic` (editorial kontrast til den bolde black h1)
+- Font-size: `1.05rem` → `1.15rem` (lidt større for læselighed)
+- Max-width: `380px` → `420px` (bedre liniebrydning på "Skabt til øjeblikke, der fortjener et soundtrack.")
+- Line-height: `1.6` → `1.5` (strammere)
+- Letter-spacing: `0.005em` (svag editorial åbning)
+- Margin-top: `1rem` (tæt på h1 men ikke kvælende)
+
+**Hero-content layout:**
+- `gap: 1rem` → `gap: 0` (eksplicit margin-styring per element i stedet for global gap, så h1↔tagline kan stå tæt mens CTAs får luft)
+- Tagline `margin-top: 1rem` styrer afstand til h1
+- `.hero-cta`'s eksisterende `margin-top: 2rem` styrer afstand fra tagline til knapper
+
+### Resultat
+- Tydeligere hierarki: kæmpe black h1 → kursiv italic tagline (sat tæt) → luft → CTAs
+- Italic giver lifestyle/editorial følelse uden at skifte font-familie
+- H1 er nu mere dominerende, tagline mere refined
+
+---
+
 ### Iteration 60b — Hover-effekt på gallery-billeder (lift, ikke opacity)
 Først tilføjet `opacity: 0.9` hover tilbage — fortrudt. Brugeren ville have en "hover a little" lift-effekt.
 
