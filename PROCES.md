@@ -2214,6 +2214,41 @@ Forsøgt: hvert billede fik en brand-farvet caption-bar nederst med nummerering 
 ### Fix (59c.1) — Ensartet card-højde
 Det første AI-billede (ai-billede1.png) har anden native aspect-ratio end de to andre → cardet blev kortere/mismatched. Tilføjet `aspect-ratio: 4 / 5` på `.insta-item picture` + eksisterende `object-fit: cover` på img → alle tre cards har nu samme højde, billederne croppes pænt.
 
+### Iteration 62 (fortrudt) — Søgning som overlay/modal
+Først bygget som full-screen overlay med blurred bg, søgepanel og live-filter på 12 søgbare items + smooth scroll til sektioner. Fortrudt — brugeren ville have en simpel "pops out in the navbar"-løsning, ikke en fuld modal med funktionel søgning. Det er et eksamensprojekt med ét produkt — søgning behøver ikke at virke, bare se ud som den virker.
+
+### Iteration 62 — Inline nav-søgebar (visuel toggle)
+
+**Mål:** Når man klikker på lup-ikonet i navbaren skal en søgebar "poppe ud" inde i selve navbaren. Den skal ikke faktisk søge — bare se ud som om den virker.
+
+### Ændringer i `index.html`
+- Fjernet `.search-overlay`-blokken helt (modal)
+- Tilføjet inline `<form class="nav-search" id="navSearch" role="search">` mellem `.nav-center` og `.nav-icons`. Indeholder:
+  - Lille lup-SVG (14px)
+  - `<input type="search" id="navSearchInput" placeholder="Søg...">`
+  - Lille X-knap til at lukke
+- JS reduceret til simpel toggle:
+  - Klik på lup-trigger → `nav.classList.add('is-searching')` + fokus input
+  - Klik på X → `closeNavSearch()` (fjerner klassen + tømmer inputtet)
+  - ESC → samme som X
+  - Ingen søgelogik, ingen resultatliste, ingen scroll
+
+### Ændringer i `css/style.css`
+Erstattet hele `.search-overlay`-CSS med ny `.nav-search`-blok:
+- `.nav-search`: `display: none` default, `flex: 1` med `max-width: 320px`, subtil glass-pill styling med `rgba(255,255,255,0.55)` bg + 1px border + 999px radius (matcher headerens egen pill-look)
+- `.nav.is-searching .nav-center { display: none }` — skjul nav-links når søgning er aktiv
+- `.nav.is-searching .nav-search { display: flex }` — vis søgebaren
+- Inputtet er borderless transparent, Geist 0.85rem (mindre end overlay-versionen fordi den sidder i navbaren)
+- Webkit search-cancel-knap skjult
+- X-knap: 24px rund med hover-bg
+
+### Resultat
+- Klik på lup → nav-links forsvinder, en search-pill fader ind med fokus på inputtet
+- Man kan taste hvad som helst — det gør ingenting (men ser ud som det virker)
+- ESC eller X → vender tilbage til normal navbar med Shop/Om os/Kontakt
+
+---
+
 ### Iteration 61 — Hero-tekst (h1 + tagline) styling
 
 **Mål:** Style den eksisterende hero-tekst ("LUMINA ONE" + "Skabt til øjeblikke...") uden at restrukturere layoutet (centreret video-overlay holdes).
