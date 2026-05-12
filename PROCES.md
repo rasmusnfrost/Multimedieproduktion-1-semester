@@ -1520,6 +1520,34 @@ Footer-cardet aligner nu vertikalt med lifestyle-billederne, header-pillen (samm
 
 ---
 
+## Iteration 46 — Wordmark fyldt edge-to-edge i cardet
+
+**Mål:** I forrige iteration var wordmark'et "kun" omkring 80% af card-bredden — der var synlig padding mellem L og højre kant og venstre kant. Brugeren vil have at LUMINA fylder cardet edge-to-edge ligesom UGLYCASH i referencen, hvor bogstaverne næsten rører cardets indvendige sider.
+
+### Beregning af optimal fill
+Card: max-width 1200px, padding 2.5rem (40px) horisontalt → usable width ≈ 1120px.
+Anton char width ≈ 0.5 × font-size. For 6 LUMINA-chars at fylde 1120px (med tæt letter-spacing):
+- Font-size ≈ 1120 / 3 = ~373px = ~23rem (max ved 1200px container)
+- I vw på 1334px+ viewport (hvor container er capped): 23rem/1334*100 ≈ 28vw
+- Vi vil have ~95% fill, så lidt mindre: 22rem max, 27vw
+
+### Ændringer i `css/style.css`
+
+**`.footer-wordmark`:**
+- `font-size: clamp(3.5rem, 20vw, 19rem)` → `clamp(4rem, 27vw, 22rem)` (markant større — fylder nu 95% af card)
+- `letter-spacing: -0.045em` → `-0.055em` (strammere så bogstaverne pakker tæt som UGLYCASH)
+- `transform: scaleY(1.2)` → `scaleY(1.25)` (let mere vertikalstræk for at matche UGLYCASH-proportionen tæt)
+- Tilføjet `white-space: nowrap` (sikrer LUMINA aldrig wrapper hvis font-size af en eller anden grund ikke kan rumme — bedre at lade scrollbar opstå end at se ulækker tekst på to linjer)
+
+**Media queries:**
+- Tablet (768px): `clamp(3rem, 20vw, 10rem)` → `clamp(3rem, 26vw, 12rem)`, scaleY 1.15 → 1.2
+- Mobil (480px): `clamp(2.5rem, 22vw, 7rem)` → `clamp(2.5rem, 25vw, 8rem)`
+
+### Resultat
+LUMINA-wordmark'et fylder nu cardet edge-to-edge på alle skærmstørrelser — bogstaverne har næsten ingen plads til siderne, præcis som UGLYCASH-referencen.
+
+---
+
 ## Status pr. dags dato (2026-05-12)
 
 ### Aktive ændringer

@@ -689,19 +689,20 @@ img {
 .footer-wordmark {
     font-family: 'Anton', 'Geist', system-ui, sans-serif;
     font-weight: 400;
-    font-size: clamp(3.5rem, 20vw, 19rem);
+    font-size: clamp(4rem, 27vw, 22rem);
     line-height: 0.82;
-    letter-spacing: -0.045em;
+    letter-spacing: -0.055em;
     color: #000;
     text-align: center;
     margin: 0;
     padding-bottom: 0.4em;
-    transform: scaleY(1.2);
+    transform: scaleY(1.25);
     transform-origin: center top;
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
     pointer-events: none;
+    white-space: nowrap;
 }
 
 .footer-mid {
@@ -977,8 +978,8 @@ img {
   }
 
   .footer-wordmark {
-    font-size: clamp(3rem, 20vw, 10rem);
-    transform: scaleY(1.15);
+    font-size: clamp(3rem, 26vw, 12rem);
+    transform: scaleY(1.2);
   }
 
   .footer-bot {
@@ -1018,6 +1019,6 @@ img {
   }
 
   .footer-wordmark {
-    font-size: clamp(2.5rem, 22vw, 7rem);
+    font-size: clamp(2.5rem, 25vw, 8rem);
   }
 }
