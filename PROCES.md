@@ -1492,6 +1492,34 @@ Footer'en er nu en mere kompakt komponent — stadig editorial med kæmpe wordma
 
 ---
 
+## Iteration 45 — Footer-card constrained til container-bredde (matcher lifestyle-grid)
+
+**Mål:** Footer-cardet spændte før næsten over hele viewport-bredden (med kun 1.25rem padding på hver side). Brugeren ville have at det matcher bredden af lifestyle-grid'et og resten af sidens indhold — altså samme bredde som `.container`-klassen bruger andre steder (90% / max 1200px).
+
+### Ændringer i `css/style.css`
+
+**`.site-footer`:**
+- `padding: 1.25rem 1.25rem 0` → `padding-top: 1.25rem` (fjernet horizontal padding, da cardet nu styrer sin egen bredde)
+
+**`.footer-card`:**
+- Tilføjet `width: 90%`
+- Tilføjet `max-width: 1200px`
+- Tilføjet `margin: 0 auto` (centreret)
+- Disse værdier matcher præcis `.container`-klassen brugt i header, hero, showcase, features, social og lifestyle-sektioner
+
+**`.footer-wordmark` (justeret for smallere container):**
+- `font-size: clamp(4rem, 24vw, 22rem)` → `clamp(3.5rem, 20vw, 19rem)`
+- Cardet er nu smallere, så vw-værdien skal være lavere for ikke at overflowe — og max-clamp lavere fordi der ikke er plads til 22rem inde i 1120px usable width
+
+**Media queries:**
+- Tablet (768px): tilføjet `width: 90%` på `.footer-card`, wordmark `clamp(3.5rem, 22vw, 11rem)` → `clamp(3rem, 20vw, 10rem)`
+- Mobil (480px): wordmark `clamp(3rem, 24vw, 8rem)` → `clamp(2.5rem, 22vw, 7rem)`
+
+### Resultat
+Footer-cardet aligner nu vertikalt med lifestyle-billederne, header-pillen (samme max 1200px, dog er header smallere ved 720px), showcase-content, features-grid og alle andre `.container`-baserede sektioner. Side-margins ser konsistente ud hele vejen ned ad siden.
+
+---
+
 ## Status pr. dags dato (2026-05-12)
 
 ### Aktive ændringer

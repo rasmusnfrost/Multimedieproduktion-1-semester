@@ -673,10 +673,13 @@ img {
 
 .site-footer {
     background: var(--bg);
-    padding: 1.25rem 1.25rem 0;
+    padding-top: 1.25rem;
 }
 
 .footer-card {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
     background: var(--white);
     border-radius: 24px;
     padding: 2.25rem 2.5rem 1.75rem;
@@ -686,7 +689,7 @@ img {
 .footer-wordmark {
     font-family: 'Anton', 'Geist', system-ui, sans-serif;
     font-weight: 400;
-    font-size: clamp(4rem, 24vw, 22rem);
+    font-size: clamp(3.5rem, 20vw, 19rem);
     line-height: 0.82;
     letter-spacing: -0.045em;
     color: #000;
@@ -968,12 +971,13 @@ img {
   }
 
   .footer-card {
+    width: 90%;
     padding: 1.75rem 1.5rem 1.25rem;
     border-radius: 18px;
   }
 
   .footer-wordmark {
-    font-size: clamp(3.5rem, 22vw, 11rem);
+    font-size: clamp(3rem, 20vw, 10rem);
     transform: scaleY(1.15);
   }
 
@@ -1014,6 +1018,6 @@ img {
   }
 
   .footer-wordmark {
-    font-size: clamp(3rem, 24vw, 8rem);
+    font-size: clamp(2.5rem, 22vw, 7rem);
   }
 }
