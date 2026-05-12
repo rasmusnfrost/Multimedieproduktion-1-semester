@@ -2258,6 +2258,12 @@ Den lille pill-search fra 62 føltes for begrænset (max-width 320px). Justeret:
   - `.nav-icon-close` vises (`display: inline-flex`) — visuelt erstatter den søge-knappen i samme position
 - X-knappen er styled 30×30 rund (matcher `.nav-icons a`-styling) så swap er seamless
 
+### Iteration 62c — Søgebar matchet i højde med logoet
+Søgebaren var stadig kompakt sammenlignet med det 49px-høje logo (Group.svg 235×166 rendret med width:70px). Ændret:
+- `.nav-search`: tilføjet `align-self: stretch` så formen overskriver navens `align-items: center` og strækker sig vertikalt til nav-rækkens fulde indre højde (samme som logoet)
+- Padding skiftet fra `0.35rem 1rem` → `0 1.25rem` (vertikal padding fjernet — `align-items: center` på formen sørger for at input + ikon er lodret centreret i den fulde højde)
+- Gap mellem ikon og input: 0.55rem → 0.6rem (matcher den nu større pill)
+
 ---
 
 ### Iteration 61 — Hero-tekst (h1 + tagline) styling

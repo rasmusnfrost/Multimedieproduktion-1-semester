@@ -877,10 +877,11 @@ img {
 .nav-search {
     display: none;
     flex: 1;
+    align-self: stretch;
     align-items: center;
-    gap: 0.55rem;
+    gap: 0.6rem;
     margin: 0 1rem;
-    padding: 0.35rem 1rem;
+    padding: 0 1.25rem;
     background: rgba(255, 255, 255, 0.55);
     border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 999px;
