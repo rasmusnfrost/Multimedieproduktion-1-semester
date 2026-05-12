@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LUMINA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
@@ -12,12 +15,13 @@
 <header class="header">
     <div class="container nav">
         <div class="logo">
-            <img src="/images/Group.svg" alt="logo">
+            <a href="#" id="logoLink" aria-label="Til toppen">
+                <img src="/images/Group.svg" alt="LUMINA logo">
+            </a>
         </div>
 
     <nav class="nav-center">
         <ul>
-            <li><a href="#">Hjem</a></li>
             <li><a href="#">Shop</a></li>
             <li><a href="#">Om os</a></li>
             <li><a href="#">Kontakt</a></li>
@@ -25,9 +29,8 @@
     </nav>
 
     <div class="nav-icons">
-        <a href="#"><img src="/images/Login.png" alt="Login"></a>
         <a href="#"><img src="/images/Search.png" alt="Søg"></a>
-        <a href="#"><img src="/images/Heart.png" alt="Ønskeliste"></a>
+        <a href="#"><img src="/images/Login.png" alt="Login"></a>
         <a href="#"><img src="/images/Shoppingcart.png" alt="Indkøbskurv"></a>
     </div>
 </div>
@@ -53,49 +56,43 @@
     </article>
 </div>
 
-<!-- Produkt showcase med billede -->
-<section class="section-white padding">
+<!-- Produkt showcase -->
+<section class="showcase">
     <div class="container">
-        <h2>LUMINA ONE</h2>
-             <p class="product-price">Skabt til øjeblikke, der fortjener et soundtrack. </p>       
-                <p class="product-price"> 1499,- </p>
+        <div class="showcase-layout">
+            <div class="showcase-visual">
+                <div class="slider">
+                    <div class="slides">
+                        <div class="slide"><img src="/images/billede-valg.png" alt="LUMINA ONE i sage"></div>
+                        <div class="slide"><img src="/images/billede-valg.png" alt="LUMINA ONE i lavendel"></div>
+                        <div class="slide"><img src="/images/billede-valg.png" alt="LUMINA ONE i blå-lilla"></div>
+                        <div class="slide"><img src="/images/billede-valg.png" alt="LUMINA ONE i cream"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="showcase-content">
+                <p class="eyebrow">Fås i fire farver</p>
+                <h2>Vælg din stemning</h2>
+                <p class="lede">Støvede toner skabt til at passe ind hjemme, på stranden og overalt derimellem. Vælg farven der matcher dig.</p>
+
+                <div class="color-picker">
+                    <button class="dot active" style="background-color: #a8bfa3;" aria-label="Sage"></button>
+                    <button class="dot" style="background-color: #baa3bf;" aria-label="Lavendel"></button>
+                    <button class="dot" style="background-color: #aca3bf;" aria-label="Blå-lilla"></button>
+                    <button class="dot" style="background-color: #F1EDE2;" aria-label="Cream"></button>
+                </div>
+                <p class="color-name" id="colorName">Sage</p>
+
+                <div class="showcase-price">
+                    <span class="price-amount">1.499</span>
+                    <span class="price-currency">kr.</span>
+                </div>
+
+                <a href="#" class="btn btn-white">Læg i kurv</a>
+            </div>
+        </div>
     </div>
-
-    <div class="slider">
-        <div class="slides">
-        
-                   <div class="slide">
-                <picture><source srcset="/images/billede-valg.png" 
-                    type="image/png"><img src="/images/billede-valg.png" alt="LUMINA ONE"></picture>
-            </div>
-
-            <div class="slide">
-                <picture><source srcset="/images/billede-valg.png" 
-                    type="image/png"><img src="/images/billede-valg.png" alt="LUMINA ONE"></picture>
-            </div>
-
-            <div class="slide">
-                <picture><source srcset="/images/billede-valg.png" 
-                    type="image/png"><img src="/images/billede-valg.png" alt="LUMINA ONE"></picture>
-            </div>
-
-            <div class="slide">
-                <picture><source srcset="/images/billede-valg.png" 
-                    type="image/png"><img src="/images/billede-valg.png" alt="LUMINA ONE"></picture>
-            </div>
-        </div>
-</div>
-
- <div class="dots">
-            <span class="dot active" style="background-color: #DCA1A1;"></span>
-            <span class="dot" style="background-color: #F1EDE2;"></span>
-            <span class="dot" style="background-color: #AE90A7;"></span>
-            <span class="dot" style="background-color: #9CAF88;"></span>       
-        </div>
-
-        <div class="køb-knap">
-            <a href="#" class="btn btn-dark">Køb nu</a>
-        </div>
 </section>
 
 <!-- AI billeder-->
@@ -117,69 +114,71 @@
         </div>
     </div>
  </div>
- 
+
 
  <div class="køb-knap">
     <a href="#" class="btn btn-dark">Udforsk kollektionen</a>
  </div>
 
- <!-- Produktspecifikation -->
-  <section class="section-spec section-padding">
-    <div class=" container spec-layout">
-         <p> </p>
-    <h2 style="text-align: center;">Produktspecifikationer</h2>    
-    <div class="spec-intro">
-        <img src="/images/ai-billede4.png" alt="Lila Lumina One"> 
-        </div>
-
-
-        <div class="spec-wrapper">
-
-    <div class="spec-row">
-        <div class="spec-title">Højtaler</div>
-        <div class="spec-text">Blødt, stofbeklædt design med LED-lys der følger musikken. Vejer 3 kg, IPX5 vandafvisende og nem at tage med.</div>
-    </div>
-
-    <div class="spec-row">
-        <div class="spec-title">Lydkvalitet</div>
-        <div class="spec-text">Integreret ambient-lys der følger musikken og kan tilpasses stemninger som fx "chill", "party" og "sunset".</div>
-    </div>
-
-    <div class="spec-row">
-        <div class="spec-title">Lydstyrke</div>
-    <div class="spec-text">Kan spille med kraftig lyd op til 100dB - kan fylde udendørs rum, uden at det bliver for voldsom.</div>
-    </div>
-
-    <div class="spec-row">
-        <div class="spec-title">Tilslutning</div>
-        <div class="spec-text">Bluetooth 5.3, AUX-indgang og mulighed for at parre op til 3 andre LUMINA One enheder. Social Connect via app.</div>
-    </div>
-
-    <div class="spec-row">
-        <div class="spec-title">Batteri</div>
-        <div class="spec-text">Op til 18 timers spilletid. Genopladeligt batteri via USB-C.</div>
-    </div>
-
- </div>
- </div>
-
-
- <div class="køb-knap">
-            <a href="#" class="btn btn-dark">Køb nu</a>
-        </div>
-  </section>
-
-  <!-- Social Connects -->
-   <section class="section-gradient-bottom">
+<!-- Funktioner / features -->
+<section class="features">
     <div class="container">
-        
+        <header class="section-header">
+            <p class="eyebrow">Detaljer</p>
+            <h2>Designet til at flytte sig</h2>
+        </header>
+
+        <div class="features-grid">
+            <article class="feature-card">
+                <p class="feature-num">01</p>
+                <h3>3 kg, IPX5</h3>
+                <p>Let nok til tote-bag'en, vandafvisende til alle slags vejr.</p>
+            </article>
+
+            <article class="feature-card">
+                <p class="feature-num">02</p>
+                <h3>18 timers batteri</h3>
+                <p>Hele dagen og natten med på samme opladning. USB-C oplader.</p>
+            </article>
+
+            <article class="feature-card">
+                <p class="feature-num">03</p>
+                <h3>100 dB lyd</h3>
+                <p>Fylder et udendørs rum uden at blive voldsom.</p>
+            </article>
+
+            <article class="feature-card">
+                <p class="feature-num">04</p>
+                <h3>Ambient-lys</h3>
+                <p>LED der følger musikken — chill, party eller sunset.</p>
+            </article>
+
+            <article class="feature-card">
+                <p class="feature-num">05</p>
+                <h3>Bluetooth 5.3</h3>
+                <p>Par op til 3 LUMINA One enheder for større lydoplevelse.</p>
+            </article>
+
+            <article class="feature-card">
+                <p class="feature-num">06</p>
+                <h3>Social Connect</h3>
+                <p>Alle bidrager til playlisten direkte fra deres telefon.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- Social Connects -->
+<section class="section-gradient-bottom">
+    <div class="container">
+
         <div class="social-layout">
         <div class="social-content">
             <h2>Del musikken. Del stemningen</h2>
             <h3 style="font-size: 1.19rem;">Social Connects:</h3>
             <hr>
             <p>Social Connect er appen, der gør det nemt at forbinde venner direkte til din LUMINA One højtaler. Uanset om det er strandtur, forfest eller park-picnic, kan alle bidrage til playlisten – helt uden besvær.</p>
-        
+
         <h3>Funktioner:</h3>
         <hr class="funktioner-divider">
 
@@ -187,7 +186,7 @@
             <li>Blend playlister i realtid – Flere brugere kan tilføje sange direkte til køen.</li>
             <li>Nem tilkobling – Forbind til højtaleren via Bluetooth på få sekunder.</li>
             <li>Styr stemningen – Synkronisér musik med højtalerens ambient-lys (chill, party, sunset m.m.)</li>
-            <li>Host-kontrol – Værten kan godkende sange, styre rækkefølge og justere lydniveau.</li> 
+            <li>Host-kontrol – Værten kan godkende sange, styre rækkefølge og justere lydniveau.</li>
             <li>Multi-speaker pairing – Forbind op til 3 LUMINA One enheder for større lydoplevelse.</li>
         </ul>
     </div>
@@ -206,7 +205,7 @@
     </div>
         </div>
     </div>
-   </section>
+</section>
 </main>
 
 
@@ -247,16 +246,49 @@
 </footer>
 
 
+<aside class="newsletter-popup" id="newsletterPopup">
+    <button class="newsletter-close" id="newsletterClose" aria-label="Luk">
+        <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+            <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+    </button>
+    <h3 class="newsletter-title">Få 10% rabat på din første ordre</h3>
+    <p class="newsletter-sub">Tilmeld dig vores månedlige nyhedsbrev. Det er det hele!</p>
+    <form class="newsletter-form" onsubmit="event.preventDefault()">
+        <label for="newsletterEmail">Email</label>
+        <input type="email" id="newsletterEmail" name="email" autocomplete="email">
+        <button type="submit" class="newsletter-submit">TILMELD</button>
+    </form>
+    <label class="newsletter-checkbox">
+        <input type="checkbox">
+        <span>Jeg har læst og accepterer <a href="#">handelsbetingelser</a> og <a href="#">privatlivspolitik</a>.</span>
+    </label>
+    <p class="newsletter-disclaimer">Rabatkoden kan ikke kombineres med andre tilbud.</p>
+</aside>
+
+<script>
+document.getElementById('newsletterClose').addEventListener('click', () => {
+    document.getElementById('newsletterPopup').classList.add('is-hidden');
+});
+
+document.getElementById('logoLink').addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+</script>
+
 <script>
 const slides = document.querySelector('.slides');
 const dots = document.querySelectorAll('.dot');
+const colorName = document.getElementById('colorName');
+const colorLabels = ['Sage', 'Lavendel', 'Blå-lilla', 'Cream'];
 let index = 0;
 
 function updateSlider() {
   slides.style.transform = `translateX(-${index * 100}%)`;
-
   dots.forEach(dot => dot.classList.remove('active'));
   dots[index].classList.add('active');
+  if (colorName) colorName.textContent = colorLabels[index];
 }
 
 dots.forEach((dot, i) => {
