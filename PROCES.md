@@ -2354,6 +2354,20 @@ Brugeren valgte at slideshow var for meget — kun det 3. billede skulle stå al
 ### Iteration 74 — Tagline fjernet (og lagt tilbage)
 `<p class="hero-tagline">Skabt til øjeblikke, der fortjener et soundtrack.</p>` fjernet kortvarigt — rullet tilbage. Tagline står nu igen mellem h1 og CTA-knapperne.
 
+### Iteration 78 — Side-baggrund skiftet til varm cream/lys off-white der matcher hero-solnedgangen
+
+`--bg`-variablen ændret fra `#F4F4F4` (neutral off-white) → `#F5EFE5` (cream) → `#FAF7F0` → `#FDFBF6` (næsten ren hvid med kun et whisper af warm undertone). Påvirker automatisk alle sektioner der bruger `var(--bg)`:
+- `body`
+- `.section-lifestyle` (gallery)
+- `.features` (Detaljer)
+- `.social-connect` (Connect-appen)
+- `.køb-knap` parent areas
+- Footer-sektioner
+
+Brand-paletten (sage / lavendel / blå-lilla / cream) er tæt på den nye bg — cream brand-farven `#F1EDE2` er stadig distinct fra `#F5EFE5` (lidt mørkere og mere balanceret), så farvepickeren i showcase fungerer stadig.
+
+---
+
 ### Iteration 77 — "Læg i kurv"-knapperne under gallery fjernet
 De tre `<a class="btn btn-ghost insta-cart-btn">Læg i kurv</a>` under hver gallery-card er fjernet helt. JS-handler for `.insta-cart-btn` også ryddet væk (querySelectorAll fandt ingen elementer). CSS-regler for `.insta-cell` og `.insta-cart-btn` ligger stadig i style.css men er ikke længere visuelt aktive (kun selve insta-item er tilbage i hver `<article class="insta-cell">` wrapper — wrapperen kunne også fjernes, men den skader ikke).
 
