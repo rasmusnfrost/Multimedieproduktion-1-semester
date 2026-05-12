@@ -2068,6 +2068,32 @@ Tekst-redigering for at passe det nye visuelle hierarki:
 
 ---
 
+## Iteration 56 — "HENT I" konsistent versalisering på begge app-badges
+
+**Mål:** Apple-badget viste "Hent i" med småt mens Google Play-badget viste "HENT I" med versaler. Begge badges skulle vise samme uppercase "HENT I" for visuel konsistens.
+
+### Problem
+- `images/appstore-badge.svg`: "Hent i" rendret som 5 SVG-paths i mixed case (officielle Apple Danmark-badge stil)
+- `images/googleplay-badge.svg`: "HENT I" rendret som 5 SVG-paths i uppercase
+- De to badges stod side om side i Social Connect-sektionen og footeren → visuel inkonsistens
+
+### Ændringer i `images/appstore-badge.svg`
+- `<g id="_Group_4">` med 5 lowercase letter-paths (H/e/n/t/i) erstattet med 5 uppercase letter-paths (H/E/N/T/I) lånt fra `googleplay-badge.svg`
+- Tilføjet `transform="translate(-4.7 1.85) scale(0.55)"` på gruppen for at skalere de større Google Play-bogstaver ned så de passer til Apple-badgets størrelse og position (samme x≈36-61, y≈8.5-14.6 placering som original "Hent i")
+- Beregningsgrundlag: Google Play HENT I spænder x=73.97-119.68 (bredde 45.71) og y=12.21-23.24 (højde 11.03). Scale 0.55 → bredde ≈25, højde ≈6 → matcher original Apple "Hent i" boks
+
+### Hvorfor SVG-paths frem for `<text>`-element
+- Bevarer samme vektor-typografiske look som Google Play badget (samme font-grundlag)
+- Undgår afhængighed af system-font fallback ved rendering
+- Skala-justerede paths giver pixel-præcis match til badge-æstetikken
+
+### Hvad blev bevaret
+- Apple-logoet og "App Store"-teksten i appstore-badge.svg uændret
+- Google Play badget uændret
+- `index.html` markup uændret (samme `<img src="...">` referencer)
+
+---
+
 ## Status pr. dags dato (2026-05-12)
 
 ### Aktive ændringer
