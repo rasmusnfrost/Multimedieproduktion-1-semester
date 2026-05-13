@@ -793,6 +793,8 @@ img {
     letter-spacing: -0.03em;
     line-height: 0.9;
     margin: 0;
+    white-space: nowrap;
+    text-align: center;
 }
 
 .hero-tagline {
