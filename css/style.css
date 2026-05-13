@@ -296,11 +296,18 @@ img {
 
 .community .section-header {
     margin-bottom: 3rem;
+    max-width: none;
 }
 
 .community .section-header h2 {
     white-space: nowrap;
     font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+.community .section-header .section-lede {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .community-grid {
