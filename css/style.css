@@ -335,9 +335,13 @@ img {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    transition: transform 0.35s ease;
+    transition: transform 0.2s ease;
     font: inherit;
     color: inherit;
+}
+
+.color-tile:hover {
+    transform: translateY(-2px);
 }
 
 .color-tile.is-current {
@@ -671,8 +675,7 @@ img {
 }
 
 .social-phone:hover {
-    transform: translate(-6px, -6px);
-    box-shadow: 18px 18px 0 var(--fv2-bright);
+    transform: translateY(-2px);
 }
 
 .app-cta {
@@ -792,11 +795,11 @@ img {
     width: 30px;
     height: 30px;
     border-radius: 999px;
-    transition: background 0.2s ease;
+    transition: opacity 0.2s ease;
 }
 
 .nav-icons a:hover {
-    background: rgba(0, 0, 0, 0.06);
+    opacity: 0.55;
 }
 
 /* Hero sektion */
@@ -907,7 +910,6 @@ img {
     margin: 0;
     white-space: nowrap;
     text-align: center;
-    mix-blend-mode: difference;
     pointer-events: none;
 }
 
@@ -918,7 +920,6 @@ img {
     color: var(--white);
     line-height: 1.4;
     margin: 1.5rem 0 0;
-    mix-blend-mode: difference;
     pointer-events: none;
     white-space: nowrap;
     text-align: center;
@@ -1280,7 +1281,7 @@ img {
     justify-content: center;
     color: var(--text-dark);
     padding: 0;
-    transition: background 0.2s ease;
+    transition: opacity 0.2s ease;
 }
 
 .nav.is-searching .nav-icon-close {
@@ -1288,7 +1289,7 @@ img {
 }
 
 .nav-icon-close:hover {
-    background: rgba(0, 0, 0, 0.08);
+    opacity: 0.55;
 }
 
 .nav-search-icon {
