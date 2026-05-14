@@ -527,7 +527,7 @@ img {
 }
 
 .social-title-accent {
-    color: var(--fv2-bright);
+    color: inherit;
 }
 
 .social-lede {
@@ -571,8 +571,8 @@ img {
 }
 
 .social-functions strong {
-    color: var(--accent);
-    font-weight: 600;
+    color: var(--text-dark);
+    font-weight: 700;
 }
 
 .social-visual {
