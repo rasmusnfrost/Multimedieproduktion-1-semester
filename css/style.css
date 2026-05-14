@@ -30,14 +30,16 @@
 }
 
 body {
-    font-family: 'Geist', system-ui, sans-serif;
+    font-family: 'Arial', sans-serif;
+    font-weight: 700;
     background: var(--bg);
     color: var(--text-dark);
     line-height: 1.6;
+    -webkit-text-stroke: 0.85px;
 }
 
 h1, h2 {
-    font-family: 'Geist', system-ui, sans-serif;
+    font-family: 'Arial', sans-serif;
     font-weight: 600;
     letter-spacing: -0.02em;
 }
@@ -96,7 +98,7 @@ img {
 }
 
 .section-header h2 .title-accent {
-    color: var(--fv1-bright);
+    color: var(--fv3-bright);
 }
 
 /* Lede paragraph (intro-tekst) */
@@ -450,7 +452,7 @@ img {
 }
 
 .community-card:hover {
-    transform: scale(1.03);
+    transform: translateY(-2px);
 }
 
 .community-card-img {
@@ -556,7 +558,7 @@ img {
 }
 
 .feature-stat {
-    font-family: 'Geist', system-ui, sans-serif;
+    font-family: 'Arial Black', 'Arial', sans-serif;
     font-size: clamp(3.5rem, 6vw, 5.5rem);
     font-weight: 700;
     line-height: 1;
@@ -886,7 +888,7 @@ img {
 }
 
 .hero-content h1 {
-    font-family: 'Anton', 'Geist', system-ui, sans-serif;
+    font-family: 'Arial Black', 'Arial', sans-serif;
     font-size: clamp(3.5rem, 14vw, 11rem);
     font-weight: 400;
     color: var(--white);
@@ -912,7 +914,7 @@ img {
 }
 
 .hero-tagline {
-    font-family: 'Geist', system-ui, sans-serif;
+    font-family: 'Arial', sans-serif;
     font-size: 1.1rem;
     font-weight: 600;
     color: var(--white);
@@ -1230,7 +1232,7 @@ img {
 }
 
 .footer-links a:hover {
-    color: #888;
+    color: #555;
 }
 
 .footer-meta {
@@ -1303,7 +1305,7 @@ img {
     border: 0;
     outline: 0;
     background: transparent;
-    font-family: 'Geist', system-ui, sans-serif;
+    font-family: 'Arial', sans-serif;
     font-size: 0.9rem;
     color: var(--text-dark);
     padding: 0;
