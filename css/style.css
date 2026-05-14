@@ -14,6 +14,9 @@
     --fv2-bright: #9d6bc6;   /* lavender saturated */
     --fv3-bright: #6a5fb5;   /* blue-purple saturated */
 
+    --cta: #8B5CF6;          /* primær CTA (electric lavender) */
+    --cta-hover: #7C3AED;    /* primær CTA hover (deeper lavender) */
+
     --layout: 16px;
 }
 
@@ -211,90 +214,6 @@ img {
     color: #666;
 }
 
-/* === Sektion: Lifestyle (AI billeder grid) — original === */
-
-.section-lifestyle {
-    padding: 6rem 0;
-    background: var(--bg);
-}
-
-.insta-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-}
-
-.insta-cell {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.insta-cart-btn {
-    align-self: center;
-}
-
-.insta-item {
-    position: relative;
-    border-radius: 16px;
-    box-shadow: 12px 12px 0 var(--accent);
-    width: 100%;
-    cursor: pointer;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.insta-item:focus-visible {
-    outline: 3px solid #8B5CF6;
-    outline-offset: 4px;
-}
-
-.insta-add {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    pointer-events: none;
-    color: var(--white);
-    filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.45));
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.insta-item:hover .insta-add {
-    opacity: 1;
-}
-
-.insta-item picture {
-    display: block;
-    width: 100%;
-    border-radius: 16px;
-    overflow: hidden;
-    aspect-ratio: 4 / 5;
-}
-
-.insta-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.insta-item:hover {
-    transform: translate(-6px, -6px);
-    box-shadow: 18px 18px 0 var(--accent);
-}
-
-
-/* køb-knap wrapper — shared layout for CTA rows */
-
-.køb-knap {
-    display: flex;
-    justify-content: center;
-    margin: 2.5rem 0;
-}
-
 /* === Andre farver — i samme white card under produkt-layout === */
 
 .other-colors-block {
@@ -321,9 +240,7 @@ img {
     .other-colors-grid { grid-template-columns: 1fr 1fr; }
 }
 
-@media (max-width: 480px) {
-    .other-colors-grid { grid-template-columns: 1fr; }
-}
+/* 480px og under: behold 2 kolonner — 1 kolonne ville give kæmpe enkelt-tiles */
 
 .color-tile {
     appearance: none;
@@ -358,7 +275,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .color-tile-visual img {
@@ -400,7 +317,7 @@ img {
 
 
 .color-tile:focus-visible .color-tile-visual {
-    outline: 3px solid #8B5CF6;
+    outline: 3px solid var(--cta);
     outline-offset: 4px;
 }
 
@@ -451,7 +368,7 @@ img {
     break-inside: avoid;
     border-radius: 16px;
     overflow: hidden;
-    transition: transform 0.3s ease;
+    transition: transform 0.2s ease;
     cursor: pointer;
 }
 
@@ -671,7 +588,7 @@ img {
     height: auto;
     border-radius: 16px;
     box-shadow: 12px 12px 0 var(--fv2-bright);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .social-phone:hover {
@@ -770,6 +687,7 @@ img {
     font-weight: 500;
     font-size: 0.85rem;
     letter-spacing: 0.02em;
+    white-space: nowrap;
     transition: color 0.2s ease;
 }
 
@@ -1013,14 +931,14 @@ img {
 
 /* Electric lavender — primary "pop" CTA */
 .btn-white {
-  background: #8B5CF6;
+  background: var(--cta);
   color: var(--white);
-  border-color: #8B5CF6;
+  border-color: var(--cta);
 }
 
 .btn-white:hover {
-  background: #7C3AED;
-  border-color: #7C3AED;
+  background: var(--cta-hover);
+  border-color: var(--cta-hover);
 }
 
 /* Ghost — transparent with white border, for use over images/video */
@@ -1034,20 +952,6 @@ img {
 .btn-ghost:hover {
   background: rgba(255, 255, 255, 0.12);
   border-color: var(--white);
-}
-
-/* Ghost button på lys baggrund (off-white side-bg) */
-.køb-knap .btn-ghost,
-.insta-cart-btn.btn-ghost {
-  color: var(--text-dark);
-  border-color: rgba(0, 0, 0, 0.45);
-  backdrop-filter: none;
-}
-
-.køb-knap .btn-ghost:hover,
-.insta-cart-btn.btn-ghost:hover {
-  background: rgba(0, 0, 0, 0.06);
-  border-color: var(--text-dark);
 }
 
 /* Hero CTA wrapper */
@@ -1104,15 +1008,6 @@ img {
     color: #111;
     font-weight: 600;
 }
-
-/* køb-knap wrapper — shared layout for CTA rows */
-
-.køb-knap {
-  display: flex;
-  justify-content: center;
-  margin: 2.5rem 0;
-}
-
 
 /* Footer */
 
@@ -1403,7 +1298,7 @@ img {
 
 .newsletter-submit {
     width: 100%;
-    background: #8B5CF6;
+    background: var(--cta);
     color: var(--white);
     border: none;
     padding: 0.85rem;
@@ -1418,7 +1313,7 @@ img {
 }
 
 .newsletter-submit:hover {
-    background: #7C3AED;
+    background: var(--cta-hover);
 }
 
 .newsletter-checkbox {
@@ -1491,10 +1386,6 @@ img {
     padding: 2.5rem 1.75rem;
   }
 
-  .insta-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .features-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
@@ -1503,7 +1394,7 @@ img {
   .footer-card {
     width: 90%;
     padding: 1.75rem 0 1.25rem;
-    border-radius: 18px;
+    border-radius: 16px;
   }
 
   .footer-mid,
@@ -1516,7 +1407,7 @@ img {
   }
 
   .footer-wordmark {
-    font-size: clamp(3rem, 30vw, 14rem);
+    font-size: clamp(3rem, 20vw, 14rem);
     transform: scaleY(1.2);
   }
 
@@ -1543,10 +1434,6 @@ img {
     height: 30px;
   }
 
-  .insta-grid {
-    grid-template-columns: 1fr;
-  }
-
   .features-grid {
     grid-template-columns: 1fr;
   }
@@ -1557,6 +1444,6 @@ img {
   }
 
   .footer-wordmark {
-    font-size: clamp(2.5rem, 28vw, 9rem);
+    font-size: clamp(2.5rem, 24vw, 9rem);
   }
 }
