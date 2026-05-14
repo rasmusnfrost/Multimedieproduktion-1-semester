@@ -65,8 +65,8 @@
         <button type="button" class="hero-dot" aria-label="Vis billede 3"></button>
     </div>
     <article class="hero-content">
-        <h1 class="hero-h1-text">Lumina One</h1>
-        <p class="hero-tagline">Skabt til øjeblikke, der fortjener et soundtrack.</p>
+        <h1 class="hero-h1-text">Lumina One.</h1>
+        <p class="hero-tagline">Tag stemningen med dig overalt</p>
         <div class="hero-cta">
             <a href="#" class="btn btn-white" id="heroBuyBtn">Køb nu</a>
             <a href="#" class="btn btn-ghost" id="heroLearnBtn">Lær mere</a>
@@ -77,6 +77,7 @@
 <!-- Produkt showcase -->
 <section class="showcase">
     <div class="container">
+        <div class="showcase-card">
         <div class="showcase-layout">
             <div class="showcase-visual">
                 <div class="slider">
@@ -92,7 +93,7 @@
             <div class="showcase-content">
                 <p class="eyebrow">Fås i fire farver</p>
                 <h2>Vælg din stemning</h2>
-                <p class="lede">Støvede toner skabt til at passe ind hjemme, på stranden og overalt derimellem. Vælg farven der matcher dig.</p>
+                <p class="lede">Støvede toner til hjem, strand og alt derimellem.</p>
 
                 <div class="color-picker">
                     <button class="dot active" style="background-color: #a8bfa3;" aria-label="Sage"></button>
@@ -110,57 +111,51 @@
                 <a href="#" class="btn btn-white" id="showcaseCartBtn">Læg i kurv</a>
             </div>
         </div>
-    </div>
-</section>
 
-<!-- AI billeder / lifestyle gallery -->
-<section class="section-lifestyle">
-    <div class="container">
-        <header class="section-header">
-            <p class="eyebrow">I hverdagen</p>
-            <h2><span class="title-accent">Lyden</span> følger med</h2>
-        </header>
-
-        <div class="insta-grid">
-            <article class="insta-cell">
-                <div class="insta-item" style="--accent: var(--fv1-bright);" role="button" tabindex="0" aria-label="Læg LUMINA One i kurv">
-                    <picture><source srcset="/images/speaker-lavendel.png" type="image/png">
-                        <img src="/images/speaker-lavendel.png" alt="LUMINA One i lavendel" style="object-fit: contain; padding: 10%;"></picture>
-                    <span class="insta-add" aria-hidden="true">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="8" cy="21" r="1"/>
-                            <circle cx="19" cy="21" r="1"/>
-                            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
-                        </svg>
-                    </span>
-                </div>
-            </article>
-            <article class="insta-cell">
-                <div class="insta-item" style="--accent: var(--fv2-bright);" role="button" tabindex="0" aria-label="Læg LUMINA One i kurv">
-                    <picture><source srcset="/images/speaker-blalilla.png" type="image/png">
-                        <img src="/images/speaker-blalilla.png" alt="LUMINA One i blå-lilla" style="object-fit: contain; padding: 10%;"></picture>
-                    <span class="insta-add" aria-hidden="true">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="8" cy="21" r="1"/>
-                            <circle cx="19" cy="21" r="1"/>
-                            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
-                        </svg>
-                    </span>
-                </div>
-            </article>
-            <article class="insta-cell">
-                <div class="insta-item" style="--accent: var(--fv3-bright);" role="button" tabindex="0" aria-label="Læg LUMINA One i kurv">
-                    <picture><source srcset="/images/speaker-cream.png" type="image/png">
-                        <img src="/images/speaker-cream.png" alt="LUMINA One i cream" style="object-fit: contain; padding: 10%;"></picture>
-                    <span class="insta-add" aria-hidden="true">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="8" cy="21" r="1"/>
-                            <circle cx="19" cy="21" r="1"/>
-                            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
-                        </svg>
-                    </span>
-                </div>
-            </article>
+        <!-- Andre farver — fylder hele bredden under produktet -->
+        <div class="other-colors-block">
+            <div class="other-colors-header">
+                <p class="eyebrow">Fås også i</p>
+            </div>
+            <div class="other-colors-grid">
+                <button type="button" class="color-tile" data-color-index="0" style="--tile-color: #a8bfa3;">
+                    <div class="color-tile-visual">
+                        <img src="/images/speaker-sage.png" alt="LUMINA One i Sage">
+                    </div>
+                    <div class="color-tile-meta">
+                        <p class="color-tile-name">Sage</p>
+                        <p class="color-tile-price">1.499 kr.</p>
+                    </div>
+                </button>
+                <button type="button" class="color-tile" data-color-index="1" style="--tile-color: #baa3bf;">
+                    <div class="color-tile-visual">
+                        <img src="/images/speaker-lavendel.png" alt="LUMINA One i Lavendel">
+                    </div>
+                    <div class="color-tile-meta">
+                        <p class="color-tile-name">Lavendel</p>
+                        <p class="color-tile-price">1.499 kr.</p>
+                    </div>
+                </button>
+                <button type="button" class="color-tile" data-color-index="2" style="--tile-color: #aca3bf;">
+                    <div class="color-tile-visual">
+                        <img src="/images/speaker-blalilla.png" alt="LUMINA One i Blå-lilla">
+                    </div>
+                    <div class="color-tile-meta">
+                        <p class="color-tile-name">Blå-lilla</p>
+                        <p class="color-tile-price">1.499 kr.</p>
+                    </div>
+                </button>
+                <button type="button" class="color-tile" data-color-index="3" style="--tile-color: #F1EDE2;">
+                    <div class="color-tile-visual">
+                        <img src="/images/speaker-cream.png" alt="LUMINA One i Cream">
+                    </div>
+                    <div class="color-tile-meta">
+                        <p class="color-tile-name">Cream</p>
+                        <p class="color-tile-price">1.499 kr.</p>
+                    </div>
+                </button>
+            </div>
+        </div>
         </div>
     </div>
 </section>
@@ -176,32 +171,32 @@
         <div class="features-grid">
             <article class="feature-card" style="--accent: var(--fv1-bright);">
                 <h3 class="feature-stat">3 kg</h3>
-                <p class="feature-desc">IPX5 vandafvisende. Let nok til tote-bag'en, til alle slags vejr.</p>
+                <p class="feature-desc">Let nok til tote-bag'en. Tæt mod vejret.</p>
             </article>
 
             <article class="feature-card" style="--accent: var(--fv2-bright);">
                 <h3 class="feature-stat">18t</h3>
-                <p class="feature-desc">Batteri der holder hele dagen og natten på samme opladning. USB-C.</p>
+                <p class="feature-desc">Hele dagen. Hele natten. Én opladning.</p>
             </article>
 
             <article class="feature-card" style="--accent: var(--fv3-bright);">
                 <h3 class="feature-stat">100 dB</h3>
-                <p class="feature-desc">Lyd der fylder et udendørs rum uden at blive voldsom.</p>
+                <p class="feature-desc">Fylder rummet. Aldrig påtrængende.</p>
             </article>
 
             <article class="feature-card" style="--accent: var(--fv3-bright);">
                 <h3 class="feature-stat">LED</h3>
-                <p class="feature-desc">Ambient-lys der følger musikken — chill, party eller sunset.</p>
+                <p class="feature-desc">Lys der følger lyden.</p>
             </article>
 
             <article class="feature-card" style="--accent: var(--fv1-bright);">
                 <h3 class="feature-stat">5.3</h3>
-                <p class="feature-desc">Bluetooth 5.3 — par op til 3 LUMINA One enheder for større lyd.</p>
+                <p class="feature-desc">Par tre sammen. Ét lydbillede.</p>
             </article>
 
             <article class="feature-card" style="--accent: var(--fv2-bright);">
                 <h3 class="feature-stat">Social</h3>
-                <p class="feature-desc">Alle bidrager til playlisten direkte fra deres telefon. Connect-app.</p>
+                <p class="feature-desc">Alle bidrager til playlisten. Én app.</p>
             </article>
         </div>
     </div>
@@ -213,7 +208,7 @@
         <header class="section-header">
             <p class="eyebrow">Fra fællesskabet</p>
             <h2>Forevig dine minder med <span class="lede-hashtag">#lumina</span></h2>
-            <p class="section-lede">Del dine billeder med #lumina på Instagram for en chance for at vinde en helt ny <img src="/images/lumina-logo.svg" alt="LUMINA" class="lede-inline-logo"> højtaler</p>
+            <p class="section-lede">Del dit øjeblik med #lumina. Månedens billede vinder en ny <img src="/images/lumina-logo.svg" alt="LUMINA" class="lede-inline-logo">.</p>
         </header>
 
         <div class="community-grid">
@@ -316,7 +311,7 @@
                     <img src="https://randomuser.me/api/portraits/women/11.jpg" width="24" height="24" alt="">
                     <img src="https://randomuser.me/api/portraits/men/56.jpg" width="24" height="24" alt="">
                 </div>
-                <p><strong>60.000+</strong> brugere over hele verdenen</p>
+                <p><strong>60.000+</strong> lyttere. Verden over.</p>
             </div>
         </div>
     </div>
@@ -329,12 +324,12 @@
             <div class="social-content">
                 <p class="eyebrow">Connect-appen</p>
                 <h2 class="social-title">Del musikken. <span class="social-title-accent">Del stemningen.</span></h2>
-                <p class="social-lede">Social Connect er appen, der gør det nemt at forbinde venner direkte til din LUMINA One. Strandtur, forfest eller park-picnic — alle bidrager til playlisten, helt uden besvær.</p>
+                <p class="social-lede">Én app. Hele rummet. Alle bidrager til playlisten.</p>
 
                 <ol class="social-functions">
                     <li style="--accent: var(--fv1-bright);">
                         <span class="social-num">01</span>
-                        <div><strong>Blend playlister i realtid.</strong> Flere brugere tilføjer sange direkte til køen.</div>
+                        <div><strong>Blend playlister.</strong> Alle tilføjer til køen.</div>
                     </li>
                     <li style="--accent: var(--fv2-bright);">
                         <span class="social-num">02</span>
@@ -511,6 +506,7 @@ heroDotBtns.forEach((dot, i) => {
     dot.addEventListener('click', () => showHeroSlide(i));
 });
 
+
 </script>
 
 <script>
@@ -527,12 +523,34 @@ function updateSlider() {
   if (colorName) colorName.textContent = colorLabels[index];
 }
 
-dots.forEach((dot, i) => {
-  dot.addEventListener('click', () => {
+const colorTiles = document.querySelectorAll('.color-tile');
+
+function updateColorTiles() {
+    colorTiles.forEach(tile => {
+        const i = parseInt(tile.dataset.colorIndex, 10);
+        tile.classList.toggle('is-current', i === index);
+    });
+}
+
+function setColor(i) {
     index = i;
     updateSlider();
-  });
+    updateColorTiles();
+}
+
+dots.forEach((dot, i) => {
+  dot.addEventListener('click', () => setColor(i));
 });
+
+colorTiles.forEach(tile => {
+    tile.addEventListener('click', () => {
+        const i = parseInt(tile.dataset.colorIndex, 10);
+        setColor(i);
+        document.querySelector('.showcase').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+});
+
+updateColorTiles();
 </script>
 
 </body>
