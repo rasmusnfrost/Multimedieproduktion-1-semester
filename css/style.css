@@ -578,11 +578,6 @@ img {
 
 .app-cta a {
     display: inline-block;
-    transition: opacity 0.2s ease;
-}
-
-.app-cta a:hover {
-    opacity: 0.75;
 }
 
 .app-cta img {
@@ -660,16 +655,11 @@ img {
     font-size: 0.8rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    padding: 0.5rem 1rem;
-    border-radius: 999px;
-    background: transparent;
-    border: 1px solid transparent;
-    transition: background 0.2s ease, border-color 0.2s ease;
+    transition: color 0.2s ease;
 }
 
 .nav-center a:hover {
-    background: rgba(255, 255, 255, 0.55);
-    border-color: rgba(0, 0, 0, 0.08);
+    color: #555;
 }
 
 /* Ikoner */
@@ -706,6 +696,7 @@ img {
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    isolation: isolate;
 }
 
 .hero-bg {
@@ -763,12 +754,10 @@ img {
         rgba(186, 163, 191, 0.06) 55%,
         rgba(172, 163, 191, 0.12) 100%
     );
-    z-index: 1;
 }
 
 .hero-content {
     position: relative;
-    z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -795,6 +784,20 @@ img {
     margin: 0;
     white-space: nowrap;
     text-align: center;
+}
+
+.hero-content h1.hero-h1-text {
+    font-family: 'Arial Black', 'Arial', sans-serif;
+    font-weight: 900;
+    font-size: clamp(3rem, 11vw, 9rem);
+    color: #a8b5aa;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin: 0;
+    white-space: nowrap;
+    text-align: center;
+    mix-blend-mode: difference;
+    pointer-events: none;
 }
 
 .hero-tagline {
