@@ -36,6 +36,7 @@ body {
     color: var(--text-dark);
     line-height: 1.6;
     -webkit-text-stroke: 0.85px;
+    text-transform: lowercase;
 }
 
 h1, h2 {
@@ -74,8 +75,7 @@ img {
 .eyebrow {
     font-size: 0.75rem;
     font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.05em;
     color: #888;
     margin-bottom: 1rem;
 }
@@ -765,9 +765,8 @@ img {
     text-decoration: none;
     color: var(--text-dark);
     font-weight: 500;
-    font-size: 0.8rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
     transition: color 0.2s ease;
 }
 
@@ -882,8 +881,7 @@ img {
 .hero-eyebrow {
     font-size: 0.8rem;
     font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
+    letter-spacing: 0.02em;
     color: rgba(255, 255, 255, 0.7);
 }
 
@@ -919,7 +917,6 @@ img {
     font-weight: 600;
     color: var(--white);
     line-height: 1.4;
-    text-transform: uppercase;
     margin: 1.5rem 0 0;
     mix-blend-mode: difference;
     pointer-events: none;
