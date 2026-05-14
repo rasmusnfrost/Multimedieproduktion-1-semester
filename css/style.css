@@ -724,7 +724,7 @@ img {
 
 .hero {
     position: relative;
-    height: 100vh;
+    height: 88vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1360,7 +1360,7 @@ img {
     text-align: center;
   }
   .hero {
-    height: 100svh;
+    height: 88svh;
   }
 
   .hero-cta {
