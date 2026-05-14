@@ -954,14 +954,32 @@ img {
   border-color: var(--white);
 }
 
+/* Outline-dark — transparent med mørk kant, for brug på lyse baggrunde */
+.btn-outline-dark {
+  background: transparent;
+  color: var(--text-dark);
+  border-color: var(--text-dark);
+}
+
+.btn-outline-dark:hover {
+  background: var(--text-dark);
+  color: var(--white);
+}
+
 /* Hero CTA wrapper */
 
 .hero-cta {
   display: flex;
   gap: 0.875rem;
   justify-content: center;
-  margin-top: 2rem;
   flex-wrap: wrap;
+}
+
+.hero-cta-band {
+  background: var(--bg);
+  padding: 2.5rem 1.5rem;
+  display: flex;
+  justify-content: center;
 }
 
 /* Hero social proof pill (avatar stack + tagline) */
