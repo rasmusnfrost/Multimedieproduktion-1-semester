@@ -2,7 +2,7 @@
 
 :root {
     --white: #ffffff;
-    --bg: #FDFBF6;    /* page background — næsten ren hvid med whisper af warm undertone */
+    --bg: #F4EFE2;    /* page background — varm cream med tydelig kontrast mod rent hvidt */
     --text-dark: #111;
 
     --fv1: #a8bfa3;   /* main — sage */
@@ -70,7 +70,7 @@ img {
 /* Sektioner — fælles spacing */
 
 .padding {
-    padding: 6rem 0;
+    padding: 0.375rem 0;
 }
 
 /* Editorial eyebrow + section header */
@@ -117,13 +117,26 @@ img {
 /* === Sektion: Showcase === */
 
 .showcase {
-    padding: 6rem 0;
+    padding: 0.375rem 0;
+}
+
+.showcase > .container {
+    width: auto;
+    max-width: none;
+    margin: 0 0.75rem;
 }
 
 .showcase-card {
     background: var(--white);
-    border-radius: 24px;
-    padding: 4rem 3rem;
+    border-radius: 12px;
+    padding: 0.75rem 3rem 4rem;
+}
+
+.showcase-card > .showcase-layout,
+.showcase-card > .other-colors-block {
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .showcase-layout {
@@ -134,7 +147,7 @@ img {
 }
 
 .showcase-visual {
-    border-radius: 24px;
+    border-radius: 12px;
     overflow: hidden;
     aspect-ratio: 4 / 5;
 }
@@ -217,13 +230,13 @@ img {
 /* === Andre farver — i samme white card under produkt-layout === */
 
 .other-colors-block {
-    margin-top: 1rem;
+    margin-top: 0;
     width: 100%;
 }
 
 .other-colors-header {
-    margin-bottom: 2rem;
-    text-align: center;
+    margin-bottom: 1rem;
+    text-align: left;
 }
 
 .other-colors-header .eyebrow {
@@ -268,7 +281,7 @@ img {
 .color-tile-visual {
     position: relative;
     aspect-ratio: 1 / 1;
-    border-radius: 16px;
+    border-radius: 12px;
     background: var(--white);
     border: 1px solid rgba(0, 0, 0, 0.06);
     overflow: hidden;
@@ -324,7 +337,7 @@ img {
 /* === Sektion: Fællesskab (masonry grid) === */
 
 .community {
-    padding: 6rem 0;
+    padding: 0.375rem 0;
     background: var(--bg);
 }
 
@@ -366,7 +379,7 @@ img {
     display: block;
     margin: 0 0 1rem;
     break-inside: avoid;
-    border-radius: 16px;
+    border-radius: 12px;
     overflow: hidden;
     transition: transform 0.2s ease;
     cursor: pointer;
@@ -458,7 +471,7 @@ img {
 /* === Sektion: Features === */
 
 .features {
-    padding: 6rem 0;
+    padding: 0.375rem 0;
     background: var(--bg);
 }
 
@@ -470,7 +483,7 @@ img {
 
 .feature-card {
     background: var(--white);
-    border-radius: 16px;
+    border-radius: 12px;
     padding: 2.5rem 2rem 2rem;
     display: flex;
     flex-direction: column;
@@ -500,12 +513,12 @@ img {
 
 .social-connect {
     background: var(--bg);
-    padding: 6rem 0;
+    padding: 0.375rem 0;
 }
 
 .social-card {
     background: var(--white);
-    border-radius: 24px;
+    border-radius: 12px;
     padding: 4rem 3rem;
     display: grid;
     grid-template-columns: 1.15fr 1fr;
@@ -586,7 +599,7 @@ img {
     width: 100%;
     max-width: 380px;
     height: auto;
-    border-radius: 16px;
+    border-radius: 12px;
     box-shadow: 12px 12px 0 var(--fv2-bright);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -733,8 +746,8 @@ img {
 }
 
 .hero--card {
-    margin: 3rem 1.5rem 0;
-    border-radius: 24px;
+    margin: 0.75rem 0.75rem 0.375rem;
+    border-radius: 12px;
     justify-content: center;
 }
 
@@ -758,6 +771,31 @@ img {
 
 .hero--card .hero-cta {
     margin-top: 0.5rem;
+}
+
+.hero--card-tall {
+    height: 176vh;
+}
+
+.hero-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin: 0.5rem 0.75rem 0;
+}
+
+.hero--card-half {
+    margin: 0;
+    height: 88vh;
+}
+
+@media (max-width: 768px) {
+    .hero-split {
+        grid-template-columns: 1fr;
+    }
+    .hero--card-tall {
+        height: 100vh;
+    }
 }
 
 .hero-bg {
@@ -1069,7 +1107,7 @@ img {
     max-width: 1200px;
     margin: 0 auto;
     background: var(--white);
-    border-radius: 24px;
+    border-radius: 12px;
     padding: 2.25rem 0 1.75rem;
     overflow: hidden;
 }
