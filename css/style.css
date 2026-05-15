@@ -853,18 +853,23 @@ img {
 }
 
 .hero--card .hero-h1-text {
-    font-size: clamp(2rem, 5vw, 3.5rem) !important;
+    font-size: clamp(1.75rem, 4vw, 3rem) !important;
     text-align: center !important;
 }
 
 .hero--card .hero-tagline {
-    font-size: 1rem;
+    font-size: 0.95rem;
     margin: 0;
     text-align: center;
 }
 
 .hero--card .hero-cta {
     margin-top: 0.5rem;
+}
+
+.hero--card .hero-cta .btn {
+    padding: 0.7rem 1.8rem;
+    font-size: 0.9rem;
 }
 
 .hero--card-tall {
