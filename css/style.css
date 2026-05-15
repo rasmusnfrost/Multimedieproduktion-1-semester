@@ -2,7 +2,7 @@
 
 :root {
     --white: #ffffff;
-    --bg: #F4EFE2;    /* page background — varm cream med tydelig kontrast mod rent hvidt */
+    --bg: #ffffff;    /* page background — ren hvid */
     --text-dark: #111;
 
     --fv1: #a8bfa3;   /* main — sage */
@@ -870,6 +870,8 @@ img {
 .hero--card .hero-cta .btn {
     padding: 0.7rem 1.8rem;
     font-size: 0.9rem;
+    min-width: 7rem;
+    justify-content: center;
 }
 
 .hero--card-tall {
