@@ -348,7 +348,7 @@ img {
 }
 
 .community-card-wrap {
-    background: #1a1a1a;
+    background: var(--fv2-bright);
     color: var(--white);
     border-radius: 12px;
     padding: 4rem 3rem;
@@ -491,8 +491,12 @@ img {
 }
 
 .lede-hashtag {
-    color: var(--fv3-bright);
-    font-weight: 400;
+    color: var(--white);
+    font-weight: 900;
+}
+
+.community-card-wrap .lede-inline-logo {
+    filter: brightness(0) invert(1);
 }
 
 .lede-inline-logo {
