@@ -341,6 +341,41 @@ img {
     background: var(--bg);
 }
 
+.community > .container {
+    width: auto;
+    max-width: none;
+    margin: 0 0.75rem;
+}
+
+.community-card-wrap {
+    background: #1a1a1a;
+    color: var(--white);
+    border-radius: 12px;
+    padding: 4rem 3rem;
+}
+
+.community-card-wrap > .section-header,
+.community-card-wrap > .community-grid,
+.community-card-wrap > .community-proof {
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.community-card-wrap .section-header h2,
+.community-card-wrap .section-header .eyebrow,
+.community-card-wrap .section-header .section-lede {
+    color: var(--white);
+}
+
+.community-card-wrap .section-header .eyebrow {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.community-card-wrap .section-header .section-lede {
+    color: rgba(255, 255, 255, 0.75);
+}
+
 .community .section-header {
     margin-bottom: 3rem;
     max-width: none;
@@ -475,6 +510,35 @@ img {
     background: var(--bg);
 }
 
+.features > .container {
+    width: auto;
+    max-width: none;
+    margin: 0 0.75rem;
+}
+
+.features-card {
+    background: #1a1a1a;
+    color: var(--white);
+    border-radius: 12px;
+    padding: 4rem 3rem;
+}
+
+.features-card > .section-header,
+.features-card > .features-grid {
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.features-card .section-header h2,
+.features-card .section-header .eyebrow {
+    color: var(--white);
+}
+
+.features-card .section-header .eyebrow {
+    color: rgba(255, 255, 255, 0.7);
+}
+
 .features-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -482,7 +546,7 @@ img {
 }
 
 .feature-card {
-    background: var(--white);
+    background: #1a1a1a;
     border-radius: 12px;
     padding: 2.5rem 2rem 2rem;
     display: flex;
