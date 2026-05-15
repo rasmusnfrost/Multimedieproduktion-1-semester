@@ -348,7 +348,7 @@ img {
 }
 
 .community-card-wrap {
-    background: var(--fv2-bright);
+    background: #1a1a1a;
     color: var(--white);
     border-radius: 12px;
     padding: 4rem 3rem;
