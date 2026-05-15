@@ -44,7 +44,7 @@ body {
 
 h1, h2 {
     font-family: 'Arial', sans-serif;
-    font-weight: 600;
+    font-weight: 400;
     letter-spacing: -0.02em;
 }
 
@@ -205,7 +205,7 @@ img {
 
 .price-amount {
     font-size: 2rem;
-    font-weight: 600;
+    font-weight: 400;
     letter-spacing: -0.02em;
 }
 
@@ -217,7 +217,7 @@ img {
 /* === Andre farver — i samme white card under produkt-layout === */
 
 .other-colors-block {
-    margin-top: 4rem;
+    margin-top: 1rem;
     width: 100%;
 }
 
@@ -304,7 +304,7 @@ img {
 .color-tile-name {
     margin: 0;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 400;
     color: var(--text-dark);
     letter-spacing: -0.01em;
 }
@@ -415,7 +415,7 @@ img {
 
 .community-card-meta span {
     font-size: 0.875rem;
-    font-weight: 600;
+    font-weight: 400;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
@@ -444,7 +444,7 @@ img {
 
 .lede-hashtag {
     color: var(--fv3-bright);
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .lede-inline-logo {
@@ -520,7 +520,7 @@ img {
 
 .social-title {
     font-size: clamp(2rem, 4vw, 3.25rem);
-    font-weight: 600;
+    font-weight: 400;
     line-height: 1.05;
     letter-spacing: -0.02em;
     margin: 0 0 1.5rem;
@@ -732,6 +732,34 @@ img {
     isolation: isolate;
 }
 
+.hero--card {
+    margin: 3rem 1.5rem 0;
+    border-radius: 24px;
+    justify-content: center;
+}
+
+.hero--card .hero-content {
+    align-items: center;
+    text-align: center;
+    padding: 0 1.5rem 3rem;
+    gap: 1rem;
+}
+
+.hero--card .hero-h1-text {
+    font-size: clamp(2rem, 5vw, 3.5rem) !important;
+    text-align: center !important;
+}
+
+.hero--card .hero-tagline {
+    font-size: 1rem;
+    margin: 0;
+    text-align: center;
+}
+
+.hero--card .hero-cta {
+    margin-top: 0.5rem;
+}
+
 .hero-bg {
     position: absolute;
     inset: 0;
@@ -801,7 +829,7 @@ img {
 
 .hero-eyebrow {
     font-size: 0.8rem;
-    font-weight: 600;
+    font-weight: 400;
     letter-spacing: 0.02em;
     color: rgba(255, 255, 255, 0.7);
 }
@@ -830,14 +858,12 @@ img {
     pointer-events: none;
 }
 
-.hero-h1-one {
-    text-transform: uppercase;
-}
+
 
 .hero-tagline {
     font-family: 'Arial', sans-serif;
     font-size: 1.1rem;
-    font-weight: 600;
+    font-weight: 400;
     color: var(--white);
     line-height: 1.4;
     margin: 0 0 0.75rem;
@@ -912,7 +938,7 @@ img {
   padding: 0.875rem 2.25rem;
   border-radius: 28px;
   font-size: 0.95rem;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 0.04em;
   text-decoration: none;
   border: 2px solid transparent;
@@ -978,9 +1004,10 @@ img {
   flex-wrap: wrap;
 }
 
+
 .hero-cta-band {
   background: var(--bg);
-  padding: 2.5rem 1.5rem;
+  padding: 1.25rem 1.5rem 2.5rem;
   display: flex;
   justify-content: center;
 }
@@ -1027,7 +1054,7 @@ img {
 
 .social-proof strong {
     color: #111;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 /* Footer */
@@ -1271,11 +1298,11 @@ img {
     align-items: center;
     justify-content: center;
     border-radius: 999px;
-    transition: background 0.2s ease;
+    transition: opacity 0.2s ease;
 }
 
 .newsletter-close:hover {
-    background: rgba(255, 255, 255, 0.08);
+    opacity: 0.55;
 }
 
 .newsletter-title {
@@ -1283,6 +1310,7 @@ img {
     font-weight: 700;
     color: var(--white);
     margin-bottom: 0.5rem;
+    padding-right: 2rem;
     line-height: 1.25;
 }
 
