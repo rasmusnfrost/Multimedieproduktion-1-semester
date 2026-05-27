@@ -18,7 +18,7 @@
             </a>
         </div>
 
-    <nav class="nav-center">
+    <nav class="navCenter">
         <ul>
             <li><a href="#" id="navShop">Shop</a></li>
             <li><a href="#">Om os</a></li>
@@ -26,17 +26,17 @@
         </ul>
     </nav>
 
-    <form class="nav-search" id="navSearch" role="search" onsubmit="event.preventDefault()">
-        <svg class="nav-search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <form class="navSearch" id="navSearch" role="search" onsubmit="event.preventDefault()">
+        <svg class="navSearchIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/>
             <path d="M20 20L17 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </svg>
         <input type="search" id="navSearchInput" placeholder="Søg..." aria-label="Søg" autocomplete="off">
     </form>
 
-    <div class="nav-icons">
-        <a href="#" id="searchTrigger" class="nav-icon-search" aria-label="Åbn søgning"><img src="/images/icon-search.svg" alt="Søg"></a>
-        <button type="button" id="navSearchClose" class="nav-icon-close" aria-label="Luk søgning">
+    <div class="navIcons">
+        <a href="#" id="searchTrigger" class="navIconSearch" aria-label="Åbn søgning"><img src="/images/icon-search.svg" alt="Søg"></a>
+        <button type="button" id="navSearchClose" class="navIconClose" aria-label="Luk søgning">
             <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
                 <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
             </svg>
@@ -50,25 +50,25 @@
 
 <main>
 
-    <!-- Hero sektion med video-->
+    <!-- Hero sektion -->
 
-    <div class="hero hero--card hero--main">
-    <img class="hero-bg is-active" src="/images/hero-product.png" alt="">
-    <div class="hero-overlay"></div>
-    <article class="hero-content">
-        <h1 class="hero-h1-text"><span class="hero-h1-lumina">Lumina</span> <span class="hero-h1-one">ONE</span></h1>
-        <div class="hero-cta">
-            <a href="#" class="btn btn-white" id="heroBuyBtn">Køb nu</a>
-            <a href="#" class="btn btn-ghost" id="heroLearnBtn">Lær mere</a>
+    <div class="hero heroCard heroMain">
+    <img class="heroBg isActive" src="/images/hero-product.png" alt="">
+    <div class="heroOverlay"></div>
+    <article class="heroContent">
+        <h1 class="heroH1Text"><span class="heroH1Lumina">Lumina</span> <span class="heroH1One">ONE</span></h1>
+        <div class="heroCta">
+            <a href="#" class="btn btnWhite" id="heroBuyBtn">Køb nu</a>
+            <a href="#" class="btn btnGhost" id="heroLearnBtn">Lær mere</a>
         </div>
     </article>
 </div>
 <!-- Produkt showcase -->
 <section class="showcase">
     <div class="container">
-        <div class="showcase-card">
-        <div class="showcase-layout">
-            <div class="showcase-visual">
+        <div class="showcaseCard">
+        <div class="showcaseLayout">
+            <div class="showcaseVisual">
                 <div class="slider">
                     <div class="slides">
                         <div class="slide"><img src="/images/speaker-sage.png" alt="LUMINA ONE i sage"></div>
@@ -79,68 +79,68 @@
                 </div>
             </div>
 
-            <div class="showcase-content">
+            <div class="showcaseContent">
                 <p class="eyebrow">Fås i fire farver</p>
                 <h2>Vælg din stemning</h2>
                 <p class="lede">Støvede toner skabt til at passe ind hjemme, på stranden og overalt derimellem. Vælg farven der matcher dig.</p>
 
-                <div class="color-picker">
+                <div class="colorPicker">
                     <button class="dot active" style="background-color: #a8bfa3;" aria-label="Sage"></button>
                     <button class="dot" style="background-color: #baa3bf;" aria-label="Lavendel"></button>
                     <button class="dot" style="background-color: #aca3bf;" aria-label="Blå-lilla"></button>
                     <button class="dot" style="background-color: #F1EDE2;" aria-label="Cream"></button>
                 </div>
-                <p class="color-name" id="colorName">Sage</p>
+                <p class="colorName" id="colorName">Sage</p>
 
-                <div class="showcase-price">
-                    <span class="price-amount">1.499</span>
-                    <span class="price-currency">kr.</span>
+                <div class="showcasePrice">
+                    <span class="priceAmount">1.499</span>
+                    <span class="priceCurrency">kr.</span>
                 </div>
 
-                <a href="#" class="btn btn-white" id="showcaseCartBtn">Læg i kurv</a>
+                <a href="#" class="btn btnWhite" id="showcaseCartBtn">Læg i kurv</a>
             </div>
         </div>
 
         <!-- Andre farver — fylder hele bredden under produktet -->
-        <div class="other-colors-block">
-            <div class="other-colors-header">
+        <div class="otherColorsBlock">
+            <div class="otherColorsHeader">
                 <p class="eyebrow">Fås også i</p>
             </div>
-            <div class="other-colors-grid">
-                <button type="button" class="color-tile" data-color-index="0" style="--tile-color: #a8bfa3;">
-                    <div class="color-tile-visual">
+            <div class="otherColorsGrid">
+                <button type="button" class="colorTile" data-color-index="0">
+                    <div class="colorTileVisual">
                         <img src="/images/speaker-sage.png" alt="LUMINA One i Sage">
                     </div>
-                    <div class="color-tile-meta">
-                        <p class="color-tile-name">sage</p>
-                        <p class="color-tile-price">1.499 kr.</p>
+                    <div class="colorTileMeta">
+                        <p class="colorTileName">sage</p>
+                        <p class="colorTilePrice">1.499 kr.</p>
                     </div>
                 </button>
-                <button type="button" class="color-tile" data-color-index="1" style="--tile-color: #baa3bf;">
-                    <div class="color-tile-visual">
+                <button type="button" class="colorTile" data-color-index="1">
+                    <div class="colorTileVisual">
                         <img src="/images/speaker-lavendel.png" alt="LUMINA One i Lavendel">
                     </div>
-                    <div class="color-tile-meta">
-                        <p class="color-tile-name">lavendel</p>
-                        <p class="color-tile-price">1.499 kr.</p>
+                    <div class="colorTileMeta">
+                        <p class="colorTileName">lavendel</p>
+                        <p class="colorTilePrice">1.499 kr.</p>
                     </div>
                 </button>
-                <button type="button" class="color-tile" data-color-index="2" style="--tile-color: #aca3bf;">
-                    <div class="color-tile-visual">
+                <button type="button" class="colorTile" data-color-index="2">
+                    <div class="colorTileVisual">
                         <img src="/images/speaker-blalilla.png" alt="LUMINA One i Blå-lilla">
                     </div>
-                    <div class="color-tile-meta">
-                        <p class="color-tile-name">blå-lilla</p>
-                        <p class="color-tile-price">1.499 kr.</p>
+                    <div class="colorTileMeta">
+                        <p class="colorTileName">blå-lilla</p>
+                        <p class="colorTilePrice">1.499 kr.</p>
                     </div>
                 </button>
-                <button type="button" class="color-tile" data-color-index="3" style="--tile-color: #F1EDE2;">
-                    <div class="color-tile-visual">
+                <button type="button" class="colorTile" data-color-index="3">
+                    <div class="colorTileVisual">
                         <img src="/images/speaker-cream.png" alt="LUMINA One i Cream">
                     </div>
-                    <div class="color-tile-meta">
-                        <p class="color-tile-name">cream</p>
-                        <p class="color-tile-price">1.499 kr.</p>
+                    <div class="colorTileMeta">
+                        <p class="colorTileName">cream</p>
+                        <p class="colorTilePrice">1.499 kr.</p>
                     </div>
                 </button>
             </div>
@@ -152,66 +152,66 @@
 <!-- Trustpilot reviews -->
 <section class="trustpilot" aria-label="Trustpilot-anmeldelser">
     <div class="container">
-        <div class="trustpilot-card">
-            <header class="trustpilot-header">
-                <p class="trustpilot-rating-label">Fremragende</p>
-                <div class="trustpilot-stars" aria-label="5 ud af 5 stjerner">
-                    <img src="/images/trustpilot-star.svg" alt="" class="trustpilot-star trustpilot-star--lg">
-                    <img src="/images/trustpilot-star.svg" alt="" class="trustpilot-star trustpilot-star--lg">
-                    <img src="/images/trustpilot-star.svg" alt="" class="trustpilot-star trustpilot-star--lg">
-                    <img src="/images/trustpilot-star.svg" alt="" class="trustpilot-star trustpilot-star--lg">
-                    <img src="/images/trustpilot-star.svg" alt="" class="trustpilot-star trustpilot-star--lg">
+        <div class="trustpilotCard">
+            <header class="trustpilotHeader">
+                <p class="trustpilotRatingLabel">Fremragende</p>
+                <div class="trustpilotStars" aria-label="5 ud af 5 stjerner">
+                    <img src="/images/trustpilot-star.svg" alt="" class="trustpilotStar trustpilotStarLg">
+                    <img src="/images/trustpilot-star.svg" alt="" class="trustpilotStar trustpilotStarLg">
+                    <img src="/images/trustpilot-star.svg" alt="" class="trustpilotStar trustpilotStarLg">
+                    <img src="/images/trustpilot-star.svg" alt="" class="trustpilotStar trustpilotStarLg">
+                    <img src="/images/trustpilot-star.svg" alt="" class="trustpilotStar trustpilotStarLg">
                 </div>
-                <p class="trustpilot-count">Baseret på <strong>1.247</strong> anmeldelser på
-                    <span class="trustpilot-brand">
-                        <img src="/images/trustpilot-star.svg" alt="" class="trustpilot-star trustpilot-star--xs">
+                <p class="trustpilotCount">Baseret på <strong>1.247</strong> anmeldelser på
+                    <span class="trustpilotBrand">
+                        <img src="/images/trustpilot-star.svg" alt="" class="trustpilotStar trustpilotStarXs">
                         Trustpilot
                     </span>
                 </p>
             </header>
 
-            <div class="trustpilot-reviews">
-                <article class="trustpilot-review">
-                    <div class="trustpilot-review-stars" aria-label="5 ud af 5 stjerner">
-                        <img src="/images/trustpilot-star.svg" alt="" class="trustpilot-star trustpilot-star--sm">
-                        <img src="/images/trustpilot-star.svg" alt="" class="trustpilot-star trustpilot-star--sm">
-                        <img src="/images/trustpilot-star.svg" alt="" class="trustpilot-star trustpilot-star--sm">
-                        <img src="/images/trustpilot-star.svg" alt="" class="trustpilot-star trustpilot-star--sm">
-                        <img src="/images/trustpilot-star.svg" alt="" class="trustpilot-star trustpilot-star--sm">
+            <div class="trustpilotReviews">
+                <article class="trustpilotReview">
+                    <div class="trustpilotReviewStars" aria-label="5 ud af 5 stjerner">
+                        <img src="/images/trustpilot-star.svg" alt="" class="trustpilotStar trustpilotStarSm">
+                        <img src="/images/trustpilot-star.svg" alt="" class="trustpilotStar trustpilotStarSm">
+                        <img src="/images/trustpilot-star.svg" alt="" class="trustpilotStar trustpilotStarSm">
+                        <img src="/images/trustpilot-star.svg" alt="" class="trustpilotStar trustpilotStarSm">
+                        <img src="/images/trustpilot-star.svg" alt="" class="trustpilotStar trustpilotStarSm">
                     </div>
-                    <h3 class="trustpilot-review-title">"Lyden fylder hele stuen"</h3>
-                    <p class="trustpilot-review-body">Jeg er målløs over hvor godt den lille højtaler lyder. Har lige købt en til min søster også.</p>
-                    <p class="trustpilot-review-author">Mathilde V. <span>· 12. maj 2026</span></p>
+                    <h3 class="trustpilotReviewTitle">"Lyden fylder hele stuen"</h3>
+                    <p class="trustpilotReviewBody">Jeg er målløs over hvor godt den lille højtaler lyder. Har lige købt en til min søster også.</p>
+                    <p class="trustpilotReviewAuthor">Mathilde V. <span>· 12. maj 2026</span></p>
                 </article>
 
-                <article class="trustpilot-review">
-                    <div class="trustpilot-review-stars" aria-label="5 ud af 5 stjerner">
-                        <img src="/images/trustpilot-star.svg" alt="" class="trustpilot-star trustpilot-star--sm">
-                        <img src="/images/trustpilot-star.svg" alt="" class="trustpilot-star trustpilot-star--sm">
-                        <img src="/images/trustpilot-star.svg" alt="" class="trustpilot-star trustpilot-star--sm">
-                        <img src="/images/trustpilot-star.svg" alt="" class="trustpilot-star trustpilot-star--sm">
-                        <img src="/images/trustpilot-star.svg" alt="" class="trustpilot-star trustpilot-star--sm">
+                <article class="trustpilotReview">
+                    <div class="trustpilotReviewStars" aria-label="5 ud af 5 stjerner">
+                        <img src="/images/trustpilot-star.svg" alt="" class="trustpilotStar trustpilotStarSm">
+                        <img src="/images/trustpilot-star.svg" alt="" class="trustpilotStar trustpilotStarSm">
+                        <img src="/images/trustpilot-star.svg" alt="" class="trustpilotStar trustpilotStarSm">
+                        <img src="/images/trustpilot-star.svg" alt="" class="trustpilotStar trustpilotStarSm">
+                        <img src="/images/trustpilot-star.svg" alt="" class="trustpilotStar trustpilotStarSm">
                     </div>
-                    <h3 class="trustpilot-review-title">"Strandens nye MVP"</h3>
-                    <p class="trustpilot-review-body">Vi bruger Lumina One til alle vores strand-fester. Batteriet holder, og ambient-lyset om aftenen er sygt fedt.</p>
-                    <p class="trustpilot-review-author">Frederik K. <span>· 28. april 2026</span></p>
+                    <h3 class="trustpilotReviewTitle">"Strandens nye MVP"</h3>
+                    <p class="trustpilotReviewBody">Vi bruger Lumina One til alle vores strand-fester. Batteriet holder, og ambient-lyset om aftenen er sygt fedt.</p>
+                    <p class="trustpilotReviewAuthor">Frederik K. <span>· 28. april 2026</span></p>
                 </article>
 
-                <article class="trustpilot-review">
-                    <div class="trustpilot-review-stars" aria-label="5 ud af 5 stjerner">
-                        <img src="/images/trustpilot-star.svg" alt="" class="trustpilot-star trustpilot-star--sm">
-                        <img src="/images/trustpilot-star.svg" alt="" class="trustpilot-star trustpilot-star--sm">
-                        <img src="/images/trustpilot-star.svg" alt="" class="trustpilot-star trustpilot-star--sm">
-                        <img src="/images/trustpilot-star.svg" alt="" class="trustpilot-star trustpilot-star--sm">
-                        <img src="/images/trustpilot-star.svg" alt="" class="trustpilot-star trustpilot-star--sm">
+                <article class="trustpilotReview">
+                    <div class="trustpilotReviewStars" aria-label="5 ud af 5 stjerner">
+                        <img src="/images/trustpilot-star.svg" alt="" class="trustpilotStar trustpilotStarSm">
+                        <img src="/images/trustpilot-star.svg" alt="" class="trustpilotStar trustpilotStarSm">
+                        <img src="/images/trustpilot-star.svg" alt="" class="trustpilotStar trustpilotStarSm">
+                        <img src="/images/trustpilot-star.svg" alt="" class="trustpilotStar trustpilotStarSm">
+                        <img src="/images/trustpilot-star.svg" alt="" class="trustpilotStar trustpilotStarSm">
                     </div>
-                    <h3 class="trustpilot-review-title">"Connect-appen er genial"</h3>
-                    <p class="trustpilot-review-body">Endelig en højtaler hvor alle kan tilføje sange uden at bryde Bluetooth-forbindelsen. Klart sin pris værd.</p>
-                    <p class="trustpilot-review-author">Sofie L. <span>· 5. april 2026</span></p>
+                    <h3 class="trustpilotReviewTitle">"Connect-appen er genial"</h3>
+                    <p class="trustpilotReviewBody">Endelig en højtaler hvor alle kan tilføje sange uden at bryde Bluetooth-forbindelsen. Klart sin pris værd.</p>
+                    <p class="trustpilotReviewAuthor">Sofie L. <span>· 5. april 2026</span></p>
                 </article>
             </div>
 
-            <a href="#" class="trustpilot-cta">Se alle anmeldelser på Trustpilot →</a>
+            <a href="#" class="trustpilotCta">Se alle anmeldelser på Trustpilot →</a>
         </div>
     </div>
 </section>
@@ -219,59 +219,59 @@
 <!-- Funktioner / features -->
 <section class="features">
     <div class="container">
-        <div class="features-figure">
-            <img class="features-image" src="/images/detaljer.png" alt="LUMINA One i vandsprøjt">
-            <div class="feature-label feature-label--tl">
-                <h3 class="feature-stat">3 kg</h3>
-                <p class="feature-desc">IPX5 vandafvisende. Let nok til tote-bag'en, til alle slags vejr.</p>
+        <div class="featuresFigure">
+            <img class="featuresImage" src="/images/detaljer.png" alt="LUMINA One i vandsprøjt">
+            <div class="featureLabel featureLabelTl">
+                <h3 class="featureStat">3 kg</h3>
+                <p class="featureDesc">IPX5 vandafvisende. Let nok til tote-bag'en, til alle slags vejr.</p>
             </div>
-            <div class="feature-label feature-label--ml">
-                <h3 class="feature-stat">18t</h3>
-                <p class="feature-desc">Batteri der holder hele dagen og natten på samme opladning. USB-C.</p>
+            <div class="featureLabel featureLabelMl">
+                <h3 class="featureStat">18t</h3>
+                <p class="featureDesc">Batteri der holder hele dagen og natten på samme opladning. USB-C.</p>
             </div>
-            <div class="feature-label feature-label--bl">
-                <h3 class="feature-stat">LED</h3>
-                <p class="feature-desc">Ambient-lys der følger musikken — chill, party eller sunset.</p>
+            <div class="featureLabel featureLabelBl">
+                <h3 class="featureStat">LED</h3>
+                <p class="featureDesc">Ambient-lys der følger musikken — chill, party eller sunset.</p>
             </div>
-            <div class="feature-label feature-label--tr">
-                <h3 class="feature-stat">100 dB</h3>
-                <p class="feature-desc">Lyd der fylder et udendørs rum uden at blive voldsom.</p>
+            <div class="featureLabel featureLabelTr">
+                <h3 class="featureStat">100 dB</h3>
+                <p class="featureDesc">Lyd der fylder et udendørs rum uden at blive voldsom.</p>
             </div>
-            <div class="feature-label feature-label--mr">
-                <h3 class="feature-stat">5.3</h3>
-                <p class="feature-desc">Bluetooth 5.3 — par op til 3 Lumina One enheder for større lyd.</p>
+            <div class="featureLabel featureLabelMr">
+                <h3 class="featureStat">5.3</h3>
+                <p class="featureDesc">Bluetooth 5.3 — par op til 3 Lumina One enheder for større lyd.</p>
             </div>
-            <div class="feature-label feature-label--br">
-                <h3 class="feature-stat">Social</h3>
-                <p class="feature-desc">Alle bidrager til playlisten direkte fra deres telefon. Connect-app.</p>
+            <div class="featureLabel featureLabelBr">
+                <h3 class="featureStat">Social</h3>
+                <p class="featureDesc">Alle bidrager til playlisten direkte fra deres telefon. Connect-app.</p>
             </div>
         </div>
     </div>
 </section>
 
 <!-- Final CTA -->
-<section class="final-cta" aria-label="Bestil din Lumina One">
+<section class="finalCta" aria-label="Bestil din Lumina One">
     <div class="container">
-        <div class="final-cta-card">
-            <h2 class="final-cta-text">klar til at tage<br><em>stemningen med?</em></h2>
-            <a href="#" class="btn btn-white final-cta-btn">køb lumina one →</a>
+        <div class="finalCtaCard">
+            <h2 class="finalCtaText">klar til at tage<br><em>stemningen med?</em></h2>
+            <a href="#" class="btn btnWhite finalCtaBtn">køb lumina one →</a>
         </div>
     </div>
 </section>
 
 <!-- Connect promo (image + overlay text) -->
-<section class="connect-promo">
-    <div class="connect-promo-figure">
-        <img class="connect-promo-img" src="/images/connect-promo.png" alt="LUMINA One i hånd og Connect-app på iPhone">
+<section class="connectPromo">
+    <div class="connectPromoFigure">
+        <img class="connectPromoImg" src="/images/connect-promo.png" alt="LUMINA One i hånd og Connect-app på iPhone">
 
-        <div class="connect-promo-left">
-            <p class="eyebrow">Connect-appen</p>
-            <h2 class="connect-promo-title">Del musikken.<br>Del stemningen.</h2>
-            <p class="connect-promo-lede">Social Connect er appen,<br>der gør det nemt at forbinde venner<br>direkte til din LUMINA One.</p>
+        <div class="connectPromoLeft">
+            <p class="eyebrow">connect-appen</p>
+            <h2 class="connectPromoTitle">sammen<br>om<br>lyden</h2>
+            <p class="connectPromoLede">vær sammen om playlisten<br>med lumina one</p>
         </div>
 
-        <div class="connect-promo-right">
-            <ol class="connect-promo-functions">
+        <div class="connectPromoRight">
+            <ol class="connectPromoFunctions">
                 <li><span>01</span><div><strong>Blend playlister i realtid.</strong> Flere brugere tilføjer sange direkte til køen.</div></li>
                 <li><span>02</span><div><strong>Nem tilkobling.</strong> Forbind via Bluetooth på få sekunder.</div></li>
                 <li><span>03</span><div><strong>Styr stemningen.</strong> Synkronisér musik med ambient-lys.</div></li>
@@ -280,7 +280,7 @@
             </ol>
         </div>
 
-        <div class="connect-promo-cta">
+        <div class="connectPromoCta">
             <a href="#" aria-label="Hent i App Store"><img src="/images/appstore-badge.svg" alt="Hent i App Store"></a>
             <a href="#" aria-label="Hent på Google Play"><img src="/images/googleplay-badge.svg" alt="Hent på Google Play"></a>
         </div>
@@ -288,38 +288,15 @@
 </section>
 
 <!-- Social Connects -->
-<section class="social-connect">
-    <div class="social-split">
-        <div class="social-card social-card--half social-card--text">
-            <div class="social-content">
+<section class="socialConnect">
+    <div class="socialSplit">
+        <div class="socialCard socialCardHalf socialCardText">
+            <div class="socialContent">
                 <p class="eyebrow">Connect-appen</p>
-                <h2 class="social-title">Del musikken. <span class="social-title-accent">Del stemningen.</span></h2>
-                <p class="social-lede">Social Connect er appen, der gør det nemt at forbinde venner direkte til din LUMINA One. Strandtur, forfest eller park-picnic — alle bidrager til playlisten, helt uden besvær.</p>
+                <h2 class="socialTitle">Del musikken.<br>Del stemningen.</h2>
+                <p class="socialLede">Social Connect er appen,<br>der gør det nemt at forbinde venner<br>direkte til din LUMINA One.</p>
 
-                <ol class="social-functions">
-                    <li style="--accent: var(--fv1-bright);">
-                        <span class="social-num">01</span>
-                        <div><strong>Blend playlister i realtid.</strong> Flere brugere tilføjer sange direkte til køen.</div>
-                    </li>
-                    <li style="--accent: var(--fv2-bright);">
-                        <span class="social-num">02</span>
-                        <div><strong>Nem tilkobling.</strong> Forbind via Bluetooth på få sekunder.</div>
-                    </li>
-                    <li style="--accent: var(--fv3-bright);">
-                        <span class="social-num">03</span>
-                        <div><strong>Styr stemningen.</strong> Synkronisér musik med ambient-lys — chill, party eller sunset.</div>
-                    </li>
-                    <li style="--accent: var(--fv3-bright);">
-                        <span class="social-num">04</span>
-                        <div><strong>Host-kontrol.</strong> Værten godkender sange, styrer rækkefølge og lydniveau.</div>
-                    </li>
-                    <li style="--accent: var(--fv1-bright);">
-                        <span class="social-num">05</span>
-                        <div><strong>Multi-speaker pairing.</strong> Forbind op til 3 LUMINA One enheder samtidigt.</div>
-                    </li>
-                </ol>
-
-                <div class="app-cta app-cta--social">
+                <div class="appCta appCtaSocial">
                     <a href="#" aria-label="Download i App Store">
                         <img src="/images/appstore-badge.svg" alt="Hent i App Store">
                     </a>
@@ -330,9 +307,9 @@
             </div>
         </div>
 
-        <div class="social-card social-card--half social-card--visual">
-            <div class="social-visual">
-                <img class="social-phone" src="/images/connect-app.png" alt="Social Connect app">
+        <div class="socialCard socialCardHalf socialCardVisual">
+            <div class="socialVisual">
+                <img class="socialPhone" src="/images/connect-app.png" alt="Social Connect app">
             </div>
         </div>
     </div>
@@ -343,69 +320,69 @@
 <!-- Fællesskab / brugerbilleder (masonry) -->
 <section class="community" aria-label="Forevig dine minder med #lumina">
     <div class="container">
-        <div class="community-card-wrap">
-        <header class="section-header">
+        <div class="communityCardWrap">
+        <header class="sectionHeader">
             <p class="eyebrow">Fra fællesskabet</p>
-            <h2>Forevig dine minder med <span class="lede-hashtag">#lumina</span></h2>
-            <p class="section-lede">Del dine billeder med #lumina på Instagram for en chance for at vinde en helt ny <img src="/images/lumina-logo.svg" alt="LUMINA" class="lede-inline-logo"> højtaler</p>
+            <h2>Forevig dine minder med <span class="ledeHashtag">#lumina</span></h2>
+            <p class="sectionLede">Del dine billeder med #lumina på Instagram for en chance for at vinde en helt ny <img src="/images/lumina-logo.svg" alt="LUMINA" class="ledeInlineLogo"> højtaler</p>
         </header>
 
-        <div class="community-collage">
-            <article class="community-card community-card--a">
-                <img class="community-card-img" src="/images/community-1.jpg" alt="LUMINA i hverdagen">
-                <div class="community-card-overlay">
-                    <div class="community-card-meta">
-                        <img class="community-card-avatar" src="https://randomuser.me/api/portraits/women/68.jpg" alt="">
+        <div class="communityCollage">
+            <article class="communityCard communityCardA">
+                <img class="communityCardImg" src="/images/community-1.jpg" alt="LUMINA i hverdagen">
+                <div class="communityCardOverlay">
+                    <div class="communityCardMeta">
+                        <img class="communityCardAvatar" src="/images/avatar-women-68.jpg" alt="">
                         <span>@sofielarsen2002</span>
                     </div>
                 </div>
             </article>
 
-            <article class="community-card community-card--b">
-                <img class="community-card-img" src="/images/community-2.jpg" alt="LUMINA i hverdagen">
-                <div class="community-card-overlay">
-                    <div class="community-card-meta">
-                        <img class="community-card-avatar" src="https://randomuser.me/api/portraits/women/44.jpg" alt="">
+            <article class="communityCard communityCardB">
+                <img class="communityCardImg" src="/images/community-2.jpg" alt="LUMINA i hverdagen">
+                <div class="communityCardOverlay">
+                    <div class="communityCardMeta">
+                        <img class="communityCardAvatar" src="/images/avatar-women-44.jpg" alt="">
                         <span>@anna_bech</span>
                     </div>
                 </div>
             </article>
 
-            <article class="community-card community-card--c">
-                <img class="community-card-img" src="/images/community-3.jpg" alt="LUMINA i hverdagen">
-                <div class="community-card-overlay">
-                    <div class="community-card-meta">
-                        <img class="community-card-avatar" src="https://randomuser.me/api/portraits/women/11.jpg" alt="">
+            <article class="communityCard communityCardC">
+                <img class="communityCardImg" src="/images/community-3.jpg" alt="LUMINA i hverdagen">
+                <div class="communityCardOverlay">
+                    <div class="communityCardMeta">
+                        <img class="communityCardAvatar" src="/images/avatar-women-11.jpg" alt="">
                         <span>@emma.hansen</span>
                     </div>
                 </div>
             </article>
 
-            <article class="community-card community-card--d">
-                <img class="community-card-img" src="/images/community-4.jpg" alt="LUMINA i hverdagen">
-                <div class="community-card-overlay">
-                    <div class="community-card-meta">
-                        <img class="community-card-avatar" src="https://randomuser.me/api/portraits/women/79.jpg" alt="">
+            <article class="communityCard communityCardD">
+                <img class="communityCardImg" src="/images/community-4.jpg" alt="LUMINA i hverdagen">
+                <div class="communityCardOverlay">
+                    <div class="communityCardMeta">
+                        <img class="communityCardAvatar" src="/images/avatar-women-79.jpg" alt="">
                         <span>@frederikkelund</span>
                     </div>
                 </div>
             </article>
 
-            <article class="community-card community-card--e">
-                <img class="community-card-img" src="/images/community-6.jpg" alt="LUMINA i hverdagen">
-                <div class="community-card-overlay">
-                    <div class="community-card-meta">
-                        <img class="community-card-avatar" src="https://randomuser.me/api/portraits/women/64.jpg" alt="">
+            <article class="communityCard communityCardE">
+                <img class="communityCardImg" src="/images/community-6.jpg" alt="LUMINA i hverdagen">
+                <div class="communityCardOverlay">
+                    <div class="communityCardMeta">
+                        <img class="communityCardAvatar" src="/images/avatar-women-64.jpg" alt="">
                         <span>@mathildev_</span>
                     </div>
                 </div>
             </article>
 
-            <article class="community-card community-card--f">
-                <img class="community-card-img" src="/images/community-9.jpg" alt="LUMINA i hverdagen">
-                <div class="community-card-overlay">
-                    <div class="community-card-meta">
-                        <img class="community-card-avatar" src="https://randomuser.me/api/portraits/men/56.jpg" alt="">
+            <article class="communityCard communityCardF">
+                <img class="communityCardImg" src="/images/community-9.jpg" alt="LUMINA i hverdagen">
+                <div class="communityCardOverlay">
+                    <div class="communityCardMeta">
+                        <img class="communityCardAvatar" src="/images/avatar-men-56.jpg" alt="">
                         <span>@jonaskjaer</span>
                     </div>
                 </div>
@@ -416,15 +393,15 @@
     </div>
 </section>
 
-<footer class="site-footer">
-    <div class="footer-card">
-        <h2 class="footer-wordmark" aria-label="LUMINA">LUMINA</h2>
+<footer class="siteFooter">
+    <div class="footerCard">
+        <h2 class="footerWordmark" aria-label="LUMINA">LUMINA</h2>
 
-        <div class="footer-mid">
-            <p class="footer-tagline">
-                Et <img src="/images/lumina-logo.svg" alt="LUMINA" class="footer-tagline-logo"> Brand
+        <div class="footerMid">
+            <p class="footerTagline">
+                Et <img src="/images/lumina-logo.svg" alt="LUMINA" class="footerTaglineLogo"> Brand
             </p>
-            <div class="footer-apps">
+            <div class="footerApps">
                 <a href="#" aria-label="Download i App Store">
                     <img src="/images/appstore-badge.svg" alt="Hent i App Store">
                 </a>
@@ -434,13 +411,13 @@
             </div>
         </div>
 
-        <div class="footer-bot">
-            <div class="footer-info">
+        <div class="footerBot">
+            <div class="footerInfo">
                 <p>Alle priser inkluderer dansk moms. Gratis fragt på ordrer over 500 kr. Lyd-specifikationer er målt i LUMINA's eget akustik-laboratorium i Aarhus pr. 01/05/2026 og kan variere afhængigt af miljø og brug.</p>
                 <p>LUMINA er et lifestyle audio-brand, ikke professionelt studie-udstyr.</p>
                 <p>**Funktioner og tilgængelighed kan variere afhængigt af region og forhandler.</p>
             </div>
-            <ul class="footer-links">
+            <ul class="footerLinks">
                 <li><a href="mailto:support@lumina.dk">support@lumina.dk</a></li>
                 <li><a href="#">LUMINA Business</a></li>
                 <li><a href="#">Hjælpecenter</a></li>
@@ -449,156 +426,31 @@
         </div>
     </div>
 
-    <p class="footer-meta">LUMINA Audio ApS &nbsp;&nbsp; Lavet med kærlighed i Aarhus &nbsp;&nbsp; &copy;2026</p>
+    <p class="footerMeta">LUMINA Audio ApS &nbsp;&nbsp; Lavet med kærlighed i Aarhus &nbsp;&nbsp; &copy;2026</p>
 </footer>
 
 
-<aside class="newsletter-popup" id="newsletterPopup">
-    <button class="newsletter-close" id="newsletterClose" aria-label="Luk">
+<aside class="newsletterPopup" id="newsletterPopup">
+    <button class="newsletterClose" id="newsletterClose" aria-label="Luk">
         <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
             <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
     </button>
-    <h3 class="newsletter-title">Få 10% rabat på din første ordre</h3>
-    <p class="newsletter-sub">Tilmeld dig vores månedlige nyhedsbrev. Det er det hele!</p>
-    <form class="newsletter-form" onsubmit="event.preventDefault()">
+    <h3 class="newsletterTitle">Få 10% rabat på din første ordre</h3>
+    <p class="newsletterSub">Tilmeld dig vores månedlige nyhedsbrev. Det er det hele!</p>
+    <form class="newsletterForm" onsubmit="event.preventDefault()">
         <label for="newsletterEmail">Email</label>
         <input type="email" id="newsletterEmail" name="email" autocomplete="email">
-        <button type="submit" class="newsletter-submit">tilmeld</button>
+        <button type="submit" class="newsletterSubmit">tilmeld</button>
     </form>
-    <label class="newsletter-checkbox">
+    <label class="newsletterCheckbox">
         <input type="checkbox">
         <span>Jeg har læst og accepterer <a href="#">handelsbetingelser</a> og <a href="#">privatlivspolitik</a>.</span>
     </label>
-    <p class="newsletter-disclaimer">Rabatkoden kan ikke kombineres med andre tilbud.</p>
+    <p class="newsletterDisclaimer">Rabatkoden kan ikke kombineres med andre tilbud.</p>
 </aside>
 
-<script>
-document.getElementById('newsletterClose').addEventListener('click', () => {
-    document.getElementById('newsletterPopup').classList.add('is-hidden');
-});
-
-document.getElementById('logoLink').addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-/* === Inline nav search (visuel toggle) === */
-const navEl = document.querySelector('.nav');
-const navSearchTrigger = document.getElementById('searchTrigger');
-const navSearchInput = document.getElementById('navSearchInput');
-const navSearchClose = document.getElementById('navSearchClose');
-
-function closeNavSearch() {
-    navEl.classList.remove('is-searching');
-    navSearchInput.value = '';
-}
-
-navSearchTrigger.addEventListener('click', (e) => {
-    e.preventDefault();
-    navEl.classList.add('is-searching');
-    setTimeout(() => navSearchInput.focus(), 50);
-});
-
-navSearchClose.addEventListener('click', closeNavSearch);
-
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && navEl.classList.contains('is-searching')) closeNavSearch();
-});
-
-/* === Gallery cards + cart buttons: klik scroller op til "Fås i fire farver" === */
-function scrollToShowcase(e) {
-    if (e) e.preventDefault();
-    const showcase = document.querySelector('.showcase');
-    if (showcase) showcase.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
-document.querySelectorAll('.insta-item').forEach(item => {
-    item.addEventListener('click', scrollToShowcase);
-    item.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            scrollToShowcase();
-        }
-    });
-});
-
-/* === Hero CTAs + showcase Læg i kurv === */
-const heroBuyBtn = document.getElementById('heroBuyBtn');
-const heroLearnBtn = document.getElementById('heroLearnBtn');
-const showcaseCartBtn = document.getElementById('showcaseCartBtn');
-
-if (heroBuyBtn) heroBuyBtn.addEventListener('click', scrollToShowcase);
-
-const navShop = document.getElementById('navShop');
-if (navShop) navShop.addEventListener('click', scrollToShowcase);
-
-if (heroLearnBtn) heroLearnBtn.addEventListener('click', e => {
-    e.preventDefault();
-    const features = document.querySelector('.features');
-    if (features) features.scrollIntoView({ behavior: 'smooth', block: 'start' });
-});
-
-if (showcaseCartBtn) showcaseCartBtn.addEventListener('click', e => e.preventDefault());
-
-/* === Hero slideshow (manuel — klik på dots) === */
-const heroSlides = document.querySelectorAll('.hero-bg');
-const heroDotBtns = document.querySelectorAll('.hero-dot');
-
-function showHeroSlide(i) {
-    heroSlides.forEach((img, n) => img.classList.toggle('is-active', n === i));
-    heroDotBtns.forEach((dot, n) => dot.classList.toggle('is-active', n === i));
-}
-
-heroDotBtns.forEach((dot, i) => {
-    dot.addEventListener('click', () => showHeroSlide(i));
-});
-
-</script>
-
-<script>
-const slides = document.querySelector('.slides');
-const dots = document.querySelectorAll('.dot');
-const colorName = document.getElementById('colorName');
-const colorLabels = ['Sage', 'Lavendel', 'Blå-lilla', 'Cream'];
-let index = 0;
-
-function updateSlider() {
-  slides.style.transform = `translateX(-${index * 100}%)`;
-  dots.forEach(dot => dot.classList.remove('active'));
-  dots[index].classList.add('active');
-  if (colorName) colorName.textContent = colorLabels[index];
-}
-
-const colorTiles = document.querySelectorAll('.color-tile');
-
-function updateColorTiles() {
-    colorTiles.forEach(tile => {
-        const i = parseInt(tile.dataset.colorIndex, 10);
-        tile.classList.toggle('is-current', i === index);
-    });
-}
-
-function setColor(i) {
-    index = i;
-    updateSlider();
-    updateColorTiles();
-}
-
-dots.forEach((dot, i) => {
-  dot.addEventListener('click', () => setColor(i));
-});
-
-colorTiles.forEach(tile => {
-    tile.addEventListener('click', () => {
-        const i = parseInt(tile.dataset.colorIndex, 10);
-        setColor(i);
-        document.querySelector('.showcase').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-});
-
-updateColorTiles();
-</script>
+<script src="/js/script.js" defer></script>
 
 </body>
 </html>
