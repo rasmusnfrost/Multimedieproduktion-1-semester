@@ -259,26 +259,6 @@
     </div>
 </section>
 
-<section class="gallery" aria-label="LUMINA i hverdagen">
-    <div class="gallery-viewport">
-        <div class="gallery-track" id="galleryTrack">
-            <div class="gallery-slide"><img src="/images/gallery-tall.png" alt="LUMINA i hverdagen"></div>
-            <div class="gallery-slide"><img src="/images/gallery-split-left.png" alt="LUMINA i hverdagen"></div>
-            <div class="gallery-slide"><img src="/images/gallery-split-right.png" alt="LUMINA i hverdagen"></div>
-        </div>
-        <button type="button" class="gallery-arrow gallery-arrow--prev" id="galleryPrev" aria-label="Forrige billede">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </button>
-        <button type="button" class="gallery-arrow gallery-arrow--next" id="galleryNext" aria-label="Næste billede">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </button>
-    </div>
-</section>
-
 <!-- Connect promo (image + overlay text) -->
 <section class="connect-promo">
     <div class="connect-promo-figure">
@@ -573,30 +553,6 @@ function showHeroSlide(i) {
 heroDotBtns.forEach((dot, i) => {
     dot.addEventListener('click', () => showHeroSlide(i));
 });
-
-/* === Gallery slider (3 billeder, arrows) === */
-const galleryTrack = document.getElementById('galleryTrack');
-const galleryPrev = document.getElementById('galleryPrev');
-const galleryNext = document.getElementById('galleryNext');
-
-if (galleryTrack && galleryPrev && galleryNext) {
-    const galleryCount = galleryTrack.children.length;
-    let galleryIndex = 0;
-
-    function updateGallery() {
-        galleryTrack.style.transform = `translateX(-${galleryIndex * 100}%)`;
-    }
-
-    galleryPrev.addEventListener('click', () => {
-        galleryIndex = (galleryIndex - 1 + galleryCount) % galleryCount;
-        updateGallery();
-    });
-
-    galleryNext.addEventListener('click', () => {
-        galleryIndex = (galleryIndex + 1) % galleryCount;
-        updateGallery();
-    });
-}
 
 </script>
 

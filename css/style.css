@@ -202,7 +202,7 @@ img {
 
 .color-name {
     font-size: 0.85rem;
-    color: #666;
+    color: #667;
     margin-bottom: 2rem;
     letter-spacing: 0.02em;
 }
@@ -224,7 +224,7 @@ img {
 
 .price-currency {
     font-size: 1rem;
-    color: #666;
+    color: #667;
 }
 
 /* === Andre farver — i samme white card under produkt-layout === */
@@ -1228,10 +1228,6 @@ img {
 /* Main hero only — keeps the polished centered layout independent of gallery cards */
 .hero--main {
     align-items: center;
-    width: calc(100% - 1.5rem);
-    margin: 0 0.75rem;
-    border-radius: 0 0 1.5rem 1.5rem;
-    overflow: hidden;
 }
 
 .hero--main .hero-content {
@@ -1277,7 +1273,7 @@ img {
 /* === Sektion: Gallery (slider — ét billede ad gangen + arrows) === */
 
 .gallery {
-    padding: 0.75rem 0;
+    padding: 0.375rem 0;
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
@@ -1285,7 +1281,7 @@ img {
 
 .gallery-viewport {
     position: relative;
-    border-radius: 1.5rem;
+    border-radius: 28px;
     overflow: hidden;
     aspect-ratio: 16 / 9;
     background: var(--white);
@@ -1661,7 +1657,7 @@ img {
 .final-cta-card {
     background: var(--fv4);
     border-radius: 28px;
-    padding: clamp(4rem, 9vw, 8rem) 2rem;
+    padding: clamp(4rem, 9vw, 8rem) 3rem;
     text-align: center;
     display: flex;
     flex-direction: column;
