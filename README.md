@@ -75,10 +75,10 @@ Implementeret i `js/script.js`:
 - Newsletter-popup som vises når man åbner siden. popup funktionen kan lukkes i exit funktionen (krydset)
 - Color tile slider i produkt-showcase segmentet
 
-## Browser-understøttelse
+## Validation
 
-Designet til moderne browsere (Chrome, Safari, Firefox, Edge — sidste 2 versioner). 
-Bruger `backdrop-filter`, CSS Grid og CSS Custom Properties.
+![html validation](<./validation/html-validation.png>)
+![css validation](<./validation/css-validation.png>)
 
 ## Forfatter
 
