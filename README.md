@@ -11,13 +11,14 @@ Siden består af følgende sektioner:
 1. **Hero** — produktbillede med LUMINA ONE titel og CTA-knapper
 2. **Produkt-showcase** — billedeslider med fire farvevarianter (sage, lavendel, blå-lilla, cream), en farvevælger og pris
 3. **Andre farver** — visuel oversigt over alle de fire farvevarianter
-4. **Detaljer** — split-layout med produkt billede og en features liste
-5. **Features** — en grid med 6 nummererede produkt detaljer
-6. **Lifestyle** — AI-genererede stemningsbilleder
-7. **Connect-promo** — AI-genererede billede med tekst om app-funktioner i punktform
-8. **Social Connect** — split-card med app-screenshot og oficielle download-CTA knapper fra apple store og google play i .svg format
-9. **Fra fællesskabet** — kollage med billeder (#lumina-Instagram)
-10. **Footer** — wordmark "LUMINA", en tagline, app-badges, links og en disclaimer
+4. **Trustpilot** — oversigt af luminas Trustpilot reviews
+5. **Detaljer** — split-layout med produkt billede og en features liste
+6. **Features** — en grid med 6 nummererede produkt detaljer
+7. **Lifestyle** — AI-genererede stemningsbilleder
+8. **Connect-promo** — AI-genererede billede med tekst om app-funktioner i punktform
+9. **Social Connect** — split-card med app-screenshot og oficielle download-CTA knapper fra apple store og google play i .svg format
+10. **Fra fællesskabet** — kollage med billeder (#lumina-Instagram)
+11. **Footer** — wordmark "LUMINA", en tagline, app-badges, links og en disclaimer
 
 ## Filstruktur
 
@@ -29,13 +30,16 @@ lumina-vs-code/
 ├── js/
 │   └── script.js       # Interaktion: slider, farvevælger, popup, navigation
 ├── images/             # Produktbilleder, ikoner, avatars, logo-SVG'er
+├── validation/         
+│   └── css-validation  # Screenshot af css validation
+│   └── html-validation # Screenshot af html validation
 └── README.md           # Denne fil
 ```
 
 ## Tech stack
 
-- **HTML5** — semantisk markup med `<section>`, `<article>`, `<header>`, `<footer>`
-- **CSS3** — Grid, Flexbox, CSS Custom Properties, `clamp()` til responsiv typografi og `backdrop-filter` til glass-effekter
+- **HTML** — semantisk markup med `<section>`, `<article>`, `<header>`, `<footer>`
+- **CSS** — Grid, Flexbox, CSS Custom Properties, `clamp()` til responsiv typografi og `backdrop-filter` til glass-effekter
 - **Vanilla JavaScript** — ingen frameworks eller biblioteker
 - **SVG** — ikoner og logo for bedre opløsning på alle typer af skærme, i forskellige width og heights
 
@@ -77,8 +81,8 @@ Implementeret i `js/script.js`:
 
 ## Validation
 
-![html validation](<./validation/html-validation.png>)
-![css validation](<./validation/css-validation.png>)
+![html validation](./validation/html-validation.png)
+![css validation](./validation/css-validation.png)
 
 ## Forfatter
 
